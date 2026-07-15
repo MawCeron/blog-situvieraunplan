@@ -6,6 +6,7 @@ tags: [linux, cups, impresoras, cachyos]
 categories: [Linux]
 toc: true
 heroImage: ../../../assets/images/posts/instalar-xerox-workcentre-5325-en-linux/gemini_generated_image_tafot8tafot8tafo.png
+heroImageAlt: 'Imagen generada por Gemini sobre una Xerox WorkCentre 5325'
 ---
 
 Ha pasado ya bastante tiempo desde que:
