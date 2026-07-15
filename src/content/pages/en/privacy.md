@@ -1,120 +1,126 @@
 ---
-title: Privacy Policy
-description: How this site collects, uses, and protects personal data.
+title: Política de Privacidad
+description: Cómo este sitio recopila, usa y protege los datos personales.
 translationKey: privacy
 ---
 
-This Privacy Policy explains how **[SITE_NAME]** ("we", "us", or "our")
-collects, uses, and protects information when you visit **[SITE_URL]**.
+Esta Política de Privacidad explica cómo **Si tuviera un plan** ("nosotros" o
+"este sitio") recopila, usa y protege la información cuando visitas
+**https://situvieraunplan.org/**.
 
-> Replace values in [BRACKETS] to customize this policy for your site.
-> This template is informational and not legal advice.
+## 1. Quiénes somos
 
-## 1. Who we are
+- Propietario del sitio: **Mauricio Cerón**
+- Correo de contacto: **festive.llama@zohomail.com**
+- Fecha de entrada en vigor: **15 de julio de 2026**
+- Última actualización: **15 de julio de 2026**
 
-- Website owner: **[OWNER_NAME / LEGAL_ENTITY]**
-- Contact email: **[CONTACT_EMAIL]**
-- Effective date: **[EFFECTIVE_DATE]**
-- Last updated: **[LAST_UPDATED_DATE]**
+## 2. Información que recopilamos
 
-## 2. Information we collect
+Dependiendo de cómo uses este sitio, podemos procesar:
 
-Depending on how you use this site, we may process:
+- Datos de uso: páginas visitadas, referente, navegador, tipo de dispositivo y
+  región aproximada.
+- Datos técnicos: dirección IP, user agent y registros de rendimiento o
+  errores.
+- Información que proporcionas directamente: correo o contenido de mensajes
+  cuando nos contactas.
+- Datos de comentarios (si están habilitados): perfil y metadatos de
+  comentarios gestionados por **Giscus/GitHub**.
 
-- Usage data: pages viewed, referrer, browser, device type, and approximate
-  region.
-- Technical data: IP address, user agent, and performance/error logs.
-- Information you provide directly: email or message content when you contact us.
-- Comment data (if enabled): profile and comment metadata handled by
-  **[COMMENT_PROVIDER, e.g., Giscus/GitHub]**.
+## 3. Cómo usamos la información
 
-## 3. How we use information
+Usamos los datos para:
 
-We use data to:
+- Operar y proteger el sitio.
+- Entender el tráfico y mejorar el contenido.
+- Responder a solicitudes de soporte o contacto.
+- Prevenir abusos, fraude y actividad maliciosa.
+- Cumplir con obligaciones legales.
 
-- Operate and secure the site.
-- Understand traffic and improve content.
-- Respond to support or contact requests.
-- Prevent abuse, fraud, and malicious activity.
-- Comply with legal obligations.
+## 4. Cookies y tecnologías similares
 
-## 4. Cookies and similar technologies
+Este sitio puede usar cookies o almacenamiento local para:
 
-This site may use cookies or local storage for:
+- Funcionalidad esencial (por ejemplo, guardar la preferencia de tema).
+- Analítica (Umami).
+- Widgets de terceros o sistemas de comentarios.
 
-- Essential functionality (for example, saving theme preference).
-- Analytics (if enabled).
-- Third-party embeds or comment systems.
+Puedes controlar las cookies desde la configuración de tu navegador.
 
-You can control cookies through your browser settings. If your region requires
-consent banners, add one and configure it to your legal requirements.
+## 5. Analítica y servicios de terceros
 
-## 5. Analytics and third-party services
+Podemos usar procesadores externos que recopilan información bajo sus propios
+términos de privacidad:
 
-We may use third-party processors that collect information under their own
-privacy terms:
+- Hosting/CDN: **Cloudflare**
+- Analítica: **Umami**
+- Comentarios: **Giscus**
+- Correo/newsletter: **No aplica**
 
-- Hosting/CDN: **[HOSTING_PROVIDER]**
-- Analytics: **[ANALYTICS_PROVIDER or "Not used"]**
-- Comments: **[COMMENT_PROVIDER or "Not used"]**
-- Email/newsletter: **[EMAIL_PROVIDER or "Not used"]**
+Te recomendamos revisar la política de privacidad de cada proveedor antes de
+usar las funciones relacionadas.
 
-Please review each provider's privacy policy before using related features.
+## 6. Base legal
 
-## 6. Legal basis (EEA/UK, if applicable)
+La mayoría de las visitas a este sitio provienen de países hispanohablantes,
+por lo que esta política se plantea de forma general. En cualquier caso,
+procesamos datos basándonos en uno o más de los siguientes fundamentos:
 
-If GDPR or UK GDPR applies, we process data based on one or more of:
+- Tu consentimiento.
+- Nuestro interés legítimo en operar y mejorar el sitio de forma segura.
+- El cumplimiento de obligaciones legales aplicables.
 
-- Consent
-- Legitimate interests
-- Contract performance
-- Legal obligation
+Si resides en una jurisdicción con requisitos adicionales (por ejemplo, el
+RGPD en la Unión Europea o el Reino Unido), esos fundamentos legales
+específicos también aplican a tu caso.
 
-Specify the legal basis in your data inventory for each processing activity.
+## 7. Retención de datos
 
-## 7. Data retention
+Conservamos los datos solo durante el tiempo necesario para los fines
+mencionados anteriormente, incluyendo seguridad y cumplimiento legal.
 
-We retain data only as long as needed for the purposes above, including
-security and legal compliance.
+- Retención de datos analíticos: **12 meses**
+- Retención de mensajes de contacto: **hasta 24 meses**, o antes si ya no son
+  necesarios
+- Retención de registros de servidor: **90 días**
 
-- Analytics data retention: **[RETENTION_PERIOD]**
-- Contact messages retention: **[RETENTION_PERIOD]**
-- Server logs retention: **[RETENTION_PERIOD]**
+## 8. Transferencias internacionales
 
-## 8. International transfers
+Si los proveedores utilizados procesan datos fuera de tu país, pueden
+aplicarse garantías de transferencia de datos (por ejemplo, Cláusulas
+Contractuales Tipo).
 
-If your providers process data outside your country, data transfer safeguards
-may apply (for example, Standard Contractual Clauses).
+## 9. Tus derechos de privacidad
 
-## 9. Your privacy rights
+Dependiendo de tu ubicación, puedes tener derecho a acceder, corregir,
+eliminar, restringir u oponerte al procesamiento de tus datos personales.
 
-Depending on your location, you may have rights to access, correct, delete,
-restrict, or object to processing of your personal data.
+Para hacer una solicitud, contáctanos en: **festive.llama@zohomail.com**
 
-To make a request, contact: **[PRIVACY_CONTACT_EMAIL]**
+Si resides en la Unión Europea o el Reino Unido, también puedes presentar una
+queja ante tu autoridad local de protección de datos.
 
-If you are in the EEA/UK, you may also lodge a complaint with your local data
-protection authority.
+## 10. Privacidad de menores
 
-## 10. Children's privacy
+Este sitio no está dirigido a menores de **12 años**. No recopilamos
+intencionalmente datos personales de niños por debajo de esa edad, aunque no
+existe una restricción técnica de acceso por edad.
 
-This site is not directed to children under **[MINIMUM_AGE, e.g., 13 or 16]**.
-We do not knowingly collect personal data from children.
+## 11. Seguridad
 
-## 11. Security
+Usamos salvaguardas técnicas y organizativas razonables, pero ningún método de
+transmisión o almacenamiento es 100% seguro.
 
-We use reasonable technical and organizational safeguards, but no method of
-transmission or storage is 100% secure.
+## 12. Cambios a esta política
 
-## 12. Changes to this policy
+Podemos actualizar esta Política de Privacidad de vez en cuando. Los cambios
+entran en vigor al publicarse en esta página con una fecha de "Última
+actualización" renovada.
 
-We may update this Privacy Policy from time to time. Changes are effective when
-posted on this page with an updated "Last updated" date.
+## 13. Contacto
 
-## 13. Contact
+Para preguntas sobre privacidad, contáctanos:
 
-For privacy questions, contact:
-
-- Name: **[PRIVACY_CONTACT_NAME]**
-- Email: **[PRIVACY_CONTACT_EMAIL]**
-- Address (optional): **[POSTAL_ADDRESS]**
+- Nombre: **Mauricio Cerón**
+- Correo: **festive.llama@zohomail.com**

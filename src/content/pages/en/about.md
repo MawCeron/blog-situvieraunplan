@@ -1,67 +1,48 @@
 ---
-title: About
-description: Chirping Astro — a Chirpy-inspired, multilingual Astro theme built for writers and tinkerers.
+title: Acerca de
+description: Quién escribe esto y por qué.
 translationKey: about
 ---
 
-**Chirping Astro** is an open-source theme that brings the look and feel of
-the popular [Chirpy Jekyll theme](https://chirpy.cotes.page/) to
-[Astro](https://astro.build/) — with first-class internationalization, a
-modern toolchain, and zero-JavaScript reading by default.
+Soy Mauricio Cerón *(más conocido como **Maw**)*, y esto que
+estás leyendo es, técnicamente, mi culpa.
 
-It is intended for personal blogs, technical journals, and documentation
-sites where typography, search, and quiet, focused reading matter more
-than animations and ad slots.
+## Lo profesional
 
-## What's in the box
+Desde enero de 2026 soy Responsable de TI en una empresa de productos de
+cuidado capilar y personal. Antes de eso, llevo desde 2014 trabajando como
+administrador de sistemas — servidores, redes, y todo lo que implica que las
+cosas sigan encendidas y funcionando cuando alguien las necesita.
 
-- **Reading-first layout** — fixed left sidebar with avatar, vertical nav,
-  theme toggle, and social links; centered main column capped at 1250px;
-  right rail with “Recently Updated” and “Trending Tags”.
-- **Light & dark themes** — the original Chirpy palette, ported to
-  daisyUI v5 tokens, with a circular reveal transition between modes.
-- **Bilingual content (EN + FR)** — English served at the root, French
-  under `/fr/`. Posts are paired by `translationKey`, and a language
-  switcher in the topbar jumps between translations. Set
-  `multilingual: false` in `src/config.ts` to ship a single-language
-  site.
-- **Markdown + MDX** — Astro Content Collections with typed frontmatter,
-  Shiki syntax highlighting, GFM, footnotes, an automatic table of
-  contents, and a bundled `<Callout>` component.
-- **LaTeX math** — opt-in KaTeX support per post via `math: true`.
-- **Instant search** — [Pagefind](https://pagefind.app/) generates a
-  static search index at build time; the search overlay loads on demand.
-- **Comments** — [Giscus](https://giscus.app/) integration backed by
-  GitHub Discussions, with per-post opt-out.
-- **Smooth navigation** — Astro view transitions with a subtle fade and
-  motion-reduced fallback for accessibility.
-- **SEO out of the box** — OpenGraph, Twitter cards, RSS feeds per locale,
-  hreflang, and a sitemap.
+Pero la programación viene de mucho antes: en 1998, con 11 años y recién
+entrando a primer año de secundaria, tuve acceso a una computadora por
+primera vez. Empecé programando en Logo y TurboBasic y, para mi sorpresa —y
+la de varios más—, se me facilitaba. De ahí ya no paré. Mi fuerte, sin duda,
+es el desarrollo de escritorio con C#. Soy usuario de Linux desde 2008 (con un break de una
+década, entre 2015 y 2025, del que prefiero no dar muchos detalles). Tuve mi
+época pythonista por ahí de 2010, y actualmente ando enfocado en PHP por
+cuestiones laborales, aunque sigo explorando por mi cuenta Go y Rust.
 
-## Built with
+## Lo que realmente explica este sitio
 
-- [**Astro 7.x**](https://astro.build/) — Content Collections, MDX, RSS,
-  and view transitions
-- [**Tailwind CSS v4**](https://tailwindcss.com/) via the `@tailwindcss/vite`
-  plugin, with [**daisyUI v5**](https://daisyui.com/) for theming
-- [**Pagefind**](https://pagefind.app/) for static search
-- [**Giscus**](https://giscus.app/) for comments
-- [**Shiki**](https://shiki.style/), [**KaTeX**](https://katex.org/), and
-  [**Lucide**](https://lucide.dev/) icons
+Cuando entré de lleno al mundo Linux, necesitaba anotar procesos y
+soluciones para mí mismo, porque la memoria falla y volver a resolver el
+mismo problema dos veces me da pereza. Ese fue, literalmente, el origen de
+este blog: notas técnicas para mi yo del futuro.
 
-## Make it yours
+Lo demás se fue colando con el tiempo, porque nunca he sabido hacer solo una
+cosa.
 
-Almost everything is wired through a single typed config file at
-[`src/config.ts`](https://github.com/) — site title, author, navigation,
-social links, posts-per-page, default locale, Giscus credentials, and
-feature flags. Restart `bun run dev` after editing it.
+Siempre he sido lector — mi soft spot son las novelas de romance y de
+detectives — y por ahí de 2007 una cosa llevó a la otra: empecé a escribir
+mis propias historias y guiones para cortos. La fotografía y la música
+también son aficiones de toda la vida, desde niño. Igual que las caricaturas,
+que años después descubriría que algunas se llaman anime. Y los
+videojuegos, claro, que ahí siguen.
 
-New posts go in `src/content/posts/<locale>/`. Pair translations by
-setting the same `translationKey` in both files. The frontmatter
-reference in this demo site explains every field.
+Ah, y soy fan del fútbol americano desde niño — de los Denver Broncos desde
+1998, para ser exactos. Eso también aparece por aquí de vez en cuando.
 
-## License & credits
+Como puedes ver, hacía de todo menos mis tareas.
 
-Released under the **MIT License**. The visual design is a tribute to
-[Cotes Chung's Chirpy](https://github.com/cotes2020/jekyll-theme-chirpy);
-the Astro implementation, content, and code are independent.
+Y bueno, seguimos haciendo de todo.

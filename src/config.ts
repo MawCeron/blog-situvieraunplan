@@ -112,7 +112,7 @@ export const SITE: SiteConfig = {
   /** Default locale. Changing this is a breaking, atomic, multi-file operation. */
   defaultLocale: 'en',
   /** Show the language switcher and link to translated pages. */
-  multilingual: true,
+  multilingual: false,
 };
 
 export const NAV: readonly NavItem[] = [

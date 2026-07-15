@@ -7,103 +7,6 @@
 import type { Locale } from '../config';
 
 export const messages = {
-  en: {
-    'site.skipToContent': 'Skip to content',
-    'nav.home': 'Home',
-    'nav.posts': 'Posts',
-    'nav.tags': 'Tags',
-    'nav.categories': 'Categories',
-    'nav.archives': 'Archives',
-    'nav.about': 'About',
-    'nav.search': 'Search',
-    'nav.toggleMenu': 'Toggle menu',
-
-    'theme.toggle': 'Toggle theme',
-    'theme.light': 'Light',
-    'theme.dark': 'Dark',
-    'theme.system': 'System',
-
-    'lang.switcher': 'Language',
-    'lang.en': 'English',
-    'lang.fr': 'French',
-
-    'post.publishedOn': 'Published on',
-    'post.updatedOn': 'Updated on',
-    'post.readingTime': 'min read',
-    'post.toc': 'Table of contents',
-    'post.tags': 'Tags',
-    'post.categories': 'Categories',
-    'post.previous': 'Previous',
-    'post.next': 'Next',
-    'post.comments': 'Comments',
-    'post.commentsDisabled': 'Comments are disabled for this post.',
-    'post.commentsSetupTitle': 'Comments need configuration',
-    'post.commentsSetupBody':
-      'Giscus is enabled but not yet configured. Add the repository details below to start collecting comments.',
-    'post.commentsSetupStep1':
-      'Visit `giscus.app` and select your public GitHub repository (Discussions must be enabled).',
-    'post.commentsSetupStep2':
-      'Copy the generated `data-repo-id`, `data-category` and `data-category-id` values.',
-    'post.commentsSetupStep3':
-      'Set the `PUBLIC_GISCUS_ENABLED`, `PUBLIC_GISCUS_REPO`, `PUBLIC_GISCUS_REPO_ID`, `PUBLIC_GISCUS_CATEGORY` and `PUBLIC_GISCUS_CATEGORY_ID` env vars in your `.env` file.',
-    'post.commentsSetupStep4':
-      'Rebuild the site — this notice will be replaced by the live comments thread.',
-    'post.commentsSetupDocs': 'Open giscus.app',
-    'post.share': 'Share',
-    'post.copyLink': 'Copy link',
-    'post.copied': 'Copied!',
-    'post.author': 'Author',
-
-    'list.allPosts': 'All posts',
-    'list.empty': 'No posts found.',
-    'list.tagPosts': 'Posts tagged',
-    'list.categoryPosts': 'Posts in',
-    'list.totalPosts': 'posts',
-    'list.totalPostsOne': 'post',
-
-    'pagination.previous': 'Previous page',
-    'pagination.next': 'Next page',
-    'pagination.page': 'Page',
-    'pagination.of': 'of',
-
-    'archives.title': 'Archives',
-    'archives.empty': 'No posts yet.',
-
-    'tags.title': 'Tags',
-    'tags.empty': 'No tags yet.',
-
-    'categories.title': 'Categories',
-    'categories.empty': 'No categories yet.',
-
-    'search.title': 'Search',
-    'search.placeholder': 'Search the site',
-    'search.openLabel': 'Open search',
-    'search.closeLabel': 'Close search',
-    'search.empty': 'No results.',
-    'search.loading': 'Loading search…',
-    'search.typeToStart': 'Type to search…',
-    'search.hintShortcut': 'Press / anywhere to open search',
-    'search.searching': 'Searching…',
-    'search.noResultsFor': 'No results for',
-    'search.resultsCount': 'results',
-    'search.resultsCountOne': 'result',
-    'search.hintNavigate': 'to navigate',
-    'search.hintSelect': 'to open',
-    'search.clearLabel': 'Clear',
-
-    'code.copy': 'Copy',
-    'code.copied': 'Copied',
-
-    '404.title': 'Page not found',
-    '404.description': 'The page you are looking for has flown away.',
-    '404.cta': 'Back to home',
-
-    'footer.poweredBy': 'Powered by',
-    'footer.theme': 'Theme',
-    'footer.privacy': 'Privacy Policy',
-    'footer.copyright': 'All rights reserved.',
-  },
-
   fr: {
     'site.skipToContent': 'Aller au contenu',
     'nav.home': 'Accueil',
@@ -123,6 +26,7 @@ export const messages = {
     'lang.switcher': 'Langue',
     'lang.en': 'Anglais',
     'lang.fr': 'Français',
+    'lang.es': 'Espagnol',
 
     'post.publishedOn': 'Publié le',
     'post.updatedOn': 'Mis à jour le',
@@ -199,6 +103,104 @@ export const messages = {
     'footer.theme': 'Thème',
     'footer.privacy': 'Politique de confidentialité',
     'footer.copyright': 'Tous droits réservés.',
+  },
+
+  en: {
+    'site.skipToContent': 'Saltar al contenido',
+    'nav.home': 'Inicio',
+    'nav.posts': 'Entradas',
+    'nav.tags': 'Etiquetas',
+    'nav.categories': 'Categorías',
+    'nav.archives': 'Archivo',
+    'nav.about': 'Acerca de',
+    'nav.search': 'Buscar',
+    'nav.toggleMenu': 'Alternar menú',
+
+    'theme.toggle': 'Cambiar tema',
+    'theme.light': 'Claro',
+    'theme.dark': 'Oscuro',
+    'theme.system': 'Sistema',
+
+    'lang.switcher': 'Idioma',
+    'lang.en': 'Inglés',
+    'lang.fr': 'Francés',
+    'lang.es': 'Español',
+
+    'post.publishedOn': 'Publicado el',
+    'post.updatedOn': 'Actualizado el',
+    'post.readingTime': 'min de lectura',
+    'post.toc': 'Tabla de contenidos',
+    'post.tags': 'Etiquetas',
+    'post.categories': 'Categorías',
+    'post.previous': 'Anterior',
+    'post.next': 'Siguiente',
+    'post.comments': 'Comentarios',
+    'post.commentsDisabled': 'Los comentarios están desactivados para esta entrada.',
+    'post.commentsSetupTitle': 'Los comentarios necesitan configuración',
+    'post.commentsSetupBody':
+      'Giscus está habilitado pero aún no configurado. Añade los datos del repositorio abajo para empezar a recibir comentarios.',
+    'post.commentsSetupStep1':
+      'Visita `giscus.app` y selecciona tu repositorio público de GitHub (las Discussions deben estar habilitadas).',
+    'post.commentsSetupStep2':
+      'Copia los valores generados de `data-repo-id`, `data-category` y `data-category-id`.',
+    'post.commentsSetupStep3':
+      'Define las variables de entorno `PUBLIC_GISCUS_ENABLED`, `PUBLIC_GISCUS_REPO`, `PUBLIC_GISCUS_REPO_ID`, `PUBLIC_GISCUS_CATEGORY` y `PUBLIC_GISCUS_CATEGORY_ID` en tu archivo `.env`.',
+    'post.commentsSetupStep4':
+      'Reconstruye el sitio — este aviso será reemplazado por el hilo de comentarios en vivo.',
+    'post.commentsSetupDocs': 'Abrir giscus.app',
+    'post.share': 'Compartir',
+    'post.copyLink': 'Copiar enlace',
+    'post.copied': '¡Copiado!',
+    'post.author': 'Autor',
+
+    'list.allPosts': 'Todas las entradas',
+    'list.empty': 'No se encontraron entradas.',
+    'list.tagPosts': 'Entradas etiquetadas',
+    'list.categoryPosts': 'Entradas en',
+    'list.totalPosts': 'entradas',
+    'list.totalPostsOne': 'entrada',
+
+    'pagination.previous': 'Página anterior',
+    'pagination.next': 'Página siguiente',
+    'pagination.page': 'Página',
+    'pagination.of': 'de',
+
+    'archives.title': 'Archivo',
+    'archives.empty': 'Aún no hay entradas.',
+
+    'tags.title': 'Etiquetas',
+    'tags.empty': 'Aún no hay etiquetas.',
+
+    'categories.title': 'Categorías',
+    'categories.empty': 'Aún no hay categorías.',
+
+    'search.title': 'Buscar',
+    'search.placeholder': 'Buscar en el sitio',
+    'search.openLabel': 'Abrir búsqueda',
+    'search.closeLabel': 'Cerrar búsqueda',
+    'search.empty': 'Sin resultados.',
+    'search.loading': 'Cargando búsqueda…',
+    'search.typeToStart': 'Escribe para buscar…',
+    'search.hintShortcut': 'Presiona / en cualquier lugar para abrir la búsqueda',
+    'search.searching': 'Buscando…',
+    'search.noResultsFor': 'Sin resultados para',
+    'search.resultsCount': 'resultados',
+    'search.resultsCountOne': 'resultado',
+    'search.hintNavigate': 'para navegar',
+    'search.hintSelect': 'para abrir',
+    'search.clearLabel': 'Limpiar',
+
+    'code.copy': 'Copiar',
+    'code.copied': 'Copiado',
+
+    '404.title': 'Página no encontrada',
+    '404.description': 'La página que buscas salió volando.',
+    '404.cta': 'Volver al inicio',
+
+    'footer.poweredBy': 'Desarrollado con',
+    'footer.theme': 'Tema',
+    'footer.privacy': 'Política de privacidad',
+    'footer.copyright': 'Todos los derechos reservados.',
   },
 } as const satisfies Record<Locale, Record<string, string>>;
 
