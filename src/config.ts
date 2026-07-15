@@ -50,16 +50,16 @@ export const SITE: SiteConfig = {
   // ==========================================
 
   /** Default site title used as homepage <title> and meta. */
-  title: 'Chirping Astro',
+  title: 'Si tuviera un plan',
   /** Site tagline / description. */
   description:
-    'A modern, multilingual Astro v7 theme inspired by Chirpy — built with Tailwind v4, daisyUI, MDX, Pagefind, and Giscus.',
+    '...no estaría escribiendo este blog.',
   /** Author/handle shown in footer + meta. */
   author: {
-    name: 'Chirping Astro',
+    name: 'Maw Ceron',
     url: GITHUB_HANDLE ? `https://github.com/${GITHUB_HANDLE}` : undefined,
     avatar: avatarImg,
-    bio: 'A text-focused Astro v7 theme.',
+    bio: 'Desarrollador, escritor, ilustrador, humano promedio.',
   },
   /** Default OG image. */
   defaultOgImage: ogDefaultImg.src,
@@ -106,7 +106,7 @@ export const SITE: SiteConfig = {
   /** Public URL of the deployed site, no trailing slash. Breaks SEO/RSS if incorrect. */
   // `||` (not `??`) so an explicitly empty `SITE_URL=` in `.env` also
   // falls back to the default. Astro requires `site` to be a valid URL.
-  url: process.env.SITE_URL || 'https://chirping-astro.example.com',
+  url: process.env.SITE_URL || 'https://situvieraunplan.org',
   /** Supported locales. Changing this requires adding/removing locale folders, content, and i18n entries. */
   locales: locales,
   /** Default locale. Changing this is a breaking, atomic, multi-file operation. */
