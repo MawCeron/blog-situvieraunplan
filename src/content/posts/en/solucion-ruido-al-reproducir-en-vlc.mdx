@@ -1,0 +1,27 @@
+---
+title: 'Solución: ruido al reproducir en VLC'
+description: 'Cómo arreglar el eco y el ruido de estática que aparecen en VLC después de actualizarlo: cambiar el módulo de salida de audio a PulseAudio.'
+pubDate: 2012-04-14
+updatedDate: 2026-07-15
+tags: [linux, vlc, pulseaudio, alsa, audio]
+categories: [Linux]
+toc: false
+---
+
+import Callout from '../../../components/Callout.astro';
+
+Desde hace tiempo me he encontrado con este problema, pero por pereza, principalmente, me limitaba a usar otro reproductor y no buscaba una solución al respecto; y, al parecer, es un problema más común de lo que imaginaba.
+
+## El problema
+
+Después de una actualización de VLC a través de los repositorios, siempre que reproducía cualquier archivo, fuera de audio o video, el audio se distorsionaba: comenzaba un eco y un poco de ruido de estática. Curiosamente, el problema se solucionaba después de unos minutos, pero podía ser desde uno hasta 20 minutos para que eso pasara.
+
+## La solución
+
+Si tienes este problema, la solución es bastante sencilla: lo que tienes que hacer es acceder a las preferencias de VLC (**Herramientas > Preferencias**, o **Ctrl+P**) e irte a la pestaña de **Audio**. Donde dice **Módulo de salida**, cambia la opción **Predeterminado** por **Salida de audio PulseAudio**. Ahora solo basta con reiniciar VLC y problema resuelto.
+
+<Callout type="info" title="Alternativa de un lector">
+
+  Si la solución anterior no funciona, otra alternativa es eliminar PulseAudio junto con todas sus dependencias y reinstalar ALSA y VLC. A un lector le pasaba que, aunque cambiara la salida de audio, el ruido no se arreglaba, porque PulseAudio le metía más volumen a la tarjeta de audio aunque usara ALSA.
+
+</Callout>
