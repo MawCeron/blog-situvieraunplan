@@ -4,6 +4,7 @@ description: 'Por qué a partir de ahora las ilustraciones del blog serán gener
 pubDate: 2026-04-20
 tags: [blog, ia, ilustraciones]
 categories: [Personal]
+pinned: true
 ---
 
 Un aviso rápido antes de seguir publicando.

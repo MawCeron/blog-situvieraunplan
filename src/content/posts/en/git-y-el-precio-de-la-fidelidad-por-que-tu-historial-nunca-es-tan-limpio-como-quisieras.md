@@ -5,6 +5,8 @@ pubDate: 2026-03-25
 tags: [git, control-de-versiones, desarrollo]
 categories: [Git, Programación]
 toc: true
+heroImage: '../../../assets/images/posts/heroes/git-precio.png'
+heroImageAlt: "Representación visual de cualquiera de mis repos git"
 ---
 
 Noticias rápidas: Cambie de trabajo (ya no tengo tanto tiempo libre, supongo que eso es bueno), me casé hace un par de semanas con una mujer que me sabe controlar cuando debe (y aún así, a veces me deja ser el yo impredecible), estoy dando mantenimiento a un sistema PHP monolítico que es un espaghetti sin albóndigas, volví a Linux, tengo un par de proyectos de software open source que espero vean la luz al menos este año y ya utilizo Git, pero mucho.... Y ya puestos al día, hay una conversación que tarde o temprano tiene todo desarrollador que lleva suficiente tiempo trabajando con Git sobre la que les quiero platicar. No, no es la del merge conflict que arruinó el viernes — esa también, pero no es esa. Me refiero a la conversación sobre el historial.
@@ -82,7 +84,7 @@ Tres estrategias, tres compromisos distintos, ninguna que te dé historial limpi
 
 Git tiene una respuesta para esto y se llama `--first-parent`.
 
-```
+```bash
 git log main --first-parent --oneline
 
 ```
@@ -139,7 +141,7 @@ El resultado en práctica:
 
 Y el comando sería tan simple como:
 
-```
+```bash
 git merge --symbolic feat
 
 ```
@@ -168,7 +170,7 @@ Si `symbolic-parent` no va a llegar a Git core, ¿qué opciones quedan que no se
 
 Git permite poner metadatos al final de un mensaje de commit en formato `Clave: valor`. A eso, amigos mios, les llamamos trailers. Ya se usan para cosas como `Signed-off-by` o `Co-authored-by`. Y nada impide definir una convención propia y usarla de forma consistente:
 
-```
+```bash
 merge: (feat) integra validación de crédito
 
 Merge-Type: symbolic

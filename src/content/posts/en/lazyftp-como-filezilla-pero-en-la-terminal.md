@@ -4,6 +4,8 @@ description: 'lazyftp, un cliente TUI para FTP y SFTP escrito en Go, pensado par
 pubDate: 2026-04-17
 tags: [go, tui, ftp, herramientas, open-source]
 categories: [Herramientas, Programación]
+heroImage: '../../../assets/images/posts/heroes/lazyftp.png'
+heroImageAlt: "Captura de pantalla de lazyftp"
 ---
 
 Por azares de la vida pasé 11 años en terrenos medio raros —sí Windows, te estoy hablando a ti— el destino me permitió regresar a Linux.
@@ -27,8 +29,6 @@ Y la neta, me dio hueva ponerme a aprender nuevos comandos. Quizá en algún rep
 Así que hice lo que cualquier programador que se precia haría cuando algo lo molesta lo suficiente: dediqué mi fin de semana a construir la herramienta que quería tener.
 
 Azúcar (bubbletea), flores (lipgloss), y mucho GoLang… ¡Así nació **lazyftp**!
-
-lazyftp_screenshot.png
 
 No nació por la falta de herramientas, sino por la falta de comodidad. No es como que no se pudiera usar FTP en la terminal. Claro que se puede. La cosa es querer hacerlo.
 

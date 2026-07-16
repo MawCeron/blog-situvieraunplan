@@ -5,6 +5,7 @@ pubDate: 2025-04-08
 tags: [wsl, windows, linux, contraseñas]
 categories: [Windows, Linux]
 toc: true
+heroImage: '../../../assets/images/posts/heroes/pass-wls.png'
 ---
 
 Sí, lo sé. Se supone que uno no debería olvidar su contraseña, _especialmente_ si tú mismo la configuraste hace unos días. Pero bueno, pasó. Y si estás leyendo esto, seguramente te pasó a ti también. Lo bueno es que recuperar el acceso al subsistema Linux de Windows (WSL) es sorprendentemente fácil, siempre y cuando sigas los pasos correctos.
@@ -19,7 +20,7 @@ La clave está en abrir el buen _cmd_ con permisos de administrador. Puedes busc
 
 Una vez que tengas la consola abierta, escribe este comando:
 
-```
+```bash title="Símbolo de Sistema"
 ubuntu config --default-user root
 ```
 
@@ -33,7 +34,7 @@ Ahora sí, abre tu terminal de Ubuntu como lo haces normalmente. Esta vez, en lu
 
 En la terminal, usa este comando:
 
-```
+```bash title="Terminal"
 passwd tu_usuario
 ```
 
@@ -43,7 +44,7 @@ Obviamente reemplaza `tu_usuario` por tu nombre de usuario real. El sistema te p
 
 Una vez resuelto el asunto, hay que devolver las cosas a la normalidad. Regresa al cmd (como administrador) y ejecuta:
 
-```
+```bash title="Símbolo de Sistema"
 ubuntu config --default-user tu_usuario
 ```
 

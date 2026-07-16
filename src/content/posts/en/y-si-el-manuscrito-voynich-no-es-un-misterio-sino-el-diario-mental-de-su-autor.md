@@ -5,6 +5,7 @@ pubDate: 2025-06-19
 tags: [manuscrito-voynich, misterios, historia]
 categories: [Random, Opinión]
 toc: true
+heroImage: '../../../assets/images/posts/manuscrito-voinich/voinich.png'
 ---
 
 Imaginate que pasas poco más de un siglo tratando de entender un libro que ha desconcertado a criptógrafos, lingüistas, historiadores y curiosos, bueno pues eso mismo es lo que ha pasado con el **Manuscrito (algunos le llaman códice) Voynich**. Este enigmático códice ilustrado, escrito en un idioma desconocido y plagado de dibujos de plantas imposibles, figuras femeninas y diagramas astrológicos, ha sido descrito como _“el libro que nadie puede leer”_. Pero, ¿y si llevamos siglos buscando la respuesta equivocada? ¿Y si el manuscrito nunca fue pensado para ser entendido por nadie más que su autor?
@@ -16,6 +17,8 @@ Sin embargo, ninguna teoría ha logrado descifrarlo de manera convincente. Todos
 ## Una hipótesis distinta: un proyecto personal, privado
 
 Imaginemos por un momento otra posibilidad. ¿Y si el autor nunca pensó en lectores externos? ¿Y si el Voynich es simplemente un cuaderno de apuntes, un diario mental, una libreta de ideas o desvaríos hecha por alguien que tenía los conocimientos, recursos, tiempo libre y una pulsión creativa interna?
+
+![Fragmento del manuscrito Voynich](../../../assets/images/posts/manuscrito-voinich/manuscrito.jpg)
 
 Este enfoque no busca forzar una traducción. Busca comprender la motivación humana detrás del acto de escribir algo que solo uno mismo puede entender.
 

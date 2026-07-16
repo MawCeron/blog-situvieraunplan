@@ -4,6 +4,7 @@ description: 'Presentando Waifuismo: Un Manifiesto del Amor Bidimensional, un li
 pubDate: 2026-04-20
 tags: [escritura, libros, waifuismo, anime]
 categories: [Escritura]
+heroImage: '../../../assets/images/posts/waifuismo/hero.jpg'
 ---
 
 _¿Sabes qué tienen en común Rem, Asuka, Hinata, Zero Two, y esa chica que te mira con una ternura casi indecente desde la pantalla a las tres de la mañana?_  
@@ -13,7 +14,7 @@ Cuando, en 2014, inicié este blog. Tenía muchos proyectos de escritura en ment
 
 Escribí un libro —sí es que se le puede llamar así. Se llama **Waifuismo: Un Manifiesto del Amor Bidimensional**, y es exactamente lo que suena: un texto de 50 páginas que argumenta, con toda la seriedad que pude fingir, que amar a un personaje de anime es una práctica filosóficamente válida, económicamente significativa y emocionalmente terapéutica. Tiene referencias a Dante, a Petrarca, a Jung, al efecto Coolidge y a Re:Zero. Todo en el mismo documento. Todo dicho total seriedad.
 
-71fpn4jkqnl._sl1500_.jpg
+![Portada del libro](../../../assets/images/posts/waifuismo/cover.jpg)
 
 Este libro comenzó como broma. Después de ver una de tantas peleas en reddit sobre quién es la best girl... y pensé: _¿qué pasaría si alguien escribiera estos argumentos como si fuera un texto sagrado?_ La idea me hizo reír. Así que empecé.
 

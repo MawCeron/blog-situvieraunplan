@@ -4,6 +4,8 @@ description: 'Una reflexión sobre por qué lenguajes de tipado fuerte como Go, 
 pubDate: 2025-11-07
 tags: [programación, tipado, go, lenguajes]
 categories: [Programación, Opinión]
+heroImage: '../../../assets/images/posts/heroes/compilador-pegame.jpg'
+heroImageAlt: "Así mero cuando mi programa no compila"
 ---
 
 La actividad en el trabajo ha ido a la baja de un tiempo a la fecha. Principalmente porque ya tengo muchas cosas automatizadas, y pues bueno, **qué se le va a hacer si no hay nada que hacer**. Así que tenía dos opciones: ponerme a ver videos de YouTube o hacer algo productivo... y una vez que ya no había nada más que ver en YouTube me dije: _vamos a aprender un nuevo lenguaje de programación_. **Y entra Go.**
@@ -36,7 +38,7 @@ Aquí surgió algo llamado **tipado blando**. No había necesidad de especifica
 
 Y eso dio lugar a algunas joyitas como el ejemplo canónico de JS:
 
-```
+```js
 a = 1;
 b = '1';
 
