@@ -5,6 +5,7 @@ pubDate: 2026-06-19
 tags: [linux, ghostty, wayland, gtk, niri, hyprland]
 categories: [Linux]
 toc: true
+heroImage: ../../../assets/images/posts/heroes/deadkeys-niri.png
 ---
 
 ¿Quién diría que sería testigo de un fantasma ignorando a los muertos?
@@ -23,14 +24,14 @@ Por eso en GNOME nadie notó nada: GNOME trae IBus de fábrica. Pero en entornos
 
 La más directa: decirle a GTK que siga usando su implementación interna con una variable de entorno.
 
-```
+```text
 GTK_IM_MODULE=simple
 
 ```
 
 Como uso **Niri**, la puse directo en la configuración del compositor para que aplique a todas las apps GTK:
 
-```
+```text
 // ~/.config/niri/config.kdl
 environment {
     GTK_IM_MODULE "simple"
@@ -42,14 +43,14 @@ Guardé y listo, ni siquiera tuve que reiniciar sesión, solo volví a abrir la 
 
 Si usan **Hyprland**, pueden ponerla globalmente en su config:
 
-```
+```text
 env = GTK_IM_MODULE,simple
 
 ```
 
 O solo para cuando lanzan Ghostty:
 
-```
+```text
 bind = $mainMod, Return, exec, GTK_IM_MODULE=simple ghostty
 
 ```
@@ -60,7 +61,7 @@ bind = $mainMod, Return, exec, GTK_IM_MODULE=simple ghostty
 
 Con IBus en Niri quedaría algo así:
 
-```
+```text
 environment {
     GTK_IM_MODULE "ibus"
     QT_IM_MODULE  "ibus"

@@ -4,6 +4,8 @@ description: 'Una reflexión sobre el distro hopping: por qué los usuarios de L
 pubDate: 2026-04-20
 tags: [linux, distro-hopping, opinión]
 categories: [Linux, Opinión]
+heroImage: ../../../assets/images/posts/hablemos-distrohopping/hopping.png
+heroImageAlt: 'Distro hopping: saltar de una distribución a otra'
 ---
 
 Hay momentos en la vida que están predestinados a suceder: Cuando te despides de alguien, pero resulta que van hacia el mismo lado y ahora tienen que caminar juntos en un silencio incomodo. O cuando entras a tu cuarto, la cocina —o lo que sea— y se te olvida a qué ibas y te quedas ahí, con la mirada vacia viendo a un punto en medio de la nada, esperando a que tu cerebro termine de cargar.
@@ -30,7 +32,7 @@ Cada distro llega con la promesa de ser diferente, de resolver lo que la anterio
 
 El distro hopping existe porque Linux lo permite de una manera que ningún otro sistema operativo lo hace. En Windows o macOS solo hay una forma de hacer las cosas. En Linux hay veinte, y cada una tiene sus caballeros de brillante armadura dispuestos a morir en la línea defendiéndola. Es una libertad maravillosa y al mismo tiempo la trampa más grande de todas.
 
-https___dev-to-uploads.s3.amazonaws.com_uploads_articles_kx1v9hq6rgdk5n7dkfxh.jpg
+![Tienes que configurar todo](../../../assets/images/posts/hablemos-distrohopping/use-linux.jpg)
 
 Cada vez que algo no funciona de la forma exacta en que lo quieres, el instinto no es "voy a aprender a configurar esto" sino "a lo mejor en esta otra distro ya viene implementado". Y muchas veces es verdad. Pero la mayoría de las veces solo estás huyendo, y no de un problema técnico, sino de la incomodidad que genera no poder aceptar que aún no dominas tu entorno.
 
