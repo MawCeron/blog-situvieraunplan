@@ -4,6 +4,7 @@ description: 'Un script de T-SQL que convierte automáticamente los resultados d
 pubDate: 2023-09-12
 tags: [sql, sql-server, scripting]
 categories: [SQL]
+heroImage: ../../../assets/images/posts/heroes/convertirSQl.png
 ---
 
 Debido a un par de circunstancias causadas por mi distracción, me vi en la necesidad de insertar información obtenida de un SELECT, y este Script hecho por [Steve Fenton](https://www.stevefenton.co.uk/blog/2020/04/convert-a-sql-select-into-an-insert-script/) me salvó la vida, así que decidí traducir la información y compartirlo con ustedes por si acaso.
