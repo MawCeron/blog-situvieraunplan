@@ -1,6 +1,6 @@
 ---
 title: "La evolución y las contradicciones del mito del Doctor"
-description: "Cómo cada actor que ha interpretado al Doctor fue construyendo el mito pieza por pieza, la lenta caída de la serie clásica con Davison, Baker y McCoy, el renacimiento con New Who, las contradicciones que sesenta años de continuidad inevitablemente generaron, y por qué Capaldi y McGann merecen una mención aparte."
+description: "Cómo cada actor que ha interpretado al Doctor fue construyendo el mito pieza por pieza, la lenta caída de la serie clásica, el renacimiento con New Who, las contradicciones que sesenta años de continuidad inevitablemente generaron."
 pubDate: 2026-07-25
 tags: [doctor-who, series]
 categories: [Series, Opinión]
