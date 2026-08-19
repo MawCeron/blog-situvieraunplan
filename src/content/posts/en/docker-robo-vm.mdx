@@ -1,0 +1,127 @@
+---
+title: "Cuando Docker le robó la red a mi VM de Windows"
+description: "Una VM de Windows en GNOME Boxes se quedó sin red de la nada. Todo se veía bien configurado, pero los paquetes simplemente desaparecían."
+pubDate: 2026-08-19
+tags: [redes, docker, troubleshooting, linux]
+categories: [Linux, Tecnología]
+heroImage: '../../../assets/images/posts/heroes/docker-vm.jpg'
+---
+
+import Callout from '../../../components/Callout.astro';
+
+<Callout type="warning" title="Advertencia de tecnisismos">
+  Este artículo utiliza muchos terminos técnicos que pueden confundir hasta a los mas letrados de los mortales, así que estan advertidos.
+</Callout>
+
+En mi equipo del trabajo tengo una VM de Windows 10 —más que nada para desarrollo de los sistemas del almacen que son Winforms— corriendo en **GNOME Boxes** (Fedora, con libvirt/QEMU por debajo) que, de un día para otro, decidió quedarse sin red. Así nomás, sin avisar.
+
+- No respondía ping desde otros equipos de mi red local.
+- No tenía salida a internet.
+- Ni siquiera podía alcanzar otros equipos de la LAN desde dentro de la propia VM.
+
+Lo raro, porque no voy a decir que no había sospechosos, es que mi host tiene **dos redes activas al mismo tiempo** —una WiFi hacia internet (ya saben, para evitar filtros y eso), otra cableada hacia la red interna—, así que mi primera sospecha fue que esa doble conectividad estaba confundiendo al NAT de libvirt. Bonita teoría. Estaba completamente equivocado, pero eso lo supe hasta después.
+
+## Descartando lo obvio, capa por capa
+
+Antes de asumir nada, fui revisando todo de abajo hacia arriba:
+
+**La configuración de red de la VM.** El XML del dominio mostraba una interfaz `bridge` apuntando a `virbr0` —la red NAT por defecto de libvirt—, con el modelo `rtl8139`, que es un driver nativo de Windows. Así que no, no era tema de drivers faltantes.
+
+**El estado de la red virtual.**
+
+```bash
+virsh net-list --all
+ip a show virbr0
+```
+
+La red `default` estaba activa, y `virbr0` tenía su IP (`192.168.122.1/24`) asignada correctamente. Todo en orden.
+
+**La configuración DHCP dentro de Windows.** `ipconfig /all` mostraba una IP válida (`192.168.122.250`), con gateway y DNS apuntando bien a `192.168.122.1`. O sea que la VM sí estaba recibiendo IP por DHCP sin ningún drama.
+
+**Las reglas de firewall y NAT de libvirt.** Revisé las zonas de `firewalld` (`virbr0` estaba correctamente en la zona `libvirt`), el reenvío de paquetes (`net.ipv4.ip_forward = 1`), y hasta encontré la regla de `masquerade` bien definida en la tabla nativa de nftables de libvirt (`ip libvirt_network`, cadena `guest_nat`).
+
+Todo, absolutamente todo, se veía bien en el papel. Y aun así, nada funcionaba. Esa combinación —configuración correcta, comportamiento roto— es de las peores y más frustrantes que te puedes topar, porque ya no sabes ni por dónde seguir buscando.
+
+## Haciéndola de detective: seguirle la pista a los paquetes
+
+Cuando revisar configuraciones estáticas ya no te dice nada nuevo, no queda de otra más que ver el tráfico real moverse (o, en este caso, dejar de moverse) por el sistema. Dejé un `ping -t 8.8.8.8` corriendo desde la VM, y fui capturando paquetes salto por salto:
+
+```bash
+sudo tcpdump -ni tap0 icmp     # ¿sale el paquete de la VM hacia el host?
+```
+
+Sí salía. El paquete llegaba limpio a `tap0`, con origen `192.168.122.250`.
+
+```bash
+sudo nft list table ip libvirt_network | grep -E "accept|reject" # ¿el paquete es aceptado o rechazado?
+```
+
+Sí aceptaba el paquete: el filtro de libvirt (`guest_output`) lo dejaba pasar, y el contador subía con cada ping, uno por uno.
+
+```bash
+sudo tcpdump -ni wlo1 icmp     # ¿sale el paquete del host hacia internet?
+```
+
+Nada. Cero. El paquete se esfumaba entre el bridge y la interfaz física, a pesar de que libvirt, en todo momento, seguía diciendo "accept". Ahí fue cuando entendí que el problema no estaba en ninguna de las configuraciones que ya había revisado dos veces.
+
+## El verdadero culpable: dos gestores de firewall pisándose la manguera
+
+Que el paquete se perdiera entre el bridge y la interfaz solo tiene una explicación posible en nftables: **más de una tabla puede engancharse al mismo hook** —en este caso, `forward`—, y si *cualquiera* de ellas dice `drop`, el paquete se muere ahí mismo, sin importar que todas las demás digan `accept`. Confirmé la sospecha con:
+
+```bash
+sudo nft -a list ruleset | grep -B3 "hook forward"
+```
+
+Y ahí estaba, bien escondida la desgraciada:
+
+```
+table ip filter
+  chain FORWARD {
+     type filter hook forward priority filter; policy drop;
+```
+
+Una tabla legacy `ip filter`, con **política DROP por defecto**, corriendo en paralelo a la tabla `ip libvirt_network` (que decía accept) y a la tabla `inet firewalld`. Y esa tabla la crea **Docker** —usa el backend clásico `iptables-nft` y, por defecto, le impone una política bastante restrictiva a la cadena `FORWARD`, permitiendo solo el tráfico explícito hacia y desde sus propias redes (`docker0`, `br-xxxxx`). Como el tráfico de `virbr0` no estaba en esa lista blanca, cualquier paquete que pasara por ahí se descartaba en silencio. Sin log, sin rechazo explícito, sin nada. Simplemente dejaba este plano existencial.
+
+Docker ni siquiera estaba usando esas redes en ese momento. Solo estaba *instalado*, y eso bastó para dejarle una trampa a cualquier otra cosa que quisiera pasar por `FORWARD`.
+
+## La solución
+
+**Diagnóstico rápido, para confirmar la teoría, decirle a iptables que acepte lo que venga de** `virbr0`**:**
+
+```bash
+sudo iptables -I FORWARD -i virbr0 -j ACCEPT
+sudo iptables -I FORWARD -o virbr0 -j ACCEPT
+```
+
+Y sí: la VM recuperó internet y acceso a la LAN al instante. Confirmado.
+
+Esto era temporal, se iba a perder al primer reinicio, así que lo único que quedaba era decirle a Docker que le baje dos rayitas a su política tan agresiva a la cadena `FORWARD` global, sin quitarle el control de sus propias reglas de red —que haga con ellas lo que quiera, pero no se meta con mis macetas... digo, VM—. Eso se edita en `/etc/docker/daemon.json`:
+
+```json title="/etc/docker/daemon.json"
+{
+  "iptables": true,
+  "ip-forward-no-drop": true
+}
+```
+
+Y se reinicia el servicio:
+
+```bash
+sudo systemctl restart docker
+```
+
+Reinicié host y VM por completo para estar seguro de que no era un parche temporal disfrazado de solución, y todo siguió funcionando.
+
+## Lo que me dejó esto
+
+Que una regla de firewall exista y diga "accept" no significa absolutamente nada si otra tabla, en otro lugar del sistema, dice "drop" sobre el mismo hook. `nftables` no pregunta cuál regla "gana" por consenso: basta una sola tabla agresiva para tirar el paquete, sin importar cuántas otras estén de acuerdo en dejarlo pasar.
+
+Y aquí está la parte que de verdad quiero remarcar: **pasé horas revisando configuraciones que, en el papel, estaban perfectamente bien.** Firewalld bien configurado. Libvirt bien configurado. DHCP entregando IP sin drama. Todo *parecía* correcto, y aun así el sistema no funcionaba. La única forma de encontrar el problema real fue dejar de confiar en que "si la config dice accept, entonces el paquete pasa", y verificarlo directamente con `tcpdump`, salto por salto, sin dar nada por sentado.
+
+Si algún día se topan con un caso parecido —Docker y libvirt en la misma máquina, y una VM que se quedó sin red sin razón aparente—, este es el comando que les va a ahorrar horas:
+
+```bash
+sudo nft -a list ruleset | grep -B3 "hook forward"
+```
+
+Si ven más de una tabla enganchada al mismo hook con políticas distintas, ahí está el problema.
