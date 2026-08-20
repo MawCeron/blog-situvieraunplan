@@ -4,6 +4,7 @@ description: "La verdadera historia detrás de mi reflexión sobre volver al pap
 pubDate: 2026-08-21
 tags: [programación, sql, troubleshooting]
 categories: [Programación, SQL]
+heroImage: '../../../assets/images/posts/heroes/disponibilidad-fantasma.jpg'
 ---
 
 Hace unos días dejé por aquí [una reflexión corta](/posts/vuelve-al-papel-aunque-ya-funcione/) sobre dudar de tus propias soluciones, aunque ya funcionen, aunque alguien más las haya revisado y esté de acuerdo contigo. Prometí contar de dónde había salido. Esta es la historia completa.
