@@ -1,0 +1,40 @@
+---
+title: "El punto medio que no existe entre WordPress y un sitio estático"
+description: "Cambié de WordPress a un sitio estático y gané seguridad, pero perdí el botón de publicar. Una reflexión sobre el punto medio que me gustaría que existiera entre un CMS dinámico y un build completo."
+pubDate: 2026-09-30
+tags: [blog, wordpress, arquitectura]
+categories: [Opinión, Tecnología]
+heroImage: '../../../assets/images/posts/heroes/wordpress-estatico.jpg'
+---
+
+import Callout from '../../../components/Callout.astro';
+
+Con WordPress, publicar era tan fácil como cambiar de calcetines: escribías, dabas clic en un botón, y ya. A pesar de todas sus fallas —la publicidad metida a fuerza hasta la garganta en la versión gratuita y la insistencia constante en que compraras un paquete—, ese flujo funcionaba. Ahora el blog corre sobre un generador de sitios estáticos, que convierte archivos Markdown en HTML plano antes de que nadie lo visite. Y aunque escribir en Markdown es por mucho más facil que andarme peleando con el editor de bloques de WordPress porque no pone una lista, el resto del proceso terminó siendo, en la práctica, más tedioso (quizás por eso mi ritmo de escritura bajó ultimamente): guardo, hago commit, hago push, espero a que corra el pipeline, y luego voy a refrescar la página para confirmar que ya quedó.
+
+El build en sí no tarda mucho, poco más de un minuto. Lo que me desespera no es ese minuto —es toda la faramalla alrededor: salir del editor, abrir la terminal, escribir los comandos de git, y quedarme esperando sin saber bien en qué parte del proceso va —que podría saberlo, pero implicaría abrir el navegador, entrar a Cloudflare, buscar el work y revisar como va el pipeline—. Es lo mismo que ya he mencionado en otros posts: no siempre es el trabajo en sí lo que cansa, es la fricción alrededor del trabajo. Con una analogía a Shrek queda más claro: **lo pesado no es ir a muy, muy lejano lo que cansa, es el burro preguntando cada 2 segundos si *ya merito***
+
+## El trade-off de fondo
+
+Un CMS dinámico como WordPress reconstruye la página cada vez que alguien la visita, jalando el contenido de una base de datos en vivo. Un sitio estático hace exactamente lo contrario: reconstruye todo de una sola vez, en el momento del build, y a partir de ahí solo sirve archivos ya generados. Ganas velocidad, seguridad (no hay base de datos que atacar ni plugin vulnerable que explotar) y control total sobre cómo se ve todo. Pierdes la inmediatez: publicar deja de ser un botón y se convierte en un proceso con varios pasos, sin importar qué tan corto sea cada uno.
+
+Es una decisión completamente razonable, y no me arrepiento de haberla tomado —de hecho fue justo lo que motivó la mudanza del blog en primer lugar. Pero eso no quita que, mientras estaba en medio de la chamba de publicar un nuevo post, me preguntara si de verdad tenía que ser todo o nada. ¿No hay un punto medio entre "reconstruyo todo desde una base de datos en cada visita" y "reconstruyo todo el sitio entero cada vez que agrego un párrafo"?
+
+## Lo que me gustaría que existiera
+
+La idea a la que llegué, dándole vueltas, es esta: que el layout del sitio —la plantilla, el CSS, el JS— se genere una sola vez, como ya pasa ahora, porque eso casi nunca cambia. Pero que el contenido de cada artículo específico no se convierta en un archivo estático de antemano. En su lugar, que se renderice al vuelo, en el momento en que alguien entra a esa página —y que, al salir de ahí, ese HTML deje de existir hasta la próxima vez que alguien lo pida. Nada de caché, nada guardado: el artículo se genera, se sirve, y se olvida.
+
+Con eso, publicar dejaría de requerir un build del sitio completo. Solo necesitaría que el archivo nuevo llegara a donde sea que el sistema lo vaya a leer cuando alguien lo visite. El resto —el índice del blog, el RSS, las páginas de tags— seguiría necesitando algún mecanismo para enterarse de que hay contenido nuevo, pero eso es un problema mucho más chico que reconstruir cada artículo completo cada vez.
+
+## Por qué no lo voy a construir, al menos no todavía
+
+Lo pensé en serio como proyecto propio, no solo como configuración de lo que ya tengo. Y ahí fue donde la idea chocó con algo más simple que la arquitectura: el tiempo. [lazyftp](posts/lazyftp-como-filezilla-pero-en-la-terminal) *(que por cierto, ya va en v0.4.1 y ha recibido 22 estrellas en github, pero luego hablamos de eso)* lo uso todos los días en el trabajo, y espero seguir usándolo años. [justwrite](posts/justwrite-editor-de-texto-sin-distracciones-que-pesa-3-4-mb) es un editor que voy a poder usar siempre que quiera escribir, sin fecha de caducidad. A esos dos les puedo dedicar semanas de desarrollo sin que me duela, porque el tiempo se va a pagar solo con el uso que les voy a dar.
+
+Esta herramienta, en cambio, estaría atada a cómo publico contenido hoy —y conociéndome, ese "hoy" probablemente no dure mucho. Le entro a todo lo que se me atraviesa: cambié de Rust a Go a medio proyecto, he probado media docena de distros de Linux en los últimos meses. No hay ninguna razón para pensar que mi forma de publicar en este blog vaya a quedarse quieta el tiempo suficiente como para amortizar semanas de desarrollo en algo hecho a su medida exacta.
+
+Así que, por ahora, la idea se queda como eso: una idea. Un concepto que me gustaría que existiera, sin comprometerme todavía a decidir en qué lenguaje, con qué arquitectura, ni sobre qué infraestructura correría. Cuando la fricción de publicar me pese más que el tiempo que me tomaría resolverla de raíz, ahí lo retomo. Mientras tanto, sigo publicando con la ceremonia de siempre —un minuto de build, y el resto, paciencia.
+
+<Callout type="info" title="Actualización (2026-10-08)">
+
+  Hace poco encontré ***WriteFreely*** una aplicación pensada en poder publicar facilmente lo que quieres, digamos que es un Wordpress light sin esteroides hecho en Go y luce interesante, tal vez le de una oportunidad... con otro poryecto que tengo en mente jajaja
+
+</Callout>

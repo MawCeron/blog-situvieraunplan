@@ -1,0 +1,50 @@
+---
+title: "Cómo organizo mi música como en los tiempos viejos (y por qué tuve que salir a buscar un reproductor nuevo)"
+description: "Cómo la Alexa de la señora de la limpieza me robó Spotify, cómo terminé en Reddit defendiendo mi filosofía de organizar música como en los tiempos viejos, y cómo encontré (por fin) un reproductor que solo reproduce música."
+pubDate: 2026-08-19
+tags: [música, linux, cli]
+categories: [Linux, Personal]
+heroImage: '../../../assets/images/posts/heroes/organizo-musica.jpg'
+---
+
+import Callout from '../../../components/Callout.astro';
+
+Los jueves, la señora que nos ayuda con la limpieza de la casa —a.k.a. **el hada de la limpieza**— usa la Alexa para ponerse música mientras trabaja. Perfectamente razonable, cualquiera lo haría. El problema es que la cuenta de Spotify vinculada a esa Alexa es la mía. Así que cada jueves, sin que nadie me avise ni me pida permiso, el hada de la limpieza me secuestra la cuenta y me deja sin música mientras dura la faena. (Sus gustos musicales son, por cierto, bastante curiosos —pero esa es otra historia para otro día.)
+
+Prohibirle usar la Alexa sería, desde mi perspectiva, una grosería completamente innecesaria. Así que tocó apechugar y buscar alternativas. Por suerte tengo una colección de música completa en una USB, acumulada durante años. Lo único que me hacía falta era un buen reproductor.
+
+## El choque cultural de pedir recomendaciones
+
+Los reproductores de música que yo conocía en Linux se sentían un poco atrapados en el tiempo, así que me fui a buscar recomendaciones a Reddit —bendito y maldito Reddit—. Y ahí fue donde entendí que había subestimado por completo la pregunta que estaba haciendo.
+
+Todo el mundo quería saber: ¿necesitas editor de etiquetas? ¿organización por artista, por año, por álbum? ¿que muestre las letras? ¿la bio del artista y de qué color eran sus calzones cuando grabó la canción? Y yo, ahí, con la cara de: **SOLO QUIERO QUE REPRODUZCA MÚSICA**. Y ellos, bien quitados de la pena: sí, pero ¿y el curado de playlists? ¿le ponemos aguacate? A todo el mundo le preocupaba muchísimo el *library management*, cuando a mí ese problema ya se me había resuelto solo, hace años, sin que nadie me lo pidiera.
+
+Y casi sin darme cuenta, terminé respondiendo esto en el hilo:
+
+> I do my library management like true men did it in the older days: I get the music (ripping it or downloading), edit the tags with MP3TAG, then I wrote a script that rename and relocate everything in my music collection folder with the following structure `{Album Artist}/{Year} - {Album}/{disc}/{Track} - {Title}.ext` (obviously the {disc} folder only is created when there's more than one disc), and for my Anime song collection `Anime Soundtrack Collection/{First Letter of Title}/{Title}.ext` when {Title} already exist the script adds ` - {Album}` to the filename so it can be differentiated
+
+<Callout type="info" title="Traducción pa'los que no hablan el idioma de Shakespeare">
+
+  Gestiono mi biblioteca musical como lo hacían los verdaderos hombres en los viejos tiempos: consigo la música (extrayéndola de los discos o descargándola), edito las etiquetas con MP3TAG y después escribí un script que renombra y reubica todo dentro de mi carpeta de colección musical, siguiendo esta estructura `{Artista del álbum}/{Año} - {Álbum}/{Disco}/{Pista} - {Título}.ext` (obviamente, la carpeta `{Disco}` solo se crea cuando hay más de un disco). Para mi colección de canciones de anime, uso esta estructura `Anime Soundtrack Collection/{Primera letra del título}/{Título}.ext` Cuando `{Título}` ya existe, el script añade `- {Álbum}` al nombre del archivo para poder diferenciarlo.
+
+</Callout>
+
+Y es la verdad completa, sin exagerar nada para el hilo.
+
+## ¿Cómo organizo mi música, en la práctica?
+
+La colección normal sigue la estructura `{Album Artist}/{Year} - {Album}/{disc}/{Track} - {Title}.ext`, con la carpeta de disco apareciendo solo cuando el álbum en verdad tiene más de un disco —nada de carpetas vacías con un `disc-1` inventado cuando ni falta hace.
+
+La colección de anime, que es donde empezó todo esto, sigue una estructura completamente distinta: `Anime Soundtrack Collection/{First Letter of Title}/{Title}.ext`. Ahí no me interesa organizar por álbum ni por artista, sino poder encontrar una canción por su título directamente. El único problema es cuando dos canciones distintas comparten el mismo título —miren que pasa más de lo que uno se imagina, esos autores poco creativos para poner títulos—. Ahí el script le agrega ` - {Album}` al final del nombre de archivo para poder diferenciarlas sin que una se sobreescriba a la otra.
+
+Todo esto sale de un script que llevo años manteniendo: arrancó en C# cuando organizaba solo la colección de anime, y hace poco lo porté completo a Go, ya generalizado para las dos colecciones. Es un CLI de una sola pasada —le doy la carpeta con música nueva y reorganiza todo—, a propósito, porque necesito poder correrlo en cualquier máquina en la que esté, no solo en mi laptop personal. Aunque un *watcher* que reaccione automáticamente cada que cae un archivo nuevo tampoco sería mala idea para esa laptop en particular (ya lo apunté para después).
+
+Editar las etiquetas sigue siendo con [**Mp3tag**](https://www.mp3tag.de/en/), a mano, antes de que el script haga su trabajo. No hay magia ahí, nomás soy terco. No soporto tener una canción como `UNTITLED`, ni con `UNKNOWN ARTIST`, y mucho menos sin la portada del álbum correspondiente. Sí, es muy TOC de mi parte, lo sé perfectamente, pero nomás no puedo.
+
+## Encontrar el reproductor correcto
+
+Pero volviendo al punto de encontrar un reproductor decente: mi primer intento fue [Vinyl](https://codeberg.org/M23Snezhok/Vinyl), pero un bug en el botón de *Previous* durante reproducción aleatoria me hizo descartarlo —obviamente no sin antes [crear el issue correspondiente](https://codeberg.org/M23Snezhok/Vinyl/issues/139) en el repo, para aportar algo al desarrollo aunque no lo termine usando yo.
+
+Al final me quedé con [Amberol](https://gitlab.gnome.org/World/amberol): abres una carpeta, y reproduce lo que hay ahí. Ya. Nada de bibliotecas, nada de escaneo permanente, nada de metadatos que administrar desde la app —justo lo que pedía desde el principio sin que nadie en Reddit me creyera que era en serio.
+
+Lo único que no me convence del todo es que venga como Flatpak (*not a fan*). Está escrito en Rust, así que en algún momento me voy a dar el tiempo de armarle un RPM para tenerlo nativo en lugar de dentro de un sandbox.
