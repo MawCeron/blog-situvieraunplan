@@ -47,7 +47,10 @@ if (folder) {
     .filter(([path]) => path.startsWith(prefix))
     .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
     .map(([path, mod]) => {
-      const name = path.split('/').pop()!.replace(/\.[^.]+$/, '');
+      const name = path
+        .split('/')
+        .pop()!
+        .replace(/\.[^.]+$/, '');
       return { src: mod.default, alt: alts[name] ?? name };
     });
 }
@@ -237,7 +240,9 @@ const cells = await Promise.all(
       if (e.key === 'ArrowRight') show(index + 1);
     });
     let startX = 0;
-    dialog.addEventListener('touchstart', (e) => (startX = e.touches[0].clientX), { passive: true });
+    dialog.addEventListener('touchstart', (e) => (startX = e.touches[0].clientX), {
+      passive: true,
+    });
     dialog.addEventListener('touchend', (e) => {
       const dx = e.changedTouches[0].clientX - startX;
       if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
@@ -256,8 +261,9 @@ const cells = await Promise.all(
     dialog!.querySelector<HTMLElement>('.lightbox-next')!.hidden = !many;
   }
 
-  if (!(window as any).__galleryReady) {
-    (window as any).__galleryReady = true;
+  const w = window as Window & { __galleryReady?: boolean };
+  if (!w.__galleryReady) {
+    w.__galleryReady = true;
     // Capture phase: the view-transitions router also listens for clicks on links and would
     // navigate to the image before a bubble-phase handler could preventDefault.
     document.addEventListener('click', onClick, true);

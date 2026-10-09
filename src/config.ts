@@ -52,8 +52,7 @@ export const SITE: SiteConfig = {
   /** Default site title used as homepage <title> and meta. */
   title: 'Si tuviera un plan',
   /** Site tagline / description. */
-  description:
-    '...no estaría escribiendo este blog.',
+  description: '...no estaría escribiendo este blog.',
   /** Author/handle shown in footer + meta. */
   author: {
     name: 'Maw Ceron',
