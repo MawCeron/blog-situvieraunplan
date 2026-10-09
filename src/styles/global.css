@@ -658,12 +658,21 @@
     width: clamp(440px, 58vw, 980px);
     /* Solo se ve la parte de arriba (cabeza y espinas): la caja es menos alta que la figura. */
     aspect-ratio: 1 / 0.45;
+    overflow: hidden;
     pointer-events: none;
-    background: color-mix(in srgb, var(--color-base-content) 9%, transparent);
-    mask: url('../assets/images/site/zilla.svg') top / 100% auto no-repeat;
-    -webkit-mask: url('../assets/images/site/zilla.svg') top / 100% auto no-repeat;
+    color: var(--color-base-content);
+    opacity: 0.09;
     /* La silueta original mira a la derecha; espejada, mira hacia el contenido. */
     transform: scaleX(-1);
+  }
+  .zilla-watermark svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+  /* El SVG trae su relleno en línea (negro): se sustituye por el color del texto. */
+  .zilla-watermark path {
+    fill: currentColor !important;
   }
   @media print {
     .zilla-watermark {

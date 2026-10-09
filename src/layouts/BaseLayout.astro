@@ -8,6 +8,7 @@ import SEO from '../components/SEO.astro';
 import BackToTop from '../components/islands/BackToTop.astro';
 import { ClientRouter } from 'astro:transitions';
 import faviconImg from '../assets/images/site/favicon.svg';
+import zillaSvg from '../assets/images/site/zilla.svg?raw';
 import { SITE, UMAMI, type Locale } from '../config';
 import { detectLocale, htmlLang, useTranslations, stripLocale, withBase } from '../i18n/utils';
 import { buildSeo, type SeoMeta } from '../utils/seo';
@@ -129,7 +130,11 @@ const meta: SeoMeta =
       {t('site.skipToContent')}
     </a>
 
-    <div class="zilla-watermark" aria-hidden="true"></div>
+    <div
+      class="zilla-watermark"
+      aria-hidden="true"
+      set:html={zillaSvg.replace(/<\?xml[^>]*\?>/, '')}
+    />
 
     <div class="relative flex min-h-screen flex-col items-center">
       <Header locale={locale} />
