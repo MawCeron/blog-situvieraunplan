@@ -249,7 +249,7 @@ export default defineConfig({
           editorTabBarBorderBottomColor: zilla('#24332e', '#d3ded6'),
           editorActiveTabBackground: zilla('#131d1a', '#ffffff'),
           editorActiveTabForeground: zilla('#e8f0ec', '#13201b'),
-          editorActiveTabIndicatorTopColor: zilla('#4fd6b5', '#0b7a66'),
+          editorActiveTabIndicatorTopColor: zilla('#96bd33', '#5c7a1a'),
           editorActiveTabIndicatorBottomColor: 'transparent',
           editorTabBorderRadius: '0.375rem',
           terminalBackground: zilla('#131d1a', '#ffffff'),

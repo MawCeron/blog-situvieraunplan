@@ -27,9 +27,9 @@
   --color-base-300: #d3ded6; /* line */
   --color-base-content: #13201b; /* text */
 
-  --color-primary: #0b7a66; /* accent */
+  --color-primary: #5c7a1a; /* accent */
   --color-primary-content: #ffffff; /* ink */
-  --color-secondary: #0b7a66;
+  --color-secondary: #5c7a1a;
   --color-secondary-content: #ffffff;
   --color-accent: #b2530c; /* warm */
   --color-accent-content: #ffffff;
@@ -67,10 +67,10 @@
   --color-base-300: #24332e; /* line */
   --color-base-content: #e8f0ec; /* text */
 
-  --color-primary: #4fd6b5; /* accent */
-  --color-primary-content: #04201a; /* ink */
-  --color-secondary: #4fd6b5;
-  --color-secondary-content: #04201a;
+  --color-primary: #96bd33; /* accent */
+  --color-primary-content: #1c2606; /* ink */
+  --color-secondary: #96bd33;
+  --color-secondary-content: #1c2606;
   --color-accent: #f0a35e; /* warm */
   --color-accent-content: #2a1500;
   --color-neutral: #1b2924;
@@ -645,5 +645,29 @@
   }
   .zilla-about h2 {
     @apply font-display text-primary mt-14 mb-4 border-0 text-3xl font-extrabold tracking-tight;
+  }
+}
+
+/* ---------- Marca de agua: Zilla asomándose por el borde inferior ---------- */
+@layer components {
+  .zilla-watermark {
+    position: fixed;
+    right: -8vw;
+    bottom: 0;
+    z-index: 0;
+    width: clamp(440px, 58vw, 980px);
+    /* Solo se ve la parte de arriba (cabeza y espinas): la caja es menos alta que la figura. */
+    aspect-ratio: 1 / 0.45;
+    pointer-events: none;
+    background: color-mix(in srgb, var(--color-base-content) 9%, transparent);
+    mask: url('../assets/images/site/zilla.svg') top / 100% auto no-repeat;
+    -webkit-mask: url('../assets/images/site/zilla.svg') top / 100% auto no-repeat;
+    /* La silueta original mira a la derecha; espejada, mira hacia el contenido. */
+    transform: scaleX(-1);
+  }
+  @media print {
+    .zilla-watermark {
+      display: none;
+    }
   }
 }

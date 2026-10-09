@@ -16,7 +16,7 @@
 - Rama de trabajo: `rediseno`. No se toca `main` ni se hace push sin que Mauricio lo pida.
 - Modos claro **y** oscuro, siguiendo `prefers-color-scheme` si no hay preferencia guardada.
 - Fuentes locales (`@fontsource`), sin Google Fonts: Bricolage Grotesque (títulos 600/700/800) y Figtree (texto 400/500/600); JetBrains Mono se conserva para código.
-- Paleta (exacta): oscuro `bg #0D1412`, `surface #131D1A`, `surface2 #1B2924`, `line #24332E`, `text #E8F0EC`, `muted #93A59D`, `accent #4FD6B5`, `ink #04201A`, `warm #F0A35E`; claro `bg #F4F7F2`, `surface #FFFFFF`, `surface2 #E6EEE8`, `line #D3DED6`, `text #13201B`, `muted #52665D`, `accent #0B7A66`, `ink #FFFFFF`, `warm #B2530C`.
+- Paleta (exacta): oscuro `bg #0D1412`, `surface #131D1A`, `surface2 #1B2924`, `line #24332E`, `text #E8F0EC`, `muted #93A59D`, `accent #96BD33`, `ink #1C2606`, `warm #F0A35E`; claro `bg #F4F7F2`, `surface #FFFFFF`, `surface2 #E6EEE8`, `line #D3DED6`, `text #13201B`, `muted #52665D`, `accent #5C7A1A`, `ink #FFFFFF`, `warm #B2530C`.
 - Anchos: cabecera 1120 px, listados 920 px, «Acerca de» 780 px, lectura de posts 720–780 px.
 - Objetivos táctiles ≥ 44 px, `:focus-visible` visible, contraste AA, `prefers-reduced-motion` respetado.
 - Sin dependencias nuevas de JavaScript (solo las dos fuentes).
@@ -113,9 +113,9 @@ En `src/styles/global.css`, sustituye por completo los bloques `@plugin 'daisyui
   --color-base-300: #d3ded6; /* line */
   --color-base-content: #13201b; /* text */
 
-  --color-primary: #0b7a66; /* accent */
+  --color-primary: #5c7a1a; /* accent */
   --color-primary-content: #ffffff; /* ink */
-  --color-secondary: #0b7a66;
+  --color-secondary: #5c7a1a;
   --color-secondary-content: #ffffff;
   --color-accent: #b2530c; /* warm */
   --color-accent-content: #ffffff;
@@ -153,10 +153,10 @@ En `src/styles/global.css`, sustituye por completo los bloques `@plugin 'daisyui
   --color-base-300: #24332e; /* line */
   --color-base-content: #e8f0ec; /* text */
 
-  --color-primary: #4fd6b5; /* accent */
-  --color-primary-content: #04201a; /* ink */
-  --color-secondary: #4fd6b5;
-  --color-secondary-content: #04201a;
+  --color-primary: #96bd33; /* accent */
+  --color-primary-content: #1c2606; /* ink */
+  --color-secondary: #96bd33;
+  --color-secondary-content: #1c2606;
   --color-accent: #f0a35e; /* warm */
   --color-accent-content: #2a1500;
   --color-neutral: #1b2924;

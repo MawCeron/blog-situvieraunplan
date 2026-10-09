@@ -46,8 +46,8 @@ Los dos temas de daisyUI pasan a `zilla-light` y `zilla-dark`. Equivalencia con 
 | `line`           | `base-300`         | `#24332E` | `#D3DED6` |
 | `text`           | `base-content`     | `#E8F0EC` | `#13201B` |
 | `muted`          | `--color-muted`    | `#93A59D` | `#52665D` |
-| `accent`         | `primary`          | `#4FD6B5` | `#0B7A66` |
-| `ink`            | `primary-content`  | `#04201A` | `#FFFFFF` |
+| `accent`         | `primary`          | `#96BD33` | `#5C7A1A` |
+| `ink`            | `primary-content`  | `#1C2606` | `#FFFFFF` |
 | `warm`           | `--color-warm`     | `#F0A35E` | `#B2530C` |
 
 Los colores de estado (info, success, warning, error) se conservan, ajustados a la nueva base para
