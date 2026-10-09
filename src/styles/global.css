@@ -564,22 +564,19 @@
 
   /* Callouts (.callout.callout-info / -success / -warning / -error) */
   .callout {
-    @apply my-6 rounded-2xl border px-7 py-6;
-    --callout: var(--color-primary);
-    background: color-mix(in srgb, var(--callout) 10%, var(--color-base-100));
-    border-color: color-mix(in srgb, var(--callout) 35%, var(--color-base-300));
+    @apply my-6 rounded-md border-l-4 px-4 py-3;
   }
-  .callout-title {
-    color: var(--callout);
+  .callout-info {
+    @apply border-info bg-info/10;
   }
   .callout-success {
-    --callout: var(--color-success);
+    @apply border-success bg-success/10;
   }
   .callout-warning {
-    --callout: var(--color-warning);
+    @apply border-warning bg-warning/10;
   }
   .callout-error {
-    --callout: var(--color-error);
+    @apply border-error bg-error/10;
   }
 
   /* Alert plugin: only add space when alerts are stacked together. */
