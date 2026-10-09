@@ -26,6 +26,8 @@ interface Props {
   narrow?: boolean;
   /** Ensancha el contenido (entradas con tabla de contenidos lateral). */
   wide?: boolean;
+  /** Pie completo (con últimas entradas y etiquetas): solo el listado de inicio. */
+  fullFooter?: boolean;
   /** Sin efecto en Zilla; se conserva para no tocar cada página. */
   crumbs?: Array<{ label: string; href?: string }>;
   /** Pre-built SEO meta override. */
@@ -44,6 +46,7 @@ const {
   tags,
   narrow = false,
   wide = false,
+  fullFooter = false,
   seo,
   availableLocales,
 } = Astro.props;
@@ -138,7 +141,7 @@ const meta: SeoMeta =
       >
         <slot />
       </main>
-      <Footer locale={locale} />
+      <Footer locale={locale} compact={!fullFooter} />
     </div>
 
     <BackToTop />

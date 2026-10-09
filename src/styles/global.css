@@ -443,7 +443,7 @@
   .prose-zilla {
     @apply text-base-content;
     line-height: 1.75;
-    font-size: 1.0625rem;
+    font-size: 1.125rem;
   }
 
   .prose-zilla h1,
@@ -456,7 +456,7 @@
     @apply mt-8 mb-4 text-3xl;
   }
   .prose-zilla h2 {
-    @apply mt-12 mb-4 text-[1.75rem] leading-tight font-extrabold;
+    @apply text-primary mt-14 mb-[18px] text-[1.875rem] leading-[1.12] font-extrabold;
   }
   .prose-zilla h3 {
     @apply mt-8 mb-3 text-xl;
@@ -480,13 +480,18 @@
     @apply my-4 list-decimal pl-6;
   }
   .prose-zilla blockquote {
-    @apply border-primary/50 bg-base-200 text-base-content/80 my-6 rounded-r-sm border-l-4 px-4 py-2 italic;
+    @apply border-base-300 bg-base-100 text-muted my-6 rounded-2xl border px-7 py-6 text-[1.03rem] italic;
+  }
+  .prose-zilla blockquote::before {
+    @apply font-display text-primary block text-[56px] leading-[0.5] font-extrabold not-italic;
+    content: '\201C';
+    height: 24px;
   }
   .prose-zilla hr {
     @apply border-base-300 my-10;
   }
   .prose-zilla code:not(pre code) {
-    @apply bg-base-200 text-accent rounded px-1.5 py-0.5 font-mono text-[0.92em];
+    @apply bg-surface2 text-warm rounded-md px-1.5 py-0.5 font-mono text-[0.84em] font-normal not-italic;
     font-family: var(--font-mono);
   }
   .prose-zilla pre {
@@ -559,19 +564,22 @@
 
   /* Callouts (.callout.callout-info / -success / -warning / -error) */
   .callout {
-    @apply my-6 rounded-md border-l-4 px-4 py-3;
+    @apply my-6 rounded-2xl border px-7 py-6;
+    --callout: var(--color-primary);
+    background: color-mix(in srgb, var(--callout) 10%, var(--color-base-100));
+    border-color: color-mix(in srgb, var(--callout) 35%, var(--color-base-300));
   }
-  .callout-info {
-    @apply border-info bg-info/10;
+  .callout-title {
+    color: var(--callout);
   }
   .callout-success {
-    @apply border-success bg-success/10;
+    --callout: var(--color-success);
   }
   .callout-warning {
-    @apply border-warning bg-warning/10;
+    --callout: var(--color-warning);
   }
   .callout-error {
-    @apply border-error bg-error/10;
+    --callout: var(--color-error);
   }
 
   /* Alert plugin: only add space when alerts are stacked together. */
@@ -597,33 +605,33 @@
     @apply bg-transparent p-0;
   }
   .prose-zilla :not(pre) > code {
-    @apply text-primary bg-base-200 rounded px-1.5 py-0.5 text-[0.9em] font-medium;
+    @apply bg-surface2 text-warm rounded-md px-1.5 py-0.5 text-[0.84em] font-normal not-italic;
   }
 }
 
-/* ---------- TOC sticky highlight (uses zilla-aside rail) ---------- */
+/* ---------- TOC: lista con puntos y sección activa ---------- */
 @layer components {
-  .toc ol {
-    border-left: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
-  }
   .toc a {
-    @apply text-base-content/70 block py-1 pr-2 pl-3 text-sm transition-colors;
-    margin-left: -1px;
-    border-left: 1px solid transparent;
+    @apply text-muted flex items-start gap-3 py-2 text-sm leading-snug transition-colors;
+  }
+  .toc a::before {
+    @apply bg-base-300 mt-1.5 h-2 w-2 shrink-0 rounded-full transition-colors;
+    content: '';
   }
   .toc a:hover {
-    @apply text-primary;
-    border-left-color: var(--color-primary);
+    @apply text-base-content;
   }
   .toc a[data-active='true'] {
     @apply text-primary font-semibold;
-    border-left-color: var(--color-primary);
+  }
+  .toc a[data-active='true']::before {
+    @apply bg-primary;
   }
   .toc .toc-level-3 a {
-    @apply pl-6;
+    @apply pl-5;
   }
   .toc .toc-level-4 a {
-    @apply pl-9;
+    @apply pl-8;
   }
 
   /* Smart TOC: H3/H4 entries are hidden until their parent H2 is the

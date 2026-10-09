@@ -6,9 +6,11 @@ import { getPosts, getTagsWithCount, postPath, tagPath } from '../utils/posts';
 
 interface Props {
   locale: Locale;
+  /** Sin bloques de entradas y etiquetas (todas las páginas salvo el listado de inicio). */
+  compact?: boolean;
 }
 
-const { locale } = Astro.props;
+const { locale, compact = false } = Astro.props;
 const t = useTranslations(locale);
 const year = new Date().getFullYear();
 
@@ -26,42 +28,45 @@ const headingClass =
 ---
 
 <footer aria-label="Site Info" class="border-base-300 bg-base-100 mt-auto w-full border-t">
-  <div class="mx-auto max-w-[1120px] px-6 pt-12 pb-7">
-    <div class="flex flex-wrap gap-x-16 gap-y-10">
-      {
-        recent.length > 0 && (
-          <section class="min-w-0 flex-[1_1_360px]">
-            <h2 class={headingClass}>{t('footer.latest')}</h2>
-            <ul class="flex flex-col gap-2.5">
-              {recent.map((post) => (
-                <li>
-                  <a href={postPath(post)} class="hover:text-primary leading-snug">
-                    {post.data.title}
+  <div class:list={['mx-auto max-w-[1120px] px-6', compact ? 'py-5' : 'pt-12 pb-7']}>
+    {
+      !compact && (
+        <div class="flex flex-wrap gap-x-16 gap-y-10">
+          {recent.length > 0 && (
+            <section class="min-w-0 flex-[1_1_360px]">
+              <h2 class={headingClass}>{t('footer.latest')}</h2>
+              <ul class="flex flex-col gap-2.5">
+                {recent.map((post) => (
+                  <li>
+                    <a href={postPath(post)} class="hover:text-primary leading-snug">
+                      {post.data.title}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+          {popular.length > 0 && (
+            <section class="min-w-0 flex-[1_1_300px]">
+              <h2 class={headingClass}>{t('footer.popularTags')}</h2>
+              <div class="flex flex-wrap gap-2">
+                {popular.map((tag) => (
+                  <a href={tagPath(locale, tag.name)} class="zilla-chip">
+                    {tag.name}
                   </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )
-      }
-      {
-        popular.length > 0 && (
-          <section class="min-w-0 flex-[1_1_300px]">
-            <h2 class={headingClass}>{t('footer.popularTags')}</h2>
-            <div class="flex flex-wrap gap-2">
-              {popular.map((tag) => (
-                <a href={tagPath(locale, tag.name)} class="zilla-chip">
-                  {tag.name}
-                </a>
-              ))}
-            </div>
-          </section>
-        )
-      }
-    </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+      )
+    }
 
     <div
-      class="border-base-300 text-muted mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-4 border-t pt-5 text-[13px]"
+      class:list={[
+        'text-muted flex flex-wrap items-center justify-between gap-x-6 gap-y-4 text-[13px]',
+        !compact && 'border-base-300 mt-10 border-t pt-5',
+      ]}
     >
       <p>
         {`© ${year} ${SITE.author.name}. ${t('footer.copyright')}`}

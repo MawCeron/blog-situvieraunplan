@@ -1,10 +1,10 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import PostNav from '../components/PostNav.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
 import TableOfContents from '../components/islands/TableOfContents.astro';
 import SmartImage from '../components/SmartImage.astro';
 import Giscus from '../components/islands/Giscus.astro';
-import { Icon } from 'astro-icon/components';
 import { GISCUS, SITE, type Locale } from '../config';
 import { useTranslations, stripLocale, formatDate, isoDate, localizedPath } from '../i18n/utils';
 import { readingTime } from '../utils/reading-time';
@@ -44,6 +44,13 @@ const showHero = shouldShowHero(post) && (post.data.showHeroInPost ?? SITE.showH
 const heroAlt = post.data.heroImageAlt ?? '';
 
 const hasToc = post.data.toc && headings.length > 0;
+
+// «Título principal (aclaración)»: la aclaración final entre paréntesis va atenuada.
+const titleParts = post.data.title.match(/^(.*?)\s+(\(.+\))$/);
+const titleMain = titleParts ? titleParts[1] : post.data.title;
+const titleTail = titleParts ? titleParts[2] : '';
+const chip =
+  'border-base-300 text-muted hover:border-primary hover:text-primary rounded-full border px-3 py-0.5 transition-colors';
 
 // Use hero image for OG if available, otherwise fallback to the generated OG image
 // (unless Auto-OG is disabled globally or skipped in CI).
@@ -98,81 +105,68 @@ if (post.data.mermaid) {
 >
   {post.data.math && MathStylesComponent && <MathStylesComponent />}
   {post.data.mermaid && MermaidComponent && <MermaidComponent />}
-  <div class:list={[hasToc && 'xl:grid xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10']}>
-    <article class="mx-auto w-full max-w-[780px] min-w-0">
-      <header class="mb-8">
-        <h1
-          class="font-display text-[2.5rem] leading-[1.08] font-extrabold tracking-[-0.025em] max-sm:text-[2rem]"
-        >
-          {post.data.title}
-        </h1>
-        <p class="text-muted mt-3 text-lg">{post.data.description}</p>
+  <ReadingProgress />
 
-        <div class="text-muted mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          <span class="inline-flex items-center gap-1">
-            <Icon name="lucide:calendar-days" width={14} height={14} />
-            <time datetime={isoDate(post.data.pubDate)} class="text-warm font-semibold">
-              {formatDate(post.data.pubDate, locale)}
-            </time>
-          </span>
-          {
-            post.data.updatedDate && (
-              <span class="inline-flex items-center gap-1">
-                <Icon name="lucide:check" width={14} height={14} />
-                <time datetime={isoDate(post.data.updatedDate)}>
-                  {t('post.updatedOn')} {formatDate(post.data.updatedDate, locale)}
-                </time>
-              </span>
-            )
-          }
-          {
-            post.data.categories.length > 0 && (
-              <span class="inline-flex flex-wrap items-center">
-                <Icon name="lucide:folder" width={14} height={14} class="mr-1" />
-                {post.data.categories.map((c, i) => (
-                  <>
-                    <a href={categoryPath(locale, c)} class="hover:text-primary">
-                      {c}
-                    </a>
-                    {i < post.data.categories.length - 1 && <span>,&nbsp;</span>}
-                  </>
-                ))}
-              </span>
-            )
-          }
-          <span class="inline-flex items-center gap-1">
-            <Icon name="lucide:clock" width={14} height={14} />
-            {`${minutes} ${t('post.readingTime')}`}
-          </span>
-        </div>
-      </header>
+  <nav aria-label="Ruta" class="text-muted mb-5 text-[13px]">
+    <a href={localizedPath('/', locale)} class="hover:text-primary">{t('nav.home')}</a>
+    <span aria-hidden="true" class="mx-1.5">/</span>
+    <a href={localizedPath('/archives', locale)} class="hover:text-primary">{t('nav.posts')}</a>
+  </nav>
 
+  <header class="max-w-[900px]">
+    <h1
+      class="font-display mb-[18px] text-5xl leading-[1.05] font-extrabold tracking-[-0.028em] max-sm:text-[2rem]"
+    >
+      {titleMain}
+      {titleTail && <span class="text-muted font-semibold">{` ${titleTail}`}</span>}
+    </h1>
+    <p class="text-muted mb-5 max-w-[66ch] text-xl leading-snug">{post.data.description}</p>
+    <div class="flex flex-wrap items-center gap-x-3 gap-y-2.5 text-sm">
+      <time datetime={isoDate(post.data.pubDate)} class="text-warm font-semibold">
+        {formatDate(post.data.pubDate, locale, { day: 'numeric', month: 'short', year: 'numeric' })}
+      </time>
       {
-        showHero && heroAsset && (
-          <figure class="post-hero mb-8">
-            <div class="post-hero__frame">
-              <SmartImage
-                src={heroAsset}
-                alt={heroAlt}
-                class="post-hero__img"
-                loading="eager"
-                widths={[480, 768, 1024, 1280, 1600]}
-                sizes="(max-width: 768px) 100vw, 1024px"
-                quality={82}
-              />
-            </div>
-            {heroAlt && (
-              <figcaption class="text-base-content/70 mt-2 text-center text-xs">
-                {heroAlt}
-              </figcaption>
-            )}
-          </figure>
+        post.data.categories.map((c) => (
+          <a href={categoryPath(locale, c)} class={chip}>
+            {c}
+          </a>
+        ))
+      }
+      <span class="text-muted">{`· ${minutes} ${t('post.readingTime')}`}</span>
+      {
+        post.data.updatedDate && (
+          <time datetime={isoDate(post.data.updatedDate)} class="text-muted">
+            {`· ${t('post.updatedOn')} ${formatDate(post.data.updatedDate, locale)}`}
+          </time>
         )
       }
+    </div>
+  </header>
 
+  {
+    showHero && heroAsset && (
+      <figure class="mt-9">
+        <div class="border-base-300 h-[460px] overflow-hidden rounded-[20px] border max-sm:h-[240px] [&_img]:h-full!">
+          <SmartImage
+            src={heroAsset}
+            alt={heroAlt}
+            class="size-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            widths={[480, 768, 1024, 1280, 1600]}
+            sizes="(max-width: 1120px) 100vw, 1120px"
+            quality={82}
+          />
+        </div>
+      </figure>
+    )
+  }
+
+  <div class="mt-14 flex flex-wrap justify-center gap-x-[72px] gap-y-12">
+    <article class="max-w-[700px] min-w-0 flex-[1_1_560px]">
       {
         hasToc && (
-          <details class="zilla-toc-mobile mb-8 xl:hidden">
+          <details class="zilla-toc-mobile mb-8 min-[1000px]:hidden">
             <summary class="zilla-menu__summary">{t('post.toc')}</summary>
             <ol class="mt-2 space-y-1.5 px-1 text-sm">
               {headings
@@ -195,12 +189,12 @@ if (post.data.mermaid) {
 
       {
         post.data.tags.length > 0 && (
-          <footer class="border-base-300 mt-10 flex flex-wrap items-center gap-2 border-t pt-6">
-            <span class="text-muted text-sm font-semibold tracking-wide uppercase">
+          <footer class="border-base-300 mt-12 flex flex-wrap items-center gap-2.5 border-t pt-7">
+            <span class="font-display text-muted mr-1.5 text-[13px] font-bold tracking-[0.16em] uppercase">
               {t('post.tags')}
             </span>
             {post.data.tags.map((tag) => (
-              <a href={tagPath(locale, tag)} class="post-tag text-xs">
+              <a href={tagPath(locale, tag)} class="zilla-chip bg-base-100 flex h-9 items-center">
                 {tag}
               </a>
             ))}
@@ -220,9 +214,13 @@ if (post.data.mermaid) {
         )
       }
     </article>
+
     {
       hasToc && (
-        <aside aria-label={t('post.toc')}>
+        <aside
+          aria-label={t('post.toc')}
+          class="sticky top-6 hidden flex-[0_0_232px] self-start min-[1000px]:block"
+        >
           <TableOfContents headings={headings} locale={locale} />
         </aside>
       )

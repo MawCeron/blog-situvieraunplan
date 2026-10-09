@@ -31,7 +31,7 @@ export const messages = {
     'post.publishedOn': 'Publicado el',
     'post.updatedOn': 'Actualizado el',
     'post.readingTime': 'min de lectura',
-    'post.toc': 'Tabla de contenidos',
+    'post.toc': 'En esta entrada',
     'post.tags': 'Etiquetas',
     'post.categories': 'Categorías',
     'post.previous': 'Anterior',
