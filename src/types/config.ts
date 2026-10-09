@@ -14,6 +14,7 @@ export interface SiteConfig {
   postsPerPage: number;
   isoDates: boolean;
   showFeaturedImages: boolean;
+  showHeroInPosts: boolean;
   boxedArticles: boolean;
   dynamicPostCardHeight: boolean;
   autoOgImage: boolean;

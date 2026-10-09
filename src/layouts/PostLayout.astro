@@ -51,7 +51,7 @@ const pathWithoutLocale = stripLocale(Astro.url.pathname);
 
 const heroSrc = heroImageSrc(post);
 const heroAsset = heroImage(post);
-const showHero = shouldShowHero(post);
+const showHero = shouldShowHero(post) && (post.data.showHeroInPost ?? SITE.showHeroInPosts);
 const heroAlt = post.data.heroImageAlt ?? '';
 
 const articleClass = SITE.boxedArticles

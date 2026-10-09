@@ -69,6 +69,8 @@ export const SITE: SiteConfig = {
   isoDates: false,
   /** Site-wide default for whether posts should display their featured image. */
   showFeaturedImages: true,
+  /** Show the featured image at the top of each post too. false = listing cards only. */
+  showHeroInPosts: true,
   /** Wrap the article body of posts and pages in a bordered, card-like container. */
   boxedArticles: false,
   /** Allow listing cards to grow when title/description content is longer. */
