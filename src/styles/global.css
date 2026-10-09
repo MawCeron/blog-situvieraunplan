@@ -840,3 +840,23 @@
     border-radius: 8px;
   }
 }
+
+/* ---------- Zilla: paginación, archivo y acerca de ---------- */
+@layer components {
+  .zilla-page {
+    @apply hover:bg-surface2 flex h-11 items-center rounded-xl px-3.5 text-[15px] font-semibold transition-colors;
+  }
+  .zilla-page[aria-current='page'] {
+    @apply bg-primary text-primary-content hover:bg-primary;
+  }
+  .zilla-year-chip {
+    @apply border-base-300 bg-base-100 hover:border-primary hover:text-primary flex h-11 items-center rounded-full border px-4 text-sm font-semibold transition-colors;
+  }
+  .zilla-about > p:first-child {
+    @apply font-display text-2xl leading-snug;
+    max-width: 34ch;
+  }
+  .zilla-about h2 {
+    @apply font-display text-primary mt-14 mb-4 border-0 text-3xl font-extrabold tracking-tight;
+  }
+}
