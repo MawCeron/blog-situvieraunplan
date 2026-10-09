@@ -19,22 +19,22 @@ const heroAlt = post.data.heroImageAlt ?? '';
 const isDynamicCardHeight = post.data.dynamicPostCardHeight ?? SITE.dynamicPostCardHeight;
 ---
 
-<article class="chirpy-card">
+<article class="zilla-card">
   <a
     href={href}
     class:list={[
-      'chirpy-card-link',
+      'zilla-card-link',
       hasImage ? 'has-image' : 'no-image',
       isDynamicCardHeight ? 'dynamic-size' : 'fixed-size',
     ]}
   >
     {
       hasImage && (
-        <div class="chirpy-card-image-wrap">
+        <div class="zilla-card-image-wrap">
           <SmartImage
             src={heroAsset!}
             alt={heroAlt}
-            class="chirpy-card-image"
+            class="zilla-card-image"
             loading={prioritizeLcp ? 'eager' : 'lazy'}
             fetchpriority={prioritizeLcp ? 'high' : 'auto'}
             widths={[384, 768, 960]}
@@ -45,8 +45,8 @@ const isDynamicCardHeight = post.data.dynamicPostCardHeight ?? SITE.dynamicPostC
       )
     }
 
-    <div class:list={['chirpy-card-body', hasImage ? '' : 'full']}>
-      <h2 class:list={['chirpy-card-title', hasImage ? '' : 'compact']}>
+    <div class:list={['zilla-card-body', hasImage ? '' : 'full']}>
+      <h2 class:list={['zilla-card-title', hasImage ? '' : 'compact']}>
         {post.data.title}
       </h2>
 

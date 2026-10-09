@@ -43,7 +43,7 @@ const unlistedPathSegments = new Set();
  */
 function collectUnlistedUrls() {
   return {
-    name: 'chirpy:collect-unlisted-urls',
+    name: 'zilla:collect-unlisted-urls',
     hooks: {
       'astro:build:start': async () => {
         try {
@@ -87,7 +87,7 @@ function collectUnlistedUrls() {
  */
 function rewriteSitemapXslToRelative() {
   return {
-    name: 'chirpy:rewrite-sitemap-xsl',
+    name: 'zilla:rewrite-sitemap-xsl',
     hooks: {
       'astro:build:done': (/** @type {{ dir: URL }} */ { dir }) => {
         const distDir = fileURLToPath(dir);
@@ -210,7 +210,7 @@ export default defineConfig({
       // of the default `prefers-color-scheme` media query so the theme
       // toggle in the sidebar takes effect immediately.
       themeCssSelector: (theme) =>
-        `[data-theme='${theme.type === 'dark' ? 'chirpy-dark' : 'chirpy-light'}']`,
+        `[data-theme='${theme.type === 'dark' ? 'zilla-dark' : 'zilla-light'}']`,
       useDarkModeMediaQuery: false,
       shiki: {
         langAlias: {

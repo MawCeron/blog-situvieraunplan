@@ -197,7 +197,7 @@ function buildAlertHtml(opts: AlertOptions): string {
 
   if (hasTitle) {
     // Title + optional description — use the daisyUI nested-div structure.
-    // Override .prose-chirpy h3 margins with inline styles so heading
+    // Override .prose-zilla h3 margins with inline styles so heading
     // spacing from the theme does not bleed into the alert box.
     const titleHtml = `<h3 class="font-bold" style="margin:0;font-size:1rem;font-weight:700;">${escapeHtml(opts.title!)}</h3>`;
     const descHtml = opts.description

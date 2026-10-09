@@ -2,7 +2,7 @@
 /**
  * Accessible language switcher.
  *
- * On post pages, the PostLayout sets `window.__chirpyTranslations` with a
+ * On post pages, the PostLayout sets `window.__zillaTranslations` with a
  * map of locale -> absolute path to the translation sibling. The runtime
  * script in this island reads that map and rewrites the per-locale hrefs
  * so the user lands on the equivalent article.
@@ -41,7 +41,7 @@ const fallbackBase = stripLocale(Astro.url.pathname);
       <div
         tabindex="0"
         role="button"
-        class="chirpy-social"
+        class="zilla-social"
         aria-haspopup="menu"
         aria-label={t('lang.switcher')}
         title={t('lang.switcher')}
@@ -78,8 +78,8 @@ const fallbackBase = stripLocale(Astro.url.pathname);
 
 <script>
   function rewireLanguageLinks() {
-    const map = (window as unknown as { __chirpyTranslations?: Record<string, string> })
-      .__chirpyTranslations;
+    const map = (window as unknown as { __zillaTranslations?: Record<string, string> })
+      .__zillaTranslations;
     if (!map) return;
     document.querySelectorAll<HTMLAnchorElement>('[data-lang-target]').forEach((a) => {
       const target = a.dataset.langTarget;

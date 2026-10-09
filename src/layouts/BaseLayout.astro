@@ -78,7 +78,7 @@ const meta: SeoMeta =
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="chirpy-light">
+<html lang={lang} data-theme="zilla-light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -116,8 +116,8 @@ const meta: SeoMeta =
           try {
             var stored = localStorage.getItem('theme');
             var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var valid = stored === 'chirpy-dark' || stored === 'chirpy-light';
-            var theme = valid ? stored : prefersDark ? 'chirpy-dark' : 'chirpy-light';
+            var valid = stored === 'zilla-dark' || stored === 'zilla-light';
+            var theme = valid ? stored : prefersDark ? 'zilla-dark' : 'zilla-light';
             if (!valid && stored) localStorage.setItem('theme', theme);
             document.documentElement.setAttribute('data-theme', theme);
           } catch {
@@ -141,8 +141,8 @@ const meta: SeoMeta =
 
     <Sidebar locale={locale} />
 
-    <div class="chirpy-main-wrapper">
-      <div class="chirpy-shell">
+    <div class="zilla-main-wrapper">
+      <div class="zilla-shell">
         <Topbar locale={locale} crumbs={crumbs} availableLocales={availableLocales} />
 
         <div class="flex flex-1 gap-10">
@@ -160,7 +160,7 @@ const meta: SeoMeta =
 
           {
             !hidePanel && (
-              <aside class="chirpy-panel-rail" aria-label="Sidebar widgets">
+              <aside class="zilla-panel-rail" aria-label="Sidebar widgets">
                 <Panel locale={locale} />
                 <slot name="aside-bottom" />
               </aside>

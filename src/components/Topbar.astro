@@ -28,7 +28,7 @@ const t = useTranslations(locale);
 const home = localizedPath('/', locale);
 ---
 
-<header class="chirpy-topbar" aria-label="Top Bar">
+<header class="zilla-topbar" aria-label="Top Bar">
   <div class="flex flex-1 items-center gap-2 px-1">
     <button
       type="button"
@@ -69,7 +69,7 @@ const home = localizedPath('/', locale);
     </a>
   </div>
 
-  <div class="chirpy-topbar__search">
+  <div class="zilla-topbar__search">
     <SearchButton locale={locale} />
     {SITE.multilingual && <LanguageSwitcher locale={locale} availableLocales={availableLocales} />}
   </div>

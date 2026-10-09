@@ -10,7 +10,7 @@
 
   function getMermaidTheme() {
     const t = document.documentElement.getAttribute('data-theme');
-    return t === 'chirpy-dark' ? 'dark' : 'default';
+    return t === 'zilla-dark' ? 'dark' : 'default';
   }
 
   let renderId = 0;
@@ -26,7 +26,7 @@
       // Re-initialize config with the current theme
       mermaid.initialize({ startOnLoad: false, theme });
 
-      const wrappers = document.querySelectorAll('.chirpy-mermaid-wrapper');
+      const wrappers = document.querySelectorAll('.zilla-mermaid-wrapper');
       renderId++;
 
       for (let i = 0; i < wrappers.length; i++) {
@@ -38,7 +38,7 @@
         const src = wrapper.getAttribute('data-mermaid-src');
         if (!src) continue;
 
-        const container = wrapper.querySelector('.chirpy-mermaid');
+        const container = wrapper.querySelector('.zilla-mermaid');
         if (!container) continue;
 
         // Use a unique ID to prevent Mermaid ID collisions on re-renders

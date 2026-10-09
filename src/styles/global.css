@@ -3,7 +3,7 @@
  * See https://daisyui.com/docs/install/ for the canonical install steps.
  *
  * Theme palette closely matches the original Chirpy theme
- * (https://chirpy.cotes.page/) — light grey page background, indigo-blue
+ * (https://zilla.cotes.page/) — light grey page background, indigo-blue
  * primary, white cards, generous typography.
  */
 
@@ -21,7 +21,7 @@
 
 /* ---------- Chirpy LIGHT ---------- */
 @plugin 'daisyui/theme' {
-  name: 'chirpy-light';
+  name: 'zilla-light';
   default: true;
   prefersdark: false;
   color-scheme: light;
@@ -69,7 +69,7 @@
 
 /* ---------- Chirpy DARK ---------- */
 @plugin 'daisyui/theme' {
-  name: 'chirpy-dark';
+  name: 'zilla-dark';
   default: false;
   prefersdark: true;
   color-scheme: dark;
@@ -139,7 +139,7 @@
   --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
 }
 
-[data-theme='chirpy-dark'] {
+[data-theme='zilla-dark'] {
   --color-sidebar-from: oklch(20% 0.005 264);
   --color-sidebar-to: oklch(17% 0.005 264);
   --color-sidebar-text: oklch(75% 0.01 264);
@@ -181,7 +181,7 @@
     view-transition-name: root !important;
   }
 
-  @keyframes chirpy-fade-in {
+  @keyframes zilla-fade-in {
     from {
       opacity: 0;
       transform: translateY(8px);
@@ -191,7 +191,7 @@
       transform: translateY(0);
     }
   }
-  @keyframes chirpy-fade-out {
+  @keyframes zilla-fade-out {
     from {
       opacity: 1;
       transform: translateY(0);
@@ -202,10 +202,10 @@
     }
   }
   ::view-transition-old(root) {
-    animation: chirpy-fade-out 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: zilla-fade-out 280ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
   ::view-transition-new(root) {
-    animation: chirpy-fade-in 360ms cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: zilla-fade-in 360ms cubic-bezier(0.4, 0, 0.2, 1) both;
   }
   @media (prefers-reduced-motion: reduce) {
     ::view-transition-old(root),
@@ -240,7 +240,7 @@
 /* ---------- Layout chrome ---------- */
 @layer components {
   /* Left sidebar — always pinned to the extreme left of the viewport. */
-  .chirpy-sidebar {
+  .zilla-sidebar {
     @apply border-base-300 fixed inset-y-0 left-0 z-40 flex flex-col items-center border-r px-4 py-6;
     width: var(--width-sidebar);
     background: linear-gradient(180deg, var(--color-sidebar-from) 0%, var(--color-sidebar-to) 100%);
@@ -248,24 +248,24 @@
     transition: transform 0.3s ease;
   }
   @media (max-width: 1023px) {
-    .chirpy-sidebar {
+    .zilla-sidebar {
       transform: translateX(-100%);
     }
-    .chirpy-sidebar.is-open {
+    .zilla-sidebar.is-open {
       transform: translateX(0);
     }
   }
   @media (min-width: 1650px) {
-    .chirpy-sidebar {
+    .zilla-sidebar {
       width: var(--width-sidebar-lg);
     }
   }
 
-  .chirpy-main-wrapper {
+  .zilla-main-wrapper {
     @apply flex min-h-screen w-full flex-col px-4 sm:px-6;
   }
   @media (min-width: 1024px) {
-    .chirpy-main-wrapper {
+    .zilla-main-wrapper {
       margin-left: var(--width-sidebar);
       width: calc(100% - var(--width-sidebar));
       max-width: calc(100% - var(--width-sidebar));
@@ -274,13 +274,13 @@
     }
   }
   @media (min-width: 1280px) {
-    .chirpy-main-wrapper {
+    .zilla-main-wrapper {
       padding-left: 3.5rem;
       padding-right: 3.5rem;
     }
   }
   @media (min-width: 1650px) {
-    .chirpy-main-wrapper {
+    .zilla-main-wrapper {
       margin-left: var(--width-sidebar-lg);
       width: calc(100% - var(--width-sidebar-lg));
       max-width: calc(100% - var(--width-sidebar-lg));
@@ -290,7 +290,7 @@
   /* Inner shell that horizontally centers the main content (topbar +
      post cards + panel + footer) inside the area to the right of the
      sidebar. Caps at Chirpy's $main-content-max-width: 1250px. */
-  .chirpy-shell {
+  .zilla-shell {
     @apply mx-auto flex w-full flex-1 flex-col;
     max-width: 1250px;
   }
@@ -298,7 +298,7 @@
   /* Top bar — uses min-height (not a fixed height) plus vertical padding
      so the controls aren't flush against the browser chrome on either
      mobile or desktop. */
-  .chirpy-topbar {
+  .zilla-topbar {
     @apply bg-base-200/80 supports-backdrop-filter:bg-base-200/70 sticky top-0 z-30 flex min-h-(--height-topbar) items-center justify-between gap-3 py-2 backdrop-blur sm:py-3;
   }
 
@@ -307,101 +307,101 @@
      does NOT use `self-start` so that, on long pages, it stretches to
      match `<main>`'s height — giving any sticky child (e.g. the TOC)
      enough vertical room to remain pinned while the article scrolls. */
-  .chirpy-panel-rail {
+  .zilla-panel-rail {
     @apply hidden shrink-0 pt-6 text-sm xl:block;
     width: var(--width-panel);
   }
   @media (min-width: 1440px) {
-    .chirpy-panel-rail {
+    .zilla-panel-rail {
       width: 15rem; /* 240px */
     }
   }
   @media (min-width: 1650px) {
-    .chirpy-panel-rail {
+    .zilla-panel-rail {
       width: 16.25rem; /* 260px */
     }
   }
-  .chirpy-panel-rail > * + * {
+  .zilla-panel-rail > * + * {
     margin-top: 2rem;
   }
   /* Search slot inside the topbar — on xl+ its width matches the right
      panel rail so the search pill aligns vertically over the panel column.
      Below xl, the right rail is hidden so the slot shrinks to fit. */
-  .chirpy-topbar__search {
+  .zilla-topbar__search {
     @apply flex shrink-0 items-center justify-start gap-2 px-1;
   }
   @media (min-width: 1280px) {
-    .chirpy-topbar__search {
+    .zilla-topbar__search {
       width: calc(var(--width-panel) + 2.5rem); /* rail width + gap-10 */
       padding-left: 2.5rem; /* mirror gap-10 between main and rail */
     }
   }
   @media (min-width: 1440px) {
-    .chirpy-topbar__search {
+    .zilla-topbar__search {
       width: calc(15rem + 2.5rem);
     }
   }
   @media (min-width: 1650px) {
-    .chirpy-topbar__search {
+    .zilla-topbar__search {
       width: calc(16.25rem + 2.5rem);
     }
   }
   /* Search row at the very top of the right panel rail. */
-  .chirpy-panel-rail__search {
+  .zilla-panel-rail__search {
     @apply w-full;
   }
 
   /* Inner Panel widget (Recently Updated + Trending Tags). Width and
      visibility are owned by the rail wrapper, so this is content-only. */
-  .chirpy-panel {
+  .zilla-panel {
     @apply block text-sm;
   }
 
   /* Subtle left rail for aside items (Recently Updated, TOC, etc.).
      Each item gets a faint left border that turns primary on hover/active. */
-  .chirpy-aside-list {
+  .zilla-aside-list {
     @apply flex flex-col;
     border-left: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
   }
-  .chirpy-aside-item {
+  .zilla-aside-item {
     @apply text-base-content/75 block py-1.5 pr-2 pl-3 text-sm transition;
     margin-left: -1px;
     border-left: 1px solid transparent;
   }
-  .chirpy-aside-item:hover {
+  .zilla-aside-item:hover {
     @apply text-primary;
     border-left-color: var(--color-primary);
   }
-  .chirpy-aside-item[data-active='true'] {
+  .zilla-aside-item[data-active='true'] {
     @apply text-primary font-semibold;
     border-left-color: var(--color-primary);
   }
 
   /* Post card — horizontal Chirpy card */
-  .chirpy-card {
+  .zilla-card {
     @apply border-base-300 bg-base-100 mb-5 overflow-hidden rounded-md border transition hover:-translate-y-0.5 hover:shadow-[0_2px_4px_-1px_rgba(0,0,0,0.05),0_4px_12px_rgba(0,0,0,0.08)];
   }
-  .chirpy-card-link {
+  .zilla-card-link {
     @apply grid grid-cols-1 gap-0 md:grid-cols-12;
   }
   /* Image cards can be fixed-size (default Chirpy behavior) or dynamic
      based on `SITE.dynamicPostCardHeight`. */
-  .chirpy-card-link.has-image {
+  .zilla-card-link.has-image {
     @apply md:grid-cols-12;
   }
 
-  .chirpy-card-body {
+  .zilla-card-body {
     @apply flex min-w-0 flex-col p-4 sm:p-5 md:col-span-7 md:p-6;
   }
-  .chirpy-card-body.full {
+  .zilla-card-body.full {
     @apply md:col-span-12;
   }
-  .chirpy-card-link.no-image .chirpy-card-body {
+  .zilla-card-link.no-image .zilla-card-body {
     @apply md:p-5;
   }
   /* Title and description gain line-clamps so a very long title (or a
      verbose description) cannot push the card past the fixed height. */
-  .chirpy-card-title {
+  .zilla-card-title {
     @apply text-base-content mt-0 text-2xl leading-snug font-bold tracking-tight sm:text-[1.55rem];
     display: -webkit-box;
     -webkit-line-clamp: 2;
@@ -409,91 +409,91 @@
     -webkit-box-orient: vertical;
     overflow: hidden;
   }
-  .chirpy-card-title.compact {
+  .zilla-card-title.compact {
     @apply md:text-[1.4rem];
   }
   @media (min-width: 768px) {
-    .chirpy-card-link.has-image.dynamic-size .chirpy-card-title {
+    .zilla-card-link.has-image.dynamic-size .zilla-card-title {
       display: block;
       -webkit-line-clamp: unset;
       line-clamp: unset;
       -webkit-box-orient: unset;
       overflow: visible;
     }
-    .chirpy-card-link.has-image.dynamic-size .chirpy-card-body > p {
+    .zilla-card-link.has-image.dynamic-size .zilla-card-body > p {
       -webkit-line-clamp: unset;
       line-clamp: unset;
       overflow: visible;
       display: block;
     }
   }
-  .chirpy-card-image-wrap {
+  .zilla-card-image-wrap {
     @apply order-first overflow-hidden md:order-last md:col-span-5 md:flex md:flex-col;
   }
-  .chirpy-card-image {
+  .zilla-card-image {
     @apply h-44 w-full object-cover md:min-h-0 md:flex-1 md:rounded-r-md;
   }
 }
 
 /* ---------- Prose tuning for the post body ---------- */
 @layer components {
-  .prose-chirpy {
+  .prose-zilla {
     @apply text-base-content;
     line-height: 1.75;
     font-size: 1.0625rem;
   }
 
-  .prose-chirpy h1,
-  .prose-chirpy h2,
-  .prose-chirpy h3,
-  .prose-chirpy h4 {
+  .prose-zilla h1,
+  .prose-zilla h2,
+  .prose-zilla h3,
+  .prose-zilla h4 {
     @apply text-base-content scroll-mt-24 font-semibold tracking-tight;
   }
-  .prose-chirpy h1 {
+  .prose-zilla h1 {
     @apply mt-8 mb-4 text-3xl;
   }
-  .prose-chirpy h2 {
+  .prose-zilla h2 {
     @apply border-base-300 mt-10 mb-4 border-b pb-2 text-2xl;
   }
-  .prose-chirpy h3 {
+  .prose-zilla h3 {
     @apply mt-8 mb-3 text-xl;
   }
-  .prose-chirpy h4 {
+  .prose-zilla h4 {
     @apply mt-6 mb-2 text-lg;
   }
-  .prose-chirpy p {
+  .prose-zilla p {
     @apply my-4;
   }
-  .prose-chirpy a:not(.heading-anchor) {
+  .prose-zilla a:not(.heading-anchor) {
     @apply text-primary decoration-primary/30 hover:decoration-primary underline underline-offset-2;
   }
-  .prose-chirpy a.heading-anchor {
+  .prose-zilla a.heading-anchor {
     @apply text-inherit no-underline;
   }
-  .prose-chirpy ul {
+  .prose-zilla ul {
     @apply my-4 list-disc pl-6;
   }
-  .prose-chirpy ol {
+  .prose-zilla ol {
     @apply my-4 list-decimal pl-6;
   }
-  .prose-chirpy blockquote {
+  .prose-zilla blockquote {
     @apply border-primary/50 bg-base-200 text-base-content/80 my-6 rounded-r-sm border-l-4 px-4 py-2 italic;
   }
-  .prose-chirpy hr {
+  .prose-zilla hr {
     @apply border-base-300 my-10;
   }
-  .prose-chirpy code:not(pre code) {
+  .prose-zilla code:not(pre code) {
     @apply bg-base-200 text-accent rounded px-1.5 py-0.5 font-mono text-[0.92em];
     font-family: var(--font-mono);
   }
-  .prose-chirpy pre {
+  .prose-zilla pre {
     @apply border-base-300 relative my-6 overflow-x-auto rounded-md border p-4 text-sm leading-relaxed;
     font-family: var(--font-mono);
   }
-  .prose-chirpy pre code {
+  .prose-zilla pre code {
     @apply bg-transparent p-0;
   }
-  .prose-chirpy img {
+  .prose-zilla img {
     @apply border-base-300 mx-auto my-6 rounded-md border;
     max-width: 100%;
     height: auto;
@@ -501,11 +501,11 @@
 
   /* Figures — mirror the hero image treatment so the caption feels
      visually attached to the image rather than floating below. */
-  .prose-chirpy figure {
+  .prose-zilla figure {
     @apply my-6;
   }
-  .prose-chirpy figure > img,
-  .prose-chirpy figure > picture > img {
+  .prose-zilla figure > img,
+  .prose-zilla figure > picture > img {
     @apply mx-auto rounded-md border-0;
     margin-top: 0;
     margin-bottom: 0;
@@ -513,7 +513,7 @@
     height: auto;
     display: block;
   }
-  .prose-chirpy figcaption {
+  .prose-zilla figcaption {
     @apply text-base-content/70 mt-2 text-center text-xs italic;
   }
 
@@ -543,14 +543,14 @@
     height: auto;
     object-fit: cover;
   }
-  .prose-chirpy table {
+  .prose-zilla table {
     @apply my-6 w-full border-collapse text-left text-sm;
   }
-  .prose-chirpy table th,
-  .prose-chirpy table td {
+  .prose-zilla table th,
+  .prose-zilla table td {
     @apply border-base-300 border px-3 py-2;
   }
-  .prose-chirpy table thead {
+  .prose-zilla table thead {
     @apply bg-base-200;
   }
 
@@ -572,7 +572,7 @@
   }
 
   /* Alert plugin: only add space when alerts are stacked together. */
-  .prose-chirpy div[role='alert'] + div[role='alert'] {
+  .prose-zilla div[role='alert'] + div[role='alert'] {
     @apply mt-4;
   }
 }
@@ -580,25 +580,25 @@
 /* ---------- Expressive Code -----------------------------
  * Code blocks are rendered by `astro-expressive-code`. It emits its own
  * scoped styles (`.expressive-code`) and drives the active theme via the
- * `[data-theme='chirpy-light' | 'chirpy-dark']` attribute on <html>
+ * `[data-theme='zilla-light' | 'zilla-dark']` attribute on <html>
  * (configured via `themeCssSelector` in astro.config.mjs).
  *
  * The few overrides below just make the code-block frames sit nicely
  * inside our prose container.
  */
 @layer components {
-  .prose-chirpy .expressive-code {
+  .prose-zilla .expressive-code {
     @apply my-6;
   }
-  .prose-chirpy .expressive-code pre {
+  .prose-zilla .expressive-code pre {
     @apply bg-transparent p-0;
   }
-  .prose-chirpy :not(pre) > code {
+  .prose-zilla :not(pre) > code {
     @apply text-primary bg-base-200 rounded px-1.5 py-0.5 text-[0.9em] font-medium;
   }
 }
 
-/* ---------- TOC sticky highlight (uses chirpy-aside rail) ---------- */
+/* ---------- TOC sticky highlight (uses zilla-aside rail) ---------- */
 @layer components {
   .toc ol {
     border-left: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
@@ -650,38 +650,38 @@
 
 /* ---------- Sidebar nav ---------- */
 @layer components {
-  .chirpy-nav {
+  .zilla-nav {
     @apply flex w-full flex-col gap-0.5;
   }
-  .chirpy-nav-link {
+  .zilla-nav-link {
     @apply relative flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-[0.78rem] font-bold tracking-[0.07em] uppercase;
     color: var(--color-sidebar-text);
     transition:
       color 0.2s ease,
       background-color 0.2s ease;
   }
-  .chirpy-nav-link:hover {
+  .zilla-nav-link:hover {
     color: var(--color-primary);
     background: color-mix(in oklab, var(--color-primary) 4%, transparent);
   }
-  .chirpy-nav-link[aria-current='page'] {
+  .zilla-nav-link[aria-current='page'] {
     color: var(--color-primary);
     background: color-mix(in oklab, var(--color-primary) 8%, transparent);
   }
-  .chirpy-nav-link[aria-current='page']:hover {
+  .zilla-nav-link[aria-current='page']:hover {
     background: color-mix(in oklab, var(--color-primary) 12%, transparent);
   }
-  .chirpy-nav-link i,
-  .chirpy-nav-link svg {
+  .zilla-nav-link i,
+  .zilla-nav-link svg {
     @apply h-4 w-4 shrink-0;
   }
 
-  .chirpy-social {
+  .zilla-social {
     @apply hover:text-primary flex h-9 w-9 items-center justify-center rounded-full transition;
     color: var(--color-sidebar-text);
     background: color-mix(in oklab, var(--color-sidebar-text) 10%, transparent);
   }
-  .chirpy-social:hover {
+  .zilla-social:hover {
     background: color-mix(in oklab, var(--color-primary) 14%, transparent);
   }
 }
