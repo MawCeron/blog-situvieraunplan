@@ -652,7 +652,7 @@
 @layer components {
   .zilla-watermark {
     position: fixed;
-    right: -8vw;
+    right: -20vw;
     bottom: 0;
     z-index: 0;
     width: clamp(440px, 58vw, 980px);
