@@ -2,14 +2,13 @@
 import '../styles/global.css';
 
 import { Font } from 'astro:assets';
-import Sidebar from '../components/Sidebar.astro';
-import Topbar from '../components/Topbar.astro';
+import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Panel from '../components/Panel.astro';
 import SEO from '../components/SEO.astro';
 import BackToTop from '../components/islands/BackToTop.astro';
 import { ClientRouter } from 'astro:transitions';
 import faviconImg from '../assets/images/site/favicon.svg';
+import zillaSvg from '../assets/images/site/zilla.svg?raw';
 import { SITE, UMAMI, type Locale } from '../config';
 import { detectLocale, htmlLang, useTranslations, stripLocale, withBase } from '../i18n/utils';
 import { buildSeo, type SeoMeta } from '../utils/seo';
@@ -24,19 +23,17 @@ interface Props {
   publishedTime?: Date;
   modifiedTime?: Date;
   tags?: string[];
-  /** Hide the right panel (e.g. on post pages where TOC takes its place). */
-  hidePanel?: boolean;
   /** Constrain main content width (used by Pages like About/404). */
   narrow?: boolean;
-  /** Breadcrumb segments shown in the topbar. */
+  /** Ensancha el contenido (entradas con tabla de contenidos lateral). */
+  wide?: boolean;
+  /** Pie completo (con últimas entradas y etiquetas): solo el listado de inicio. */
+  fullFooter?: boolean;
+  /** Sin efecto en Zilla; se conserva para no tocar cada página. */
   crumbs?: Array<{ label: string; href?: string }>;
   /** Pre-built SEO meta override. */
   seo?: SeoMeta;
-  /**
-   * Locales for which a translation of the current page actually
-   * exists. Used to limit the language switcher to working links and
-   * to scope hreflang alternates. Defaults to all `SITE.locales`.
-   */
+  /** Locales con traducción de la página actual; acota los hreflang. */
   availableLocales?: readonly Locale[];
 }
 
@@ -48,9 +45,9 @@ const {
   publishedTime,
   modifiedTime,
   tags,
-  hidePanel = false,
   narrow = false,
-  crumbs = [],
+  wide = false,
+  fullFooter = false,
   seo,
   availableLocales,
 } = Astro.props;
@@ -78,31 +75,25 @@ const meta: SeoMeta =
 ---
 
 <!doctype html>
-<html lang={lang} data-theme="chirpy-light">
+<html lang={lang} data-theme="zilla-light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="generator" content={Astro.generator} />
-    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f6f7f8" />
-    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#1b1b1e" />
+    <meta name="theme-color" media="(prefers-color-scheme: light)" content="#f4f7f2" />
+    <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#0d1412" />
     <link rel="icon" type="image/svg+xml" href={withBase(faviconImg.src)} />
     <link
       rel="alternate"
       type="application/rss+xml"
-      title={`${SITE.title} (EN)`}
+      title={`${SITE.title} — RSS`}
       href={withBase('/rss.xml')}
-    />
-    <link
-      rel="alternate"
-      type="application/rss+xml"
-      title={`${SITE.title} (FR)`}
-      href={withBase('/fr/rss.xml')}
     />
     <SEO meta={meta} />
     {/* Custom fonts configured via Astro Fonts API */}
-    <Font cssVariable="--font-source-sans-3" />
-    <Font cssVariable="--font-lato" />
-    <Font cssVariable="--font-jetbrains-mono" preload />
+    <Font cssVariable="--font-figtree" preload />
+    <Font cssVariable="--font-bricolage" preload />
+    <Font cssVariable="--font-jetbrains-mono" />
     <ClientRouter />
     {
       import.meta.env.PROD && UMAMI.websiteId && (
@@ -116,8 +107,8 @@ const meta: SeoMeta =
           try {
             var stored = localStorage.getItem('theme');
             var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-            var valid = stored === 'chirpy-dark' || stored === 'chirpy-light';
-            var theme = valid ? stored : prefersDark ? 'chirpy-dark' : 'chirpy-light';
+            var valid = stored === 'zilla-dark' || stored === 'zilla-light';
+            var theme = valid ? stored : prefersDark ? 'zilla-dark' : 'zilla-light';
             if (!valid && stored) localStorage.setItem('theme', theme);
             document.documentElement.setAttribute('data-theme', theme);
           } catch {
@@ -139,35 +130,25 @@ const meta: SeoMeta =
       {t('site.skipToContent')}
     </a>
 
-    <Sidebar locale={locale} />
+    <div
+      class="zilla-watermark"
+      aria-hidden="true"
+      set:html={zillaSvg.replace(/<\?xml[^>]*\?>/, '')}
+    />
 
-    <div class="chirpy-main-wrapper">
-      <div class="chirpy-shell">
-        <Topbar locale={locale} crumbs={crumbs} availableLocales={availableLocales} />
-
-        <div class="flex flex-1 gap-10">
-          <div class="flex min-w-0 flex-1 flex-col">
-            <main
-              id="main"
-              aria-label="Main Content"
-              class:list={['min-w-0 flex-1 py-6 lg:pr-2', narrow ? 'mx-auto w-full max-w-3xl' : '']}
-            >
-              <slot />
-            </main>
-
-            <Footer locale={locale} />
-          </div>
-
-          {
-            !hidePanel && (
-              <aside class="chirpy-panel-rail" aria-label="Sidebar widgets">
-                <Panel locale={locale} />
-                <slot name="aside-bottom" />
-              </aside>
-            )
-          }
-        </div>
-      </div>
+    <div class="relative flex min-h-screen flex-col items-center">
+      <Header locale={locale} />
+      <main
+        id="main"
+        aria-label="Main Content"
+        class:list={[
+          'w-full flex-1 px-6 py-12',
+          narrow ? 'max-w-[780px]' : wide ? 'max-w-[1120px]' : 'max-w-[920px]',
+        ]}
+      >
+        <slot />
+      </main>
+      <Footer locale={locale} compact={!fullFooter} />
     </div>
 
     <BackToTop />

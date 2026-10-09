@@ -13,7 +13,7 @@ const t = useTranslations(locale);
 
 <button
   type="button"
-  class="chirpy-social"
+  class="zilla-social"
   data-theme-toggle
   aria-label={t('theme.toggle')}
   title={t('theme.toggle')}
@@ -27,11 +27,11 @@ const t = useTranslations(locale);
 </button>
 
 <script>
-  type Theme = 'chirpy-light' | 'chirpy-dark';
+  type Theme = 'zilla-light' | 'zilla-dark';
   const STORAGE_KEY = 'theme';
 
   function currentTheme(): Theme {
-    return (document.documentElement.getAttribute('data-theme') as Theme) ?? 'chirpy-light';
+    return (document.documentElement.getAttribute('data-theme') as Theme) ?? 'zilla-light';
   }
 
   function commitTheme(theme: Theme, save = true): void {
@@ -71,7 +71,7 @@ const t = useTranslations(locale);
     const radius = Math.hypot(dx, dy);
     // Add a safety margin to prevent edge flickering on extremely large or high-DPI viewports.
     root.style.setProperty('--theme-radius', `${radius + 100}px`);
-    root.dataset.themeAnim = theme === 'chirpy-dark' ? 'to-dark' : 'to-light';
+    root.dataset.themeAnim = theme === 'zilla-dark' ? 'to-dark' : 'to-light';
 
     const transition = (
       document as unknown as {
@@ -88,7 +88,7 @@ const t = useTranslations(locale);
 
   function updateIcons(theme: Theme): void {
     document.querySelectorAll<HTMLElement>('[data-theme-icon]').forEach((el) => {
-      const want = theme === 'chirpy-dark' ? 'light' : 'dark';
+      const want = theme === 'zilla-dark' ? 'light' : 'dark';
       el.classList.toggle('hidden', el.dataset.themeIcon !== want);
     });
   }
@@ -97,7 +97,7 @@ const t = useTranslations(locale);
     updateIcons(currentTheme());
     document.querySelectorAll<HTMLElement>('[data-theme-toggle]').forEach((btn) => {
       btn.addEventListener('click', (event) => {
-        const next: Theme = currentTheme() === 'chirpy-dark' ? 'chirpy-light' : 'chirpy-dark';
+        const next: Theme = currentTheme() === 'zilla-dark' ? 'zilla-light' : 'zilla-dark';
         const rect = btn.getBoundingClientRect();
         const origin = {
           x: (event as MouseEvent).clientX || rect.left + rect.width / 2,
@@ -116,7 +116,7 @@ const t = useTranslations(locale);
       }
       // Apply visually only — do not persist so the system preference
       // remains the source of truth until the user explicitly toggles.
-      commitTheme(e.matches ? 'chirpy-dark' : 'chirpy-light', false);
+      commitTheme(e.matches ? 'zilla-dark' : 'zilla-light', false);
     });
   }
 

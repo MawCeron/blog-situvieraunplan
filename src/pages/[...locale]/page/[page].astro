@@ -43,14 +43,14 @@ const hrefForPage = (n: number) => localizedPath(n === 1 ? '/' : `/page/${n}/`, 
 <BaseLayout
   title={`${t('list.allPosts')} — ${t('pagination.page')} ${current}`}
   pathWithoutLocale={`/page/${current}/`}
+  fullFooter
 >
   <header class="mb-6">
-    <h1 class="text-3xl font-bold tracking-tight">{t('list.allPosts')}</h1>
-    <p class="text-base-content/70 text-sm">
-      {t('pagination.page')}
-      {current}
-      {t('pagination.of')}
-      {last}
+    <h1 class="font-display text-5xl leading-none font-extrabold tracking-[-0.03em]">
+      {t('list.allPosts')}
+    </h1>
+    <p class="text-muted mt-2">
+      {t('pagination.page')}{' '}{current}{' '}{t('pagination.of')}{' '}{last}
     </p>
   </header>
   <PostList posts={pagePosts} locale={locale} />

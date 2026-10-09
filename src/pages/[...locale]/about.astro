@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from 'astro:content';
-import PageLayout from '~/layouts/PageLayout.astro';
+import { Image } from 'astro:assets';
+import BaseLayout from '~/layouts/BaseLayout.astro';
 import { SITE } from '~/config';
 
 export function getStaticPaths() {
@@ -13,13 +14,38 @@ const { locale } = Astro.props;
 const entry = await getEntry('pages', `${locale}/about`);
 if (!entry) return Astro.rewrite('/404');
 const { Content } = await render(entry);
+const avatar = SITE.author.avatar;
 ---
 
-<PageLayout
+<BaseLayout
   title={entry.data.title}
   description={entry.data.description ?? SITE.description}
-  locale={locale}
-  math={entry.data.math}
+  pathWithoutLocale="/about/"
+  narrow
 >
-  <Content />
-</PageLayout>
+  <div class="mb-12 flex flex-wrap items-center gap-x-8 gap-y-6">
+    {
+      avatar && typeof avatar !== 'string' && (
+        <Image
+          src={avatar}
+          alt={SITE.author.name}
+          width={264}
+          height={264}
+          class="border-primary size-[132px] rounded-full border-[3px] object-cover"
+          loading="eager"
+        />
+      )
+    }
+    <div>
+      <h1
+        class="font-display mb-1.5 text-[3.75rem] leading-none font-extrabold tracking-[-0.03em] max-sm:text-5xl"
+      >
+        {entry.data.title}
+      </h1>
+      {entry.data.description && <p class="text-muted text-lg">{entry.data.description}</p>}
+    </div>
+  </div>
+  <div class="prose-zilla zilla-about max-w-none">
+    <Content />
+  </div>
+</BaseLayout>

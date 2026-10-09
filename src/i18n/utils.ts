@@ -107,6 +107,9 @@ export function useTranslations(locale: Locale): (key: UIKey) => string {
   };
 }
 
+/** BCP 47 por idioma de interfaz (el locale `en` contiene los textos en español). */
+const LANG: Record<Locale, string> = { en: 'es-MX' };
+
 /**
  * Locale-aware date formatter.
  */
@@ -118,8 +121,7 @@ export function formatDate(
   const d = typeof date === 'string' ? new Date(date) : date;
   if (Number.isNaN(d.getTime())) return '';
   if (SITE.isoDates) return d.toISOString().slice(0, 10);
-  const lang = locale === 'fr' ? 'fr-FR' : 'en-US';
-  return new Intl.DateTimeFormat(lang, options).format(d);
+  return new Intl.DateTimeFormat(LANG[locale], { timeZone: 'UTC', ...options }).format(d);
 }
 
 /** Short ISO 8601 date used for <time datetime="..."> attributes. */
@@ -165,24 +167,7 @@ export function canonicalUrl(pathname: string): string {
   return new URL(pathname, SITE.url).toString();
 }
 
-/** Pretty label for the language switcher. */
-export function localeLabel(locale: Locale): string {
-  switch (locale) {
-    case 'fr':
-      return 'Français';
-    case 'en':
-    default:
-      return 'English';
-  }
-}
-
 /** ISO BCP 47 language tag for `<html lang>` and date formatters. */
 export function htmlLang(locale: Locale): string {
-  switch (locale) {
-    case 'fr':
-      return 'fr-FR';
-    case 'en':
-    default:
-      return 'en-US';
-  }
+  return LANG[locale];
 }

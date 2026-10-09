@@ -21,8 +21,8 @@ export function satteriMermaid() {
 
         ctx.replaceNode(node, {
           type: 'html',
-          value: `<div class="chirpy-mermaid-wrapper" data-mermaid-src="${escaped}">
-  <div class="chirpy-mermaid">${escaped}</div>
+          value: `<div class="zilla-mermaid-wrapper" data-mermaid-src="${escaped}">
+  <div class="zilla-mermaid">${escaped}</div>
 </div>`,
         });
       }

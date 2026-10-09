@@ -20,6 +20,17 @@ import { satteriMermaid } from './src/plugins/satteri-mermaid.ts';
 
 import { SITE } from './src/config';
 
+/**
+ * Valor de Expressive Code que cambia según el tema claro u oscuro.
+ * @param {string} dark
+ * @param {string} light
+ */
+const zilla =
+  (dark, light) =>
+  /** @param {{ theme: { type: string } }} args */
+  ({ theme }) =>
+    theme.type === 'dark' ? dark : light;
+
 const rawBase = (process.env.BASE_PATH ?? '/').replace(/\/$/, '');
 const BASE = rawBase.startsWith('/') ? rawBase : `/${rawBase}`;
 const SITEMAP_XSL_HREF = `${BASE}/sitemap/styles.xsl`;
@@ -43,7 +54,7 @@ const unlistedPathSegments = new Set();
  */
 function collectUnlistedUrls() {
   return {
-    name: 'chirpy:collect-unlisted-urls',
+    name: 'zilla:collect-unlisted-urls',
     hooks: {
       'astro:build:start': async () => {
         try {
@@ -55,8 +66,14 @@ function collectUnlistedUrls() {
             if (!entry.data.unlisted) continue;
             // Derive locale and slug from the entry id (e.g. "en/my-post.md").
             const segs = entry.id.split(/[\\/]/);
-            const locale = segs[0] && /** @type {readonly string[]} */ (SITE.locales).includes(segs[0]) ? segs[0] : SITE.defaultLocale;
-            const slug = segs.slice(1).join('/').replace(/\.(md|mdx)$/i, '');
+            const locale =
+              segs[0] && /** @type {readonly string[]} */ (SITE.locales).includes(segs[0])
+                ? segs[0]
+                : SITE.defaultLocale;
+            const slug = segs
+              .slice(1)
+              .join('/')
+              .replace(/\.(md|mdx)$/i, '');
             if (locale === SITE.defaultLocale) {
               unlistedPathSegments.add(`posts/${slug}`);
             } else {
@@ -87,7 +104,7 @@ function collectUnlistedUrls() {
  */
 function rewriteSitemapXslToRelative() {
   return {
-    name: 'chirpy:rewrite-sitemap-xsl',
+    name: 'zilla:rewrite-sitemap-xsl',
     hooks: {
       'astro:build:done': (/** @type {{ dir: URL }} */ { dir }) => {
         const distDir = fileURLToPath(dir);
@@ -187,7 +204,7 @@ export default defineConfig({
         satteriAutolinkHeadings(),
         satteriExternalLinks({
           target: '_blank',
-          rel: ['nofollow', 'noopener', 'noreferrer']
+          rel: ['nofollow', 'noopener', 'noreferrer'],
         }),
         satteriBaseLinks({ base: BASE }),
       ],
@@ -210,20 +227,36 @@ export default defineConfig({
       // of the default `prefers-color-scheme` media query so the theme
       // toggle in the sidebar takes effect immediately.
       themeCssSelector: (theme) =>
-        `[data-theme='${theme.type === 'dark' ? 'chirpy-dark' : 'chirpy-light'}']`,
+        `[data-theme='${theme.type === 'dark' ? 'zilla-dark' : 'zilla-light'}']`,
       useDarkModeMediaQuery: false,
       shiki: {
         langAlias: {
           env: 'dotenv',
         },
       },
+      // Colores de superficie de Zilla (los de la sintaxis siguen siendo los del tema de Shiki).
       styleOverrides: {
-        borderRadius: '0.5rem',
+        borderRadius: '1rem',
+        borderColor: zilla('#24332e', '#d3ded6'),
+        codeBackground: zilla('#131d1a', '#ffffff'),
         codeFontFamily:
-          "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          'var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
         codeFontSize: '0.875rem',
+        uiFontFamily: 'var(--font-figtree), system-ui, sans-serif',
         frames: {
           shadowColor: 'transparent',
+          editorTabBarBackground: zilla('#1b2924', '#e6eee8'),
+          editorTabBarBorderBottomColor: zilla('#24332e', '#d3ded6'),
+          editorActiveTabBackground: zilla('#131d1a', '#ffffff'),
+          editorActiveTabForeground: zilla('#e8f0ec', '#13201b'),
+          editorActiveTabIndicatorTopColor: zilla('#96bd33', '#5c7a1a'),
+          editorActiveTabIndicatorBottomColor: 'transparent',
+          editorTabBorderRadius: '0.375rem',
+          terminalBackground: zilla('#131d1a', '#ffffff'),
+          terminalTitlebarBackground: zilla('#1b2924', '#e6eee8'),
+          terminalTitlebarForeground: zilla('#93a59d', '#52665d'),
+          terminalTitlebarBorderBottomColor: zilla('#24332e', '#d3ded6'),
+          terminalTitlebarDotsForeground: zilla('#93a59d', '#52665d'),
         },
       },
     }),
@@ -274,60 +307,56 @@ export default defineConfig({
   },
 
   fonts: [
-    // Source Sans 3 — main UI font from @fontsource/source-sans-3 npm package
     {
-      name: 'Source Sans 3',
-      cssVariable: '--font-source-sans-3',
+      name: 'Figtree',
+      cssVariable: '--font-figtree',
       provider: fontProviders.local(),
       options: {
         variants: [
           {
             weight: '400',
             style: 'normal',
-            src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2',
-            ],
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-400-normal.woff2'],
+          },
+          {
+            weight: '500',
+            style: 'normal',
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-500-normal.woff2'],
           },
           {
             weight: '600',
             style: 'normal',
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-600-normal.woff2'],
+          },
+        ],
+      },
+    },
+    {
+      name: 'Bricolage Grotesque',
+      cssVariable: '--font-bricolage',
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            weight: '600',
+            style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2',
             ],
           },
           {
             weight: '700',
             style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-700-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-700-normal.woff2',
             ],
           },
           {
-            weight: '900',
+            weight: '800',
             style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-900-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2',
             ],
-          },
-        ],
-      },
-    },
-    // Lato — secondary font from @fontsource/lato npm package
-    {
-      name: 'Lato',
-      cssVariable: '--font-lato',
-      provider: fontProviders.local(),
-      options: {
-        variants: [
-          {
-            weight: '300',
-            style: 'normal',
-            src: ['./node_modules/@fontsource/lato/files/lato-latin-300-normal.woff2'],
-          },
-          {
-            weight: '400',
-            style: 'normal',
-            src: ['./node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2'],
           },
         ],
       },

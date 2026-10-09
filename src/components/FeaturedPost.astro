@@ -1,0 +1,68 @@
+---
+import type { Locale } from '../config';
+import { formatDate, isoDate, useTranslations } from '../i18n/utils';
+import { type Post, postPath, heroImage, shouldShowHero } from '../utils/posts';
+import SmartImage from './SmartImage.astro';
+
+interface Props {
+  post: Post;
+  locale: Locale;
+}
+
+const { post, locale } = Astro.props;
+const t = useTranslations(locale);
+const img = shouldShowHero(post) ? heroImage(post) : undefined;
+const date = formatDate(post.data.pubDate, locale, {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<article>
+  <a href={postPath(post)} class="group block">
+    {
+      img && (
+        <div class="border-base-300 h-[380px] overflow-hidden rounded-[18px] border max-sm:h-[220px] [&_img]:h-full!">
+          <SmartImage
+            src={img}
+            alt={post.data.heroImageAlt ?? ''}
+            class="size-full object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+            loading="eager"
+            fetchpriority="high"
+            widths={[480, 768, 1024, 1280]}
+            sizes="(max-width: 960px) 100vw, 920px"
+            quality={80}
+          />
+        </div>
+      )
+    }
+    <div class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2.5 text-sm">
+      <span
+        class="bg-primary text-primary-content rounded-full px-2.5 py-0.5 text-xs font-semibold tracking-wider uppercase"
+      >
+        {t('home.latestEntry')}
+      </span>
+      <time class="text-warm font-semibold" datetime={isoDate(post.data.pubDate)}>{date}</time>
+      {
+        post.data.categories.map((c) => (
+          <span class="border-base-300 text-muted rounded-full border px-3 py-0.5">{c}</span>
+        ))
+      }
+    </div>
+    <h1
+      class="font-display group-hover:text-primary mt-3.5 mb-3 text-[2.875rem] leading-[1.04] font-extrabold tracking-[-0.025em] transition-colors max-sm:text-[2rem]"
+    >
+      {post.data.title}
+    </h1>
+    {
+      post.data.description && (
+        <p class="text-muted max-w-[64ch] text-lg">{post.data.description}</p>
+      )
+    }
+    <span class="text-primary mt-4 inline-flex items-center gap-2 font-semibold">
+      {t('home.readMore')}
+      <span aria-hidden="true">→</span>
+    </span>
+  </a>
+</article>

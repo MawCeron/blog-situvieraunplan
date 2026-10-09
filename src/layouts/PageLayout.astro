@@ -1,6 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
-import { SITE, type Locale } from '../config';
+import { type Locale } from '../config';
 
 interface Props {
   title: string;
@@ -23,21 +23,17 @@ let MermaidComponent;
 if (mermaid) {
   MermaidComponent = (await import('../components/islands/Mermaid.astro')).default;
 }
-
-const articleClass = SITE.boxedArticles
-  ? 'border-base-300 bg-base-100 rounded-md border px-5 py-8 sm:px-8 sm:py-10'
-  : 'px-1 py-6 sm:px-2 sm:py-8';
 ---
 
 <BaseLayout title={title} description={description} crumbs={crumbs ?? [{ label: title }]}>
   {math && MathStylesComponent && <MathStylesComponent />}
   {mermaid && MermaidComponent && <MermaidComponent />}
-  <article class={articleClass}>
+  <article>
     <header class="mb-6">
-      <h1 class="text-3xl leading-tight font-extrabold tracking-tight">{title}</h1>
+      <h1 class="font-display text-5xl leading-none font-extrabold tracking-[-0.03em]">{title}</h1>
       {description && <p class="text-base-content/70 mt-2">{description}</p>}
     </header>
-    <div class="prose-chirpy max-w-none">
+    <div class="prose-zilla max-w-none">
       <slot />
     </div>
   </article>

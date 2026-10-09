@@ -13,7 +13,7 @@ import type { ImageMetadata } from 'astro';
 import { getCollection, type CollectionEntry } from 'astro:content';
 
 import { SITE, type Locale } from '../config';
-import { withBase } from '../i18n/utils';
+import { htmlLang, withBase } from '../i18n/utils';
 import { slugify } from './slugify';
 
 export type Post = CollectionEntry<'posts'> & {
@@ -123,20 +123,6 @@ export async function getPostBySlug(locale: Locale, slug: string): Promise<Post 
   return posts.find((p) => postSlug(p) === slug);
 }
 
-/** All translation siblings of a post (other locales sharing translationKey). */
-export async function getTranslations(entry: Post): Promise<Record<Locale, Post | undefined>> {
-  const out: Partial<Record<Locale, Post | undefined>> = {};
-  for (const locale of SITE.locales) {
-    if (locale === entry.data.lang) {
-      out[locale] = entry;
-      continue;
-    }
-    const all = await getPosts(locale);
-    out[locale] = all.find((p) => p.data.translationKey === entry.data.translationKey);
-  }
-  return out as Record<Locale, Post | undefined>;
-}
-
 /** Tags for a locale, with counts, sorted by count desc then alpha. */
 export async function getTagsWithCount(
   locale: Locale,
@@ -177,15 +163,14 @@ export function groupByYearMonth(
   for (const post of posts) {
     const date = post.data.pubDate;
     if (!date) continue;
-    const y = date.getFullYear();
-    const m = date.getMonth();
+    const y = date.getUTCFullYear();
+    const m = date.getUTCMonth();
     if (!buckets.has(y)) buckets.set(y, new Map());
     const months = buckets.get(y)!;
     if (!months.has(m)) months.set(m, []);
     months.get(m)!.push(post);
   }
-  const lang = locale === 'fr' ? 'fr-FR' : 'en-US';
-  const fmt = new Intl.DateTimeFormat(lang, { month: 'long' });
+  const fmt = new Intl.DateTimeFormat(htmlLang(locale), { month: 'long' });
   return Array.from(buckets.entries())
     .sort((a, b) => b[0] - a[0])
     .map(([year, months]) => ({

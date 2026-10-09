@@ -1,0 +1,55 @@
+---
+import type { Locale } from '../config';
+import { formatDate, isoDate } from '../i18n/utils';
+import { type Post, postPath, heroImage, shouldShowHero } from '../utils/posts';
+import SmartImage from './SmartImage.astro';
+
+interface Props {
+  post: Post;
+  locale: Locale;
+}
+
+const { post, locale } = Astro.props;
+const img = shouldShowHero(post) ? heroImage(post) : undefined;
+const date = formatDate(post.data.pubDate, locale, {
+  day: 'numeric',
+  month: 'short',
+  year: 'numeric',
+});
+---
+
+<a
+  href={postPath(post)}
+  class="group border-base-300 flex flex-wrap items-center gap-x-6 gap-y-4 border-b py-6"
+>
+  {
+    img && (
+      <div class="border-base-300 h-[118px] w-[184px] shrink-0 overflow-hidden rounded-xl border max-sm:h-[160px] max-sm:w-full [&_img]:h-full!">
+        <SmartImage
+          src={img}
+          alt=""
+          class="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+          widths={[184, 368, 552]}
+          sizes="(max-width: 640px) 100vw, 184px"
+          quality={75}
+        />
+      </div>
+    )
+  }
+  <div class="min-w-0 flex-[1_1_300px]">
+    <div class="text-muted text-[13px]">
+      <time class="text-warm font-semibold" datetime={isoDate(post.data.pubDate)}>{date}</time>
+      {post.data.categories.length > 0 && <> · {post.data.categories.join(', ')}</>}
+    </div>
+    <h3
+      class="font-display group-hover:text-primary my-1.5 text-[22px] leading-[1.18] font-bold tracking-[-0.012em] transition-colors"
+    >
+      {post.data.title}
+    </h3>
+    {
+      post.data.description && (
+        <p class="text-muted line-clamp-2 text-[15px]">{post.data.description}</p>
+      )
+    }
+  </div>
+</a>

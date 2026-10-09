@@ -66,7 +66,12 @@ const setupSteps = [
 ---
 
 <section class="border-base-300 mt-12 border-t pt-8" aria-labelledby="comments-heading">
-  <h2 id="comments-heading" class="mb-4 text-xl font-semibold">{t('post.comments')}</h2>
+  <h2
+    id="comments-heading"
+    class="font-display mb-4 text-[1.625rem] font-extrabold tracking-[-0.02em]"
+  >
+    {t('post.comments')}
+  </h2>
 
   {
     state === 'live' && (
@@ -82,7 +87,7 @@ const setupSteps = [
         data-emit-metadata={GISCUS.emitMetadata}
         data-input-position={GISCUS.inputPosition}
         data-loading={GISCUS.loading}
-        data-locale={locale === 'fr' ? 'fr' : 'en'}
+        data-locale="es"
       />
     )
   }
@@ -133,7 +138,7 @@ const setupSteps = [
 <script>
   function giscusTheme() {
     const t = document.documentElement.getAttribute('data-theme');
-    return t === 'chirpy-dark' ? 'dark' : 'light';
+    return t === 'zilla-dark' ? 'dark' : 'light';
   }
 
   function mountGiscus() {
