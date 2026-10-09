@@ -29,9 +29,11 @@ interface Props {
   images?: GalleryImage[];
   /** Max columns on wide screens (1 on phones, 2 on tablets). */
   columns?: 2 | 3 | 4;
+  /** Load the first row eagerly. Use it when the gallery is above the fold. */
+  eager?: boolean;
 }
 
-const { folder, alts = {}, images, columns = 3 } = Astro.props;
+const { folder, alts = {}, images, columns = 3, eager = false } = Astro.props;
 
 let items: GalleryImage[] = images ?? [];
 
@@ -70,11 +72,12 @@ const cells = await Promise.all(
 {
   cells.length > 0 && (
     <div class="gallery" data-columns={columns}>
-      {cells.map(({ src, alt, full }) => (
+      {cells.map(({ src, alt, full }, i) => (
         <a class="gallery-item" href={full} data-gallery-item data-alt={alt}>
           <SmartImage
             src={src}
             alt={alt}
+            loading={eager && i < columns ? 'eager' : 'lazy'}
             widths={[320, 480, 640, 800]}
             sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
           />
