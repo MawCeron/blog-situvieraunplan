@@ -20,6 +20,17 @@ import { satteriMermaid } from './src/plugins/satteri-mermaid.ts';
 
 import { SITE } from './src/config';
 
+/**
+ * Valor de Expressive Code que cambia según el tema claro u oscuro.
+ * @param {string} dark
+ * @param {string} light
+ */
+const zilla =
+  (dark, light) =>
+  /** @param {{ theme: { type: string } }} args */
+  ({ theme }) =>
+    theme.type === 'dark' ? dark : light;
+
 const rawBase = (process.env.BASE_PATH ?? '/').replace(/\/$/, '');
 const BASE = rawBase.startsWith('/') ? rawBase : `/${rawBase}`;
 const SITEMAP_XSL_HREF = `${BASE}/sitemap/styles.xsl`;
@@ -223,13 +234,28 @@ export default defineConfig({
           env: 'dotenv',
         },
       },
+      // Colores de superficie de Zilla (los de la sintaxis siguen siendo los del tema de Shiki).
       styleOverrides: {
-        borderRadius: '0.5rem',
+        borderRadius: '1rem',
+        borderColor: zilla('#24332e', '#d3ded6'),
+        codeBackground: zilla('#131d1a', '#ffffff'),
         codeFontFamily:
-          "'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace",
+          'var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace',
         codeFontSize: '0.875rem',
+        uiFontFamily: 'var(--font-figtree), system-ui, sans-serif',
         frames: {
           shadowColor: 'transparent',
+          editorTabBarBackground: zilla('#1b2924', '#e6eee8'),
+          editorTabBarBorderBottomColor: zilla('#24332e', '#d3ded6'),
+          editorActiveTabBackground: zilla('#131d1a', '#ffffff'),
+          editorActiveTabForeground: zilla('#e8f0ec', '#13201b'),
+          editorActiveTabIndicatorTopColor: zilla('#4fd6b5', '#0b7a66'),
+          editorActiveTabIndicatorBottomColor: 'transparent',
+          terminalBackground: zilla('#131d1a', '#ffffff'),
+          terminalTitlebarBackground: zilla('#1b2924', '#e6eee8'),
+          terminalTitlebarForeground: zilla('#93a59d', '#52665d'),
+          terminalTitlebarBorderBottomColor: zilla('#24332e', '#d3ded6'),
+          terminalTitlebarDotsForeground: zilla('#93a59d', '#52665d'),
         },
       },
     }),
