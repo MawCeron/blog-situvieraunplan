@@ -153,6 +153,15 @@ export const SOCIALS: readonly SocialLink[] = [
 ].filter(Boolean) as SocialLink[];
 
 /**
+ * Umami analytics. The website ID is public (it ships in the page HTML), so it lives here
+ * instead of in env vars, which CI would have to provide. Set `websiteId` to '' to disable.
+ */
+export const UMAMI = {
+  src: 'https://cloud.umami.is/script.js',
+  websiteId: 'a7ddd538-96b1-46f6-954e-b4413249302f',
+};
+
+/**
  * Giscus comments. Set `enabled: false` to globally disable. Individual
  * posts may opt out via frontmatter `comments: false`.
  *
