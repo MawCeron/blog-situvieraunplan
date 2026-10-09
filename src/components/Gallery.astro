@@ -255,7 +255,9 @@ const cells = await Promise.all(
 
   if (!(window as any).__galleryReady) {
     (window as any).__galleryReady = true;
-    document.addEventListener('click', onClick);
+    // Capture phase: the view-transitions router also listens for clicks on links and would
+    // navigate to the image before a bubble-phase handler could preventDefault.
+    document.addEventListener('click', onClick, true);
   }
 
   function onClick(e: MouseEvent) {
