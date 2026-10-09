@@ -163,8 +163,8 @@ export function groupByYearMonth(
   for (const post of posts) {
     const date = post.data.pubDate;
     if (!date) continue;
-    const y = date.getFullYear();
-    const m = date.getMonth();
+    const y = date.getUTCFullYear();
+    const m = date.getUTCMonth();
     if (!buckets.has(y)) buckets.set(y, new Map());
     const months = buckets.get(y)!;
     if (!months.has(m)) months.set(m, []);
