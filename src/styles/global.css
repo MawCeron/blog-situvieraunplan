@@ -552,14 +552,29 @@
     object-fit: cover;
   }
   .prose-zilla table {
-    @apply my-6 w-full border-collapse text-left text-sm;
+    @apply border-base-300 my-6 w-full overflow-hidden rounded-2xl border text-left text-sm;
+    border-collapse: separate;
+    border-spacing: 0;
   }
   .prose-zilla table th,
   .prose-zilla table td {
-    @apply border-base-300 border px-3 py-2;
+    @apply border-base-300 border-b px-3.5 py-3.5;
   }
-  .prose-zilla table thead {
-    @apply bg-base-200;
+  .prose-zilla table tbody tr:last-child td {
+    @apply border-b-0;
+  }
+  .prose-zilla table thead th {
+    @apply bg-surface2 text-muted font-display text-xs font-bold tracking-[0.12em] uppercase;
+  }
+  .prose-zilla table tbody tr:hover td {
+    background: color-mix(in srgb, var(--color-surface2) 55%, transparent);
+  }
+  /* Tablas anchas: se desplazan dentro de su caja en pantallas angostas. */
+  @media (max-width: 640px) {
+    .prose-zilla table {
+      display: block;
+      overflow-x: auto;
+    }
   }
 
   /* Callouts (.callout.callout-info / -success / -warning / -error):
