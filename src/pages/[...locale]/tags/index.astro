@@ -23,7 +23,9 @@ const tags = await getTagsWithCount(locale);
   crumbs={[{ label: t('tags.title') }]}
 >
   <header class="mb-6">
-    <h1 class="text-3xl font-bold tracking-tight">{t('tags.title')}</h1>
+    <h1 class="font-display text-5xl leading-none font-extrabold tracking-[-0.03em]">
+      {t('tags.title')}
+    </h1>
   </header>
   {
     tags.length === 0 ? (

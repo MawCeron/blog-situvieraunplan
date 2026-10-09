@@ -24,6 +24,8 @@ interface Props {
   tags?: string[];
   /** Constrain main content width (used by Pages like About/404). */
   narrow?: boolean;
+  /** Ensancha el contenido (entradas con tabla de contenidos lateral). */
+  wide?: boolean;
   /** Sin efecto en Zilla; se conserva para no tocar cada página. */
   crumbs?: Array<{ label: string; href?: string }>;
   /** Pre-built SEO meta override. */
@@ -41,6 +43,7 @@ const {
   modifiedTime,
   tags,
   narrow = false,
+  wide = false,
   seo,
   availableLocales,
 } = Astro.props;
@@ -128,7 +131,10 @@ const meta: SeoMeta =
       <main
         id="main"
         aria-label="Main Content"
-        class:list={['w-full flex-1 px-6 py-12', narrow ? 'max-w-[780px]' : 'max-w-[920px]']}
+        class:list={[
+          'w-full flex-1 px-6 py-12',
+          narrow ? 'max-w-[780px]' : wide ? 'max-w-[1120px]' : 'max-w-[920px]',
+        ]}
       >
         <slot />
       </main>

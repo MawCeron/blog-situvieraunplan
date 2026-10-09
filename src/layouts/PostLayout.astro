@@ -1,6 +1,7 @@
 ---
 import BaseLayout from './BaseLayout.astro';
 import PostNav from '../components/PostNav.astro';
+import TableOfContents from '../components/islands/TableOfContents.astro';
 import SmartImage from '../components/SmartImage.astro';
 import Giscus from '../components/islands/Giscus.astro';
 import { Icon } from 'astro-icon/components';
@@ -30,7 +31,7 @@ interface Props {
   locale: Locale;
 }
 
-const { post, body, prev, next, locale } = Astro.props;
+const { post, headings, body, prev, next, locale } = Astro.props;
 const t = useTranslations(locale);
 const minutes = readingTime(body).minutes;
 
@@ -42,9 +43,7 @@ const heroAsset = heroImage(post);
 const showHero = shouldShowHero(post) && (post.data.showHeroInPost ?? SITE.showHeroInPosts);
 const heroAlt = post.data.heroImageAlt ?? '';
 
-const articleClass = SITE.boxedArticles
-  ? 'border-base-300 bg-base-100 rounded-md border px-5 py-8 sm:px-8 sm:py-10'
-  : 'px-1 py-6 sm:px-2 sm:py-8';
+const hasToc = post.data.toc && headings.length > 0;
 
 // Use hero image for OG if available, otherwise fallback to the generated OG image
 // (unless Auto-OG is disabled globally or skipped in CI).
@@ -95,106 +94,138 @@ if (post.data.mermaid) {
   tags={post.data.tags}
   crumbs={crumbs}
   seo={seo}
+  wide
 >
   {post.data.math && MathStylesComponent && <MathStylesComponent />}
   {post.data.mermaid && MermaidComponent && <MermaidComponent />}
-  <article class={articleClass}>
-    <header class="mb-8">
-      <h1
-        class="text-base-content text-3xl leading-tight font-extrabold tracking-tight sm:text-[2.25rem]"
-      >
-        {post.data.title}
-      </h1>
-      <p class="text-base-content/65 mt-3 text-lg">{post.data.description}</p>
+  <div class:list={[hasToc && 'xl:grid xl:grid-cols-[minmax(0,1fr)_15rem] xl:gap-10']}>
+    <article class="mx-auto w-full max-w-[780px] min-w-0">
+      <header class="mb-8">
+        <h1
+          class="font-display text-[2.5rem] leading-[1.08] font-extrabold tracking-[-0.025em] max-sm:text-[2rem]"
+        >
+          {post.data.title}
+        </h1>
+        <p class="text-muted mt-3 text-lg">{post.data.description}</p>
 
-      <div class="text-base-content/70 mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-        <span class="inline-flex items-center gap-1">
-          <Icon name="lucide:calendar-days" width={14} height={14} />
-          <time datetime={isoDate(post.data.pubDate)}>{formatDate(post.data.pubDate, locale)}</time>
-        </span>
-        {
-          post.data.updatedDate && (
-            <span class="inline-flex items-center gap-1">
-              <Icon name="lucide:check" width={14} height={14} />
-              <time datetime={isoDate(post.data.updatedDate)}>
-                {t('post.updatedOn')} {formatDate(post.data.updatedDate, locale)}
-              </time>
-            </span>
-          )
-        }
-        {
-          post.data.categories.length > 0 && (
-            <span class="inline-flex items-center gap-1">
-              <Icon name="lucide:folder" width={14} height={14} />
-              {post.data.categories.map((c, i) => (
-                <>
-                  {i > 0 && <span class="text-base-content/40 mx-0.5">,</span>}
-                  <a href={categoryPath(locale, c)} class="hover:text-primary">
-                    {c}
-                  </a>
-                </>
-              ))}
-            </span>
-          )
-        }
-        <span class="inline-flex items-center gap-1">
-          <Icon name="lucide:clock" width={14} height={14} />
-          {minutes}
-          {t('post.readingTime')}
-        </span>
-      </div>
-    </header>
-
-    {
-      showHero && heroAsset && (
-        <figure class="post-hero mb-8">
-          <div class="post-hero__frame">
-            <SmartImage
-              src={heroAsset}
-              alt={heroAlt}
-              class="post-hero__img"
-              loading="eager"
-              widths={[480, 768, 1024, 1280, 1600]}
-              sizes="(max-width: 768px) 100vw, 1024px"
-              quality={82}
-            />
-          </div>
-          {heroAlt && (
-            <figcaption class="text-base-content/70 mt-2 text-center text-xs">{heroAlt}</figcaption>
-          )}
-        </figure>
-      )
-    }
-
-    <div class="prose-zilla max-w-none">
-      <slot />
-    </div>
-
-    {
-      post.data.tags.length > 0 && (
-        <footer class="border-base-300 mt-10 flex flex-wrap items-center gap-2 border-t pt-6">
-          <span class="text-base-content/70 text-sm font-semibold tracking-wide uppercase">
-            {t('post.tags')}
+        <div class="text-muted mt-5 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
+          <span class="inline-flex items-center gap-1">
+            <Icon name="lucide:calendar-days" width={14} height={14} />
+            <time datetime={isoDate(post.data.pubDate)} class="text-warm font-semibold">
+              {formatDate(post.data.pubDate, locale)}
+            </time>
           </span>
-          {post.data.tags.map((tag) => (
-            <a href={tagPath(locale, tag)} class="post-tag text-xs">
-              {tag}
-            </a>
-          ))}
-        </footer>
-      )
-    }
+          {
+            post.data.updatedDate && (
+              <span class="inline-flex items-center gap-1">
+                <Icon name="lucide:check" width={14} height={14} />
+                <time datetime={isoDate(post.data.updatedDate)}>
+                  {t('post.updatedOn')} {formatDate(post.data.updatedDate, locale)}
+                </time>
+              </span>
+            )
+          }
+          {
+            post.data.categories.length > 0 && (
+              <span class="inline-flex flex-wrap items-center">
+                <Icon name="lucide:folder" width={14} height={14} class="mr-1" />
+                {post.data.categories.map((c, i) => (
+                  <>
+                    <a href={categoryPath(locale, c)} class="hover:text-primary">
+                      {c}
+                    </a>
+                    {i < post.data.categories.length - 1 && <span>,&nbsp;</span>}
+                  </>
+                ))}
+              </span>
+            )
+          }
+          <span class="inline-flex items-center gap-1">
+            <Icon name="lucide:clock" width={14} height={14} />
+            {`${minutes} ${t('post.readingTime')}`}
+          </span>
+        </div>
+      </header>
 
-    <PostNav prev={prev} next={next} locale={locale} />
-
-    {
-      commentsEnabled ? (
-        <Giscus locale={locale} />
-      ) : (
-        post.data.comments === false && (
-          <p class="text-base-content/70 mt-10 text-sm">{t('post.commentsDisabled')}</p>
+      {
+        showHero && heroAsset && (
+          <figure class="post-hero mb-8">
+            <div class="post-hero__frame">
+              <SmartImage
+                src={heroAsset}
+                alt={heroAlt}
+                class="post-hero__img"
+                loading="eager"
+                widths={[480, 768, 1024, 1280, 1600]}
+                sizes="(max-width: 768px) 100vw, 1024px"
+                quality={82}
+              />
+            </div>
+            {heroAlt && (
+              <figcaption class="text-base-content/70 mt-2 text-center text-xs">
+                {heroAlt}
+              </figcaption>
+            )}
+          </figure>
         )
+      }
+
+      {
+        hasToc && (
+          <details class="zilla-toc-mobile mb-8 xl:hidden">
+            <summary class="zilla-menu__summary">{t('post.toc')}</summary>
+            <ol class="mt-2 space-y-1.5 px-1 text-sm">
+              {headings
+                .filter((h) => h.depth >= 2 && h.depth <= 3)
+                .map((h) => (
+                  <li class={h.depth === 3 ? 'pl-4' : ''}>
+                    <a href={`#${h.slug}`} class="hover:text-primary">
+                      {h.text}
+                    </a>
+                  </li>
+                ))}
+            </ol>
+          </details>
+        )
+      }
+
+      <div class="prose-zilla max-w-none">
+        <slot />
+      </div>
+
+      {
+        post.data.tags.length > 0 && (
+          <footer class="border-base-300 mt-10 flex flex-wrap items-center gap-2 border-t pt-6">
+            <span class="text-muted text-sm font-semibold tracking-wide uppercase">
+              {t('post.tags')}
+            </span>
+            {post.data.tags.map((tag) => (
+              <a href={tagPath(locale, tag)} class="post-tag text-xs">
+                {tag}
+              </a>
+            ))}
+          </footer>
+        )
+      }
+
+      <PostNav prev={prev} next={next} locale={locale} />
+
+      {
+        commentsEnabled ? (
+          <Giscus locale={locale} />
+        ) : (
+          post.data.comments === false && (
+            <p class="text-muted mt-10 text-sm">{t('post.commentsDisabled')}</p>
+          )
+        )
+      }
+    </article>
+    {
+      hasToc && (
+        <aside aria-label={t('post.toc')}>
+          <TableOfContents headings={headings} locale={locale} />
+        </aside>
       )
     }
-  </article>
+  </div>
 </BaseLayout>

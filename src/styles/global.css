@@ -450,13 +450,13 @@
   .prose-zilla h2,
   .prose-zilla h3,
   .prose-zilla h4 {
-    @apply text-base-content scroll-mt-24 font-semibold tracking-tight;
+    @apply font-display text-base-content scroll-mt-24 font-bold tracking-[-0.015em];
   }
   .prose-zilla h1 {
     @apply mt-8 mb-4 text-3xl;
   }
   .prose-zilla h2 {
-    @apply border-base-300 mt-10 mb-4 border-b pb-2 text-2xl;
+    @apply mt-12 mb-4 text-[1.75rem] leading-tight font-extrabold;
   }
   .prose-zilla h3 {
     @apply mt-8 mb-3 text-xl;

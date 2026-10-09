@@ -23,7 +23,9 @@ const categories = await getCategoriesWithCount(locale);
   crumbs={[{ label: t('categories.title') }]}
 >
   <header class="mb-6">
-    <h1 class="text-3xl font-bold tracking-tight">{t('categories.title')}</h1>
+    <h1 class="font-display text-5xl leading-none font-extrabold tracking-[-0.03em]">
+      {t('categories.title')}
+    </h1>
   </header>
   {
     categories.length === 0 ? (
