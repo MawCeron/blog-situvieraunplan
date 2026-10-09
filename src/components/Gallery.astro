@@ -1,0 +1,271 @@
+---
+/**
+ * Gallery
+ * -------
+ * Masonry photo gallery with a dependency-free lightbox.
+ *
+ * Usage in MDX (either form):
+ *
+ *   <Gallery folder="big-band-jazz" />              // every image in src/assets/images/posts/big-band-jazz/, by filename
+ *   <Gallery images={[{ src: foto1, alt: '…' }]} /> // imported assets (or public/remote URLs)
+ *
+ * Alt text: `alt` per image; with `folder`, `alts={{ 'foto-01': '…' }}` keyed by file name
+ * (no extension), falling back to the file name itself.
+ * The lightbox is wired once per page by the script at the bottom, for every `.gallery`.
+ */
+
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import SmartImage from './SmartImage.astro';
+
+interface GalleryImage {
+  src: ImageMetadata | string;
+  alt?: string;
+}
+
+interface Props {
+  folder?: string;
+  alts?: Record<string, string>;
+  images?: GalleryImage[];
+  /** Max columns on wide screens (1 on phones, 2 on tablets). */
+  columns?: 2 | 3 | 4;
+}
+
+const { folder, alts = {}, images, columns = 3 } = Astro.props;
+
+let items: GalleryImage[] = images ?? [];
+
+if (folder) {
+  const files = import.meta.glob<{ default: ImageMetadata }>(
+    '/src/assets/images/posts/**/*.{jpg,jpeg,png,webp,avif,gif}',
+    { eager: true },
+  );
+  const prefix = `/src/assets/images/posts/${folder.replace(/^\/+|\/+$/g, '')}/`;
+  items = Object.entries(files)
+    .filter(([path]) => path.startsWith(prefix))
+    .sort(([a], [b]) => a.localeCompare(b, undefined, { numeric: true }))
+    .map(([path, mod]) => {
+      const name = path.split('/').pop()!.replace(/\.[^.]+$/, '');
+      return { src: mod.default, alt: alts[name] ?? name };
+    });
+}
+
+if (items.length === 0) {
+  throw new Error(
+    `<Gallery> found no images (${folder ? `folder="${folder}" → src/assets/images/posts/${folder}/` : 'empty images prop'}). Check the folder name.`,
+  );
+}
+
+// Large version for the lightbox. Public/remote strings are used as they are.
+const cells = await Promise.all(
+  items.map(async ({ src, alt }) => {
+    const label = alt ?? '';
+    if (typeof src === 'string') return { src, alt: label, full: src };
+    const full = await getImage({ src, width: Math.min(src.width, 2000), format: 'webp' });
+    return { src, alt: label, full: full.src };
+  }),
+);
+---
+
+{
+  cells.length > 0 && (
+    <div class="gallery" data-columns={columns}>
+      {cells.map(({ src, alt, full }) => (
+        <a class="gallery-item" href={full} data-gallery-item data-alt={alt}>
+          <SmartImage
+            src={src}
+            alt={alt}
+            widths={[320, 480, 640, 800]}
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+          />
+        </a>
+      ))}
+    </div>
+  )
+}
+
+<style>
+  .gallery {
+    column-gap: 0.75rem;
+    column-count: 1;
+    margin-block: 1.5rem;
+  }
+  @media (min-width: 640px) {
+    .gallery {
+      column-count: 2;
+    }
+  }
+  @media (min-width: 1024px) {
+    .gallery[data-columns='3'] {
+      column-count: 3;
+    }
+    .gallery[data-columns='4'] {
+      column-count: 4;
+    }
+  }
+  .gallery-item {
+    display: block;
+    break-inside: avoid;
+    margin-bottom: 0.75rem;
+    overflow: hidden;
+    border-radius: var(--radius-box);
+    cursor: zoom-in;
+  }
+  .gallery-item :global(img) {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: none;
+    transition: transform 0.25s ease;
+  }
+  .gallery-item:hover :global(img),
+  .gallery-item:focus-visible :global(img) {
+    transform: scale(1.03);
+  }
+  .gallery-item:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .gallery-item :global(img) {
+      transition: none;
+    }
+  }
+</style>
+
+<style is:global>
+  .lightbox {
+    border: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    background: rgb(0 0 0 / 0.92);
+    color: #fff;
+    overflow: hidden;
+  }
+  .lightbox::backdrop {
+    background: transparent;
+  }
+  .lightbox img {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    max-width: 94vw;
+    max-height: 86vh;
+    object-fit: contain;
+  }
+  .lightbox-caption {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    padding-inline: 4rem;
+  }
+  .lightbox button {
+    position: absolute;
+    background: rgb(255 255 255 / 0.12);
+    color: inherit;
+    border: 0;
+    border-radius: 9999px;
+    width: 2.75rem;
+    height: 2.75rem;
+    font-size: 1.5rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .lightbox button:hover,
+  .lightbox button:focus-visible {
+    background: rgb(255 255 255 / 0.28);
+  }
+  .lightbox-close {
+    top: 1rem;
+    right: 1rem;
+  }
+  .lightbox-prev,
+  .lightbox-next {
+    top: 50%;
+    translate: 0 -50%;
+  }
+  .lightbox-prev {
+    left: 1rem;
+  }
+  .lightbox-next {
+    right: 1rem;
+  }
+</style>
+
+<script>
+  // One lightbox per page, shared by every gallery on it.
+  let dialog: HTMLDialogElement | null = null;
+  let img: HTMLImageElement;
+  let caption: HTMLElement;
+  let group: HTMLAnchorElement[] = [];
+  let index = 0;
+
+  function build() {
+    dialog = document.createElement('dialog');
+    dialog.className = 'lightbox';
+    dialog.setAttribute('aria-label', 'Galería de imágenes');
+    dialog.innerHTML = `
+      <img alt="" />
+      <p class="lightbox-caption"></p>
+      <button type="button" class="lightbox-close" aria-label="Cerrar">×</button>
+      <button type="button" class="lightbox-prev" aria-label="Anterior">‹</button>
+      <button type="button" class="lightbox-next" aria-label="Siguiente">›</button>`;
+    img = dialog.querySelector('img')!;
+    caption = dialog.querySelector('.lightbox-caption')!;
+    dialog.querySelector('.lightbox-close')!.addEventListener('click', () => dialog!.close());
+    dialog.querySelector('.lightbox-prev')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('.lightbox-next')!.addEventListener('click', () => show(index + 1));
+    // Click on the dark area (not the image or a button) closes it.
+    dialog.addEventListener('click', (e) => {
+      if (e.target === dialog) dialog!.close();
+    });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') show(index - 1);
+      if (e.key === 'ArrowRight') show(index + 1);
+    });
+    let startX = 0;
+    dialog.addEventListener('touchstart', (e) => (startX = e.touches[0].clientX), { passive: true });
+    dialog.addEventListener('touchend', (e) => {
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+    });
+    document.body.append(dialog);
+  }
+
+  function show(i: number) {
+    index = (i + group.length) % group.length;
+    const a = group[index];
+    img.src = a.href;
+    img.alt = a.dataset.alt ?? '';
+    caption.textContent = a.dataset.alt ?? '';
+    const many = group.length > 1;
+    dialog!.querySelector<HTMLElement>('.lightbox-prev')!.hidden = !many;
+    dialog!.querySelector<HTMLElement>('.lightbox-next')!.hidden = !many;
+  }
+
+  if (!(window as any).__galleryReady) {
+    (window as any).__galleryReady = true;
+    document.addEventListener('click', onClick);
+  }
+
+  function onClick(e: MouseEvent) {
+    const a = (e.target as Element).closest<HTMLAnchorElement>('a[data-gallery-item]');
+    if (!a) return;
+    e.preventDefault();
+    // View transitions swap <body>, which drops the dialog: rebuild when detached.
+    if (!dialog?.isConnected) build();
+    group = [...a.closest('.gallery')!.querySelectorAll<HTMLAnchorElement>('a[data-gallery-item]')];
+    show(group.indexOf(a));
+    dialog!.showModal();
+  }
+</script>
