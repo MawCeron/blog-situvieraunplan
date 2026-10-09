@@ -6,7 +6,10 @@ draft: true
 tags: [go, tui, ftp, sftp, open-source]
 categories: [Herramientas, Programación]
 heroImage: https://raw.githubusercontent.com/MawCeron/lazyftp/develop/assets/demo.gif
+showHeroInPost: false
 ---
+
+![lazyftp v0.4.1](https://raw.githubusercontent.com/MawCeron/lazyftp/develop/assets/demo.gif)
 
 En abril, unos días antes de que pasara **"eso"** (de lo que sinceramente no me acuerdo si ya les hablé), les platiqué [sobre lazyftp](/posts/lazyftp-como-filezilla-pero-en-la-terminal/) un pequeño experimento de fin de semana que servía para lo que la quería: abrías, conectabas, navegabas y transferías. Y ya, nada más. Y tuve la osadía de terminar aquel post con una lista de pendientes, lindos *nice to have*, que uno escribe sabiendo que si alguien las va a cumplir, muy probablemente no sea el que las escribió.
 
