@@ -1,0 +1,97 @@
+---
+import { Image } from 'astro:assets';
+import { NAV, SITE, type Locale } from '../config';
+import { localizedPath, useTranslations, withBase } from '../i18n/utils';
+import type { UIKey } from '../i18n/ui';
+import SearchButton from './islands/SearchButton.astro';
+import ThemeToggle from './islands/ThemeToggle.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = useTranslations(locale);
+const home = localizedPath('/', locale);
+const root = home.replace(/\/+$/, '') || '/';
+const current = Astro.url.pathname.replace(/\/+$/, '') || '/';
+
+const items = NAV.map((item) => {
+  const href = localizedPath(item.href, locale);
+  const path = href.replace(/\/+$/, '') || '/';
+  const active = path === current || (path !== root && current.startsWith(path + '/'));
+  return { href, active, label: t(`nav.${item.key}` as UIKey) };
+});
+
+const avatar = SITE.author.avatar;
+const isStringAvatar = typeof avatar === 'string';
+---
+
+<header class="border-base-300 w-full border-b">
+  <div class="mx-auto flex max-w-[1120px] flex-wrap items-center gap-x-5 gap-y-3 px-6 py-3.5">
+    <a href={home} class="flex items-center gap-3" aria-label={SITE.title}>
+      {
+        avatar &&
+          (isStringAvatar ? (
+            <img
+              src={avatar.startsWith('/') ? withBase(avatar) : avatar}
+              alt=""
+              width="42"
+              height="42"
+              class="size-[42px] rounded-full object-cover"
+              loading="eager"
+            />
+          ) : (
+            <Image
+              src={avatar}
+              alt=""
+              width={84}
+              height={84}
+              class="size-[42px] rounded-full object-cover"
+              loading="eager"
+            />
+          ))
+      }
+      <span class="flex flex-col leading-tight">
+        <span class="font-display text-xl font-extrabold tracking-tight">{SITE.title}</span>
+        {SITE.description && <span class="text-muted text-xs">{SITE.description}</span>}
+      </span>
+    </a>
+
+    <nav aria-label="Principal" class="ml-auto hidden flex-wrap justify-end gap-0.5 md:flex">
+      {
+        items.map((item) => (
+          <a
+            href={item.href}
+            aria-current={item.active ? 'page' : undefined}
+            class="zilla-nav-link"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="ml-auto flex items-center gap-2.5 md:ml-0">
+      <SearchButton locale={locale} />
+      <ThemeToggle locale={locale} />
+    </div>
+
+    <details class="zilla-menu w-full md:hidden">
+      <summary class="zilla-menu__summary">{t('nav.toggleMenu')}</summary>
+      <nav aria-label="Principal (móvil)" class="mt-2 flex flex-col gap-0.5">
+        {
+          items.map((item) => (
+            <a
+              href={item.href}
+              aria-current={item.active ? 'page' : undefined}
+              class="zilla-nav-link"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+    </details>
+  </div>
+</header>

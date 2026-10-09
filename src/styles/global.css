@@ -651,44 +651,6 @@
   }
 }
 
-/* ---------- Sidebar nav ---------- */
-@layer components {
-  .zilla-nav {
-    @apply flex w-full flex-col gap-0.5;
-  }
-  .zilla-nav-link {
-    @apply relative flex w-full items-center gap-3 rounded-md px-3 py-2.5 text-[0.78rem] font-bold tracking-[0.07em] uppercase;
-    color: var(--color-sidebar-text);
-    transition:
-      color 0.2s ease,
-      background-color 0.2s ease;
-  }
-  .zilla-nav-link:hover {
-    color: var(--color-primary);
-    background: color-mix(in oklab, var(--color-primary) 4%, transparent);
-  }
-  .zilla-nav-link[aria-current='page'] {
-    color: var(--color-primary);
-    background: color-mix(in oklab, var(--color-primary) 8%, transparent);
-  }
-  .zilla-nav-link[aria-current='page']:hover {
-    background: color-mix(in oklab, var(--color-primary) 12%, transparent);
-  }
-  .zilla-nav-link i,
-  .zilla-nav-link svg {
-    @apply h-4 w-4 shrink-0;
-  }
-
-  .zilla-social {
-    @apply hover:text-primary flex h-9 w-9 items-center justify-center rounded-full transition;
-    color: var(--color-sidebar-text);
-    background: color-mix(in oklab, var(--color-sidebar-text) 10%, transparent);
-  }
-  .zilla-social:hover {
-    background: color-mix(in oklab, var(--color-primary) 14%, transparent);
-  }
-}
-
 /* ---------- Trending tag pill (Chirpy outline-primary) ---------- */
 @layer components {
   .post-tag {
@@ -699,7 +661,7 @@
 /* ---------- Header search pill ---------- */
 @layer components {
   .search-pill {
-    @apply border-base-300 bg-base-100 text-base-content/70 hover:text-base-content hover:border-base-content/30 inline-flex h-9 items-center gap-2 rounded-full border pr-1.5 pl-3 text-sm transition;
+    @apply border-base-300 bg-base-100 text-base-content/70 hover:text-base-content hover:border-base-content/30 inline-flex h-11 items-center gap-2 rounded-full border pr-1.5 pl-3 text-sm transition;
   }
   .search-pill__icon {
     @apply shrink-0;
@@ -847,4 +809,34 @@
 [data-search-input]::-webkit-search-decoration {
   -webkit-appearance: none;
   appearance: none;
+}
+
+/* ---------- Zilla: cabecera, pie y controles ---------- */
+@layer components {
+  .zilla-nav-link {
+    @apply text-muted hover:bg-surface2 rounded-[10px] px-3.5 py-2.5 text-sm font-semibold transition-colors;
+  }
+  .zilla-nav-link[aria-current='page'] {
+    @apply text-primary;
+  }
+  .zilla-menu__summary {
+    @apply border-base-300 bg-base-100 flex h-11 cursor-pointer list-none items-center rounded-xl border px-4 text-sm font-semibold;
+  }
+  .zilla-menu__summary::-webkit-details-marker {
+    display: none;
+  }
+  .zilla-social {
+    @apply border-base-300 bg-base-100 text-base-content hover:bg-surface2 flex size-11 items-center justify-center rounded-full border transition-colors;
+  }
+  .zilla-icon-link {
+    @apply text-base-content hover:bg-surface2 flex size-11 items-center justify-center rounded-full transition-colors;
+  }
+  .zilla-chip {
+    @apply border-base-300 bg-base-200 text-muted hover:border-primary hover:text-primary rounded-full border px-3.5 py-1 text-sm transition-colors;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 3px;
+    border-radius: 8px;
+  }
 }
