@@ -19,47 +19,39 @@
 @source inline('alert-{info,success,warning,error,soft,outline,dash,vertical,horizontal}');
 @source inline('sm:alert-horizontal');
 
-/* ---------- Chirpy LIGHT ---------- */
+/* ---------- Zilla LIGHT ---------- */
 @plugin 'daisyui/theme' {
   name: 'zilla-light';
   default: true;
   prefersdark: false;
   color-scheme: light;
 
-  /* Page bg / cards / dividers / body text */
-  --color-base-100: oklch(100% 0 0); /* card bg (white)         */
-  --color-base-200: oklch(97% 0.0015 264); /* page bg #f6f7f8         */
-  --color-base-300: oklch(91% 0.0025 264); /* dividers #e8e8e8        */
-  --color-base-content: oklch(20% 0.012 264); /* near-black text         */
+  --color-base-100: #ffffff; /* surface */
+  --color-base-200: #f4f7f2; /* bg */
+  --color-base-300: #d3ded6; /* line */
+  --color-base-content: #13201b; /* text */
 
-  /* Chirpy indigo-blue primary (~ #2a408e) */
-  --color-primary: oklch(45% 0.135 264);
-  --color-primary-content: oklch(99% 0.003 264);
+  --color-primary: #0b7a66; /* accent */
+  --color-primary-content: #ffffff; /* ink */
+  --color-secondary: #0b7a66;
+  --color-secondary-content: #ffffff;
+  --color-accent: #b2530c; /* warm */
+  --color-accent-content: #ffffff;
+  --color-neutral: #13201b;
+  --color-neutral-content: #f4f7f2;
 
-  --color-secondary: oklch(70% 0.11 200);
-  --color-secondary-content: oklch(15% 0.02 264);
+  --color-info: #0b6fa8;
+  --color-info-content: #ffffff;
+  --color-success: #16794a;
+  --color-success-content: #ffffff;
+  --color-warning: #9a6a00;
+  --color-warning-content: #ffffff;
+  --color-error: #b8322a;
+  --color-error-content: #ffffff;
 
-  --color-accent: oklch(76% 0.135 75);
-  --color-accent-content: oklch(20% 0.02 75);
-
-  --color-neutral: oklch(35% 0.01 264);
-  --color-neutral-content: oklch(98% 0.003 264);
-
-  --color-info: oklch(70% 0.13 230);
-  --color-info-content: oklch(15% 0.02 230);
-
-  --color-success: oklch(72% 0.15 145);
-  --color-success-content: oklch(15% 0.02 145);
-
-  --color-warning: oklch(80% 0.15 80);
-  --color-warning-content: oklch(20% 0.02 80);
-
-  --color-error: oklch(60% 0.22 27);
-  --color-error-content: oklch(99% 0.005 27);
-
-  --radius-selector: 0.375rem;
-  --radius-field: 0.375rem;
-  --radius-box: 0.5rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
@@ -67,52 +59,62 @@
   --noise: 0;
 }
 
-/* ---------- Chirpy DARK ---------- */
+/* ---------- Zilla DARK ---------- */
 @plugin 'daisyui/theme' {
   name: 'zilla-dark';
   default: false;
   prefersdark: true;
   color-scheme: dark;
 
-  /* Chirpy dark uses #1b1b1e for the page and #1e1e1f for cards */
-  --color-base-100: oklch(22% 0.005 264);
-  --color-base-200: oklch(20% 0.005 264);
-  --color-base-300: oklch(28% 0.008 264);
-  --color-base-content: oklch(86% 0.01 264);
+  --color-base-100: #131d1a; /* surface */
+  --color-base-200: #0d1412; /* bg */
+  --color-base-300: #24332e; /* line */
+  --color-base-content: #e8f0ec; /* text */
 
-  /* Lighter indigo for dark mode contrast (~ #7895d4) */
-  --color-primary: oklch(72% 0.11 264);
-  --color-primary-content: oklch(15% 0.015 264);
+  --color-primary: #4fd6b5; /* accent */
+  --color-primary-content: #04201a; /* ink */
+  --color-secondary: #4fd6b5;
+  --color-secondary-content: #04201a;
+  --color-accent: #f0a35e; /* warm */
+  --color-accent-content: #2a1500;
+  --color-neutral: #1b2924;
+  --color-neutral-content: #e8f0ec;
 
-  --color-secondary: oklch(75% 0.09 200);
-  --color-secondary-content: oklch(15% 0.015 264);
+  --color-info: #5ab4e8;
+  --color-info-content: #03202f;
+  --color-success: #4fd68a;
+  --color-success-content: #03230f;
+  --color-warning: #f0c35e;
+  --color-warning-content: #2a2000;
+  --color-error: #f27b6b;
+  --color-error-content: #2d0a05;
 
-  --color-accent: oklch(80% 0.13 75);
-  --color-accent-content: oklch(15% 0.015 75);
-
-  --color-neutral: oklch(28% 0.01 264);
-  --color-neutral-content: oklch(95% 0.005 264);
-
-  --color-info: oklch(72% 0.12 230);
-  --color-info-content: oklch(15% 0.015 230);
-
-  --color-success: oklch(72% 0.14 145);
-  --color-success-content: oklch(15% 0.015 145);
-
-  --color-warning: oklch(80% 0.15 80);
-  --color-warning-content: oklch(15% 0.015 80);
-
-  --color-error: oklch(72% 0.18 27);
-  --color-error-content: oklch(15% 0.015 27);
-
-  --radius-selector: 0.375rem;
-  --radius-field: 0.375rem;
-  --radius-box: 0.5rem;
+  --radius-selector: 0.5rem;
+  --radius-field: 0.5rem;
+  --radius-box: 0.75rem;
   --size-selector: 0.25rem;
   --size-field: 0.25rem;
   --border: 1px;
   --depth: 0;
   --noise: 0;
+}
+
+/* Tokens extra del mockup, por tema. El oscuro va después para ganar en caso de empate. */
+:root,
+[data-theme='zilla-light'] {
+  --zilla-surface2: #e6eee8;
+  --zilla-muted: #52665d;
+  --zilla-warm: #b2530c;
+}
+[data-theme='zilla-dark'] {
+  --zilla-surface2: #1b2924;
+  --zilla-muted: #93a59d;
+  --zilla-warm: #f0a35e;
+}
+@theme inline {
+  --color-surface2: var(--zilla-surface2);
+  --color-muted: var(--zilla-muted);
+  --color-warm: var(--zilla-warm);
 }
 
 /* ---------- Chirpy-specific tokens (non-daisyUI) ---------- */
@@ -134,8 +136,9 @@
   /* Reading column max width on post pages */
   --width-prose: 50rem;
 
-  /* Fonts — configured via Astro Fonts API (astro.config.mjs) */
-  --font-sans: var(--font-source-sans-3, system-ui, sans-serif);
+  /* Fuentes — configuradas con la Fonts API de Astro (astro.config.mjs) */
+  --font-sans: var(--font-figtree, system-ui, sans-serif);
+  --font-display: var(--font-bricolage, system-ui, sans-serif);
   --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
 }
 

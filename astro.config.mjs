@@ -55,8 +55,14 @@ function collectUnlistedUrls() {
             if (!entry.data.unlisted) continue;
             // Derive locale and slug from the entry id (e.g. "en/my-post.md").
             const segs = entry.id.split(/[\\/]/);
-            const locale = segs[0] && /** @type {readonly string[]} */ (SITE.locales).includes(segs[0]) ? segs[0] : SITE.defaultLocale;
-            const slug = segs.slice(1).join('/').replace(/\.(md|mdx)$/i, '');
+            const locale =
+              segs[0] && /** @type {readonly string[]} */ (SITE.locales).includes(segs[0])
+                ? segs[0]
+                : SITE.defaultLocale;
+            const slug = segs
+              .slice(1)
+              .join('/')
+              .replace(/\.(md|mdx)$/i, '');
             if (locale === SITE.defaultLocale) {
               unlistedPathSegments.add(`posts/${slug}`);
             } else {
@@ -187,7 +193,7 @@ export default defineConfig({
         satteriAutolinkHeadings(),
         satteriExternalLinks({
           target: '_blank',
-          rel: ['nofollow', 'noopener', 'noreferrer']
+          rel: ['nofollow', 'noopener', 'noreferrer'],
         }),
         satteriBaseLinks({ base: BASE }),
       ],
@@ -274,60 +280,56 @@ export default defineConfig({
   },
 
   fonts: [
-    // Source Sans 3 — main UI font from @fontsource/source-sans-3 npm package
     {
-      name: 'Source Sans 3',
-      cssVariable: '--font-source-sans-3',
+      name: 'Figtree',
+      cssVariable: '--font-figtree',
       provider: fontProviders.local(),
       options: {
         variants: [
           {
             weight: '400',
             style: 'normal',
-            src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-400-normal.woff2',
-            ],
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-400-normal.woff2'],
+          },
+          {
+            weight: '500',
+            style: 'normal',
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-500-normal.woff2'],
           },
           {
             weight: '600',
             style: 'normal',
+            src: ['./node_modules/@fontsource/figtree/files/figtree-latin-600-normal.woff2'],
+          },
+        ],
+      },
+    },
+    {
+      name: 'Bricolage Grotesque',
+      cssVariable: '--font-bricolage',
+      provider: fontProviders.local(),
+      options: {
+        variants: [
+          {
+            weight: '600',
+            style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-600-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-600-normal.woff2',
             ],
           },
           {
             weight: '700',
             style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-700-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-700-normal.woff2',
             ],
           },
           {
-            weight: '900',
+            weight: '800',
             style: 'normal',
             src: [
-              './node_modules/@fontsource/source-sans-3/files/source-sans-3-latin-900-normal.woff2',
+              './node_modules/@fontsource/bricolage-grotesque/files/bricolage-grotesque-latin-800-normal.woff2',
             ],
-          },
-        ],
-      },
-    },
-    // Lato — secondary font from @fontsource/lato npm package
-    {
-      name: 'Lato',
-      cssVariable: '--font-lato',
-      provider: fontProviders.local(),
-      options: {
-        variants: [
-          {
-            weight: '300',
-            style: 'normal',
-            src: ['./node_modules/@fontsource/lato/files/lato-latin-300-normal.woff2'],
-          },
-          {
-            weight: '400',
-            style: 'normal',
-            src: ['./node_modules/@fontsource/lato/files/lato-latin-400-normal.woff2'],
           },
         ],
       },

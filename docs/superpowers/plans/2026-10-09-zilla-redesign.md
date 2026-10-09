@@ -42,12 +42,12 @@ Define estas variables y funciones en el shell antes de empezar (están en `/tmp
 ```bash
 cd ~/Learn/blog-situvieraunplan
 S=${TMPDIR:-/tmp}/zilla-shots; mkdir -p $S/ff-light $S/ff-dark
-echo 'user_pref("layout.css.prefers-color-scheme.content-override", 1);' > $S/ff-light/user.js
-echo 'user_pref("layout.css.prefers-color-scheme.content-override", 0);' > $S/ff-dark/user.js
+: > $S/ff-light/user.js
+echo 'user_pref("ui.systemUsesDarkTheme", 1);' > $S/ff-dark/user.js
 
 build() { ~/.bun/bin/bun run build 2>&1 | grep -E "ERROR|rror:|build\] Complete"; }
 serve() { (cd dist && python3 -m http.server 4399 >/dev/null 2>&1 &); sleep 1; }
-unserve() { pkill -f "http.server 4399" || true; }
+unserve() { pkill -f "[h]ttp.server 4399" || true; }
 # shot <light|dark> <ruta> <ancho> <alto> <archivo>
 shot() { firefox --no-remote --profile $S/ff-$1 --headless --screenshot $S/$5 --window-size=$3,$4 "http://localhost:4399$2" >/dev/null 2>&1; }
 ```
