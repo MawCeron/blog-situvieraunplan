@@ -1,10 +1,6 @@
 /*
- * Tailwind CSS v4 + daisyUI v5 entry point.
- * See https://daisyui.com/docs/install/ for the canonical install steps.
- *
- * Theme palette closely matches the original Chirpy theme
- * (https://zilla.cotes.page/) — light grey page background, indigo-blue
- * primary, white cards, generous typography.
+ * Tailwind CSS v4 + daisyUI v5 entry point (tema Zilla).
+ * Paleta y tokens: ver los bloques `zilla-light` y `zilla-dark` más abajo.
  */
 
 @import 'tailwindcss';
@@ -117,36 +113,12 @@
   --color-warm: var(--zilla-warm);
 }
 
-/* ---------- Chirpy-specific tokens (non-daisyUI) ---------- */
+/* ---------- Fuentes ---------- */
 @theme {
-  /* Chirpy sidebar gradient */
-  --color-sidebar-from: oklch(99% 0 0);
-  --color-sidebar-to: oklch(95% 0.005 264);
-  --color-sidebar-text: oklch(40% 0.01 264);
-  --color-sidebar-muted: oklch(50% 0.012 264);
-
-  /* Sidebar/panel widths — matches Chirpy ($sidebar-width 260px, $sidebar-width-large 300px) */
-  --width-sidebar: 16.25rem; /* 260px */
-  --width-sidebar-lg: 18.75rem; /* 300px (>=1650px) */
-  --width-panel: 13.75rem; /* 220px */
-
-  /* Top bar height — Chirpy $topbar-height: 3rem */
-  --height-topbar: 3rem; /* 48px */
-
-  /* Reading column max width on post pages */
-  --width-prose: 50rem;
-
-  /* Fuentes — configuradas con la Fonts API de Astro (astro.config.mjs) */
+  /* Configuradas con la Fonts API de Astro (astro.config.mjs) */
   --font-sans: var(--font-figtree, system-ui, sans-serif);
   --font-display: var(--font-bricolage, system-ui, sans-serif);
   --font-mono: var(--font-jetbrains-mono, ui-monospace, monospace);
-}
-
-[data-theme='zilla-dark'] {
-  --color-sidebar-from: oklch(20% 0.005 264);
-  --color-sidebar-to: oklch(17% 0.005 264);
-  --color-sidebar-text: oklch(75% 0.01 264);
-  --color-sidebar-muted: oklch(55% 0.012 264);
 }
 
 /* ---------- Base layer ---------- */
@@ -237,204 +209,6 @@
   }
   ::-webkit-scrollbar-thumb:hover {
     background: color-mix(in oklab, var(--color-base-content) 35%, transparent);
-  }
-}
-
-/* ---------- Layout chrome ---------- */
-@layer components {
-  /* Left sidebar — always pinned to the extreme left of the viewport. */
-  .zilla-sidebar {
-    @apply border-base-300 fixed inset-y-0 left-0 z-40 flex flex-col items-center border-r px-4 py-6;
-    width: var(--width-sidebar);
-    background: linear-gradient(180deg, var(--color-sidebar-from) 0%, var(--color-sidebar-to) 100%);
-    color: var(--color-sidebar-text);
-    transition: transform 0.3s ease;
-  }
-  @media (max-width: 1023px) {
-    .zilla-sidebar {
-      transform: translateX(-100%);
-    }
-    .zilla-sidebar.is-open {
-      transform: translateX(0);
-    }
-  }
-  @media (min-width: 1650px) {
-    .zilla-sidebar {
-      width: var(--width-sidebar-lg);
-    }
-  }
-
-  .zilla-main-wrapper {
-    @apply flex min-h-screen w-full flex-col px-4 sm:px-6;
-  }
-  @media (min-width: 1024px) {
-    .zilla-main-wrapper {
-      margin-left: var(--width-sidebar);
-      width: calc(100% - var(--width-sidebar));
-      max-width: calc(100% - var(--width-sidebar));
-      padding-left: 3rem;
-      padding-right: 3rem;
-    }
-  }
-  @media (min-width: 1280px) {
-    .zilla-main-wrapper {
-      padding-left: 3.5rem;
-      padding-right: 3.5rem;
-    }
-  }
-  @media (min-width: 1650px) {
-    .zilla-main-wrapper {
-      margin-left: var(--width-sidebar-lg);
-      width: calc(100% - var(--width-sidebar-lg));
-      max-width: calc(100% - var(--width-sidebar-lg));
-    }
-  }
-
-  /* Inner shell that horizontally centers the main content (topbar +
-     post cards + panel + footer) inside the area to the right of the
-     sidebar. Caps at Chirpy's $main-content-max-width: 1250px. */
-  .zilla-shell {
-    @apply mx-auto flex w-full flex-1 flex-col;
-    max-width: 1250px;
-  }
-
-  /* Top bar — uses min-height (not a fixed height) plus vertical padding
-     so the controls aren't flush against the browser chrome on either
-     mobile or desktop. */
-  .zilla-topbar {
-    @apply bg-base-200/80 supports-backdrop-filter:bg-base-200/70 sticky top-0 z-30 flex min-h-(--height-topbar) items-center justify-between gap-3 py-2 backdrop-blur sm:py-3;
-  }
-
-  /* Right rail wrapper. Holds the global Panel widget followed by an
-     optional aside-bottom slot (e.g. the post TOC). The rail intentionally
-     does NOT use `self-start` so that, on long pages, it stretches to
-     match `<main>`'s height — giving any sticky child (e.g. the TOC)
-     enough vertical room to remain pinned while the article scrolls. */
-  .zilla-panel-rail {
-    @apply hidden shrink-0 pt-6 text-sm xl:block;
-    width: var(--width-panel);
-  }
-  @media (min-width: 1440px) {
-    .zilla-panel-rail {
-      width: 15rem; /* 240px */
-    }
-  }
-  @media (min-width: 1650px) {
-    .zilla-panel-rail {
-      width: 16.25rem; /* 260px */
-    }
-  }
-  .zilla-panel-rail > * + * {
-    margin-top: 2rem;
-  }
-  /* Search slot inside the topbar — on xl+ its width matches the right
-     panel rail so the search pill aligns vertically over the panel column.
-     Below xl, the right rail is hidden so the slot shrinks to fit. */
-  .zilla-topbar__search {
-    @apply flex shrink-0 items-center justify-start gap-2 px-1;
-  }
-  @media (min-width: 1280px) {
-    .zilla-topbar__search {
-      width: calc(var(--width-panel) + 2.5rem); /* rail width + gap-10 */
-      padding-left: 2.5rem; /* mirror gap-10 between main and rail */
-    }
-  }
-  @media (min-width: 1440px) {
-    .zilla-topbar__search {
-      width: calc(15rem + 2.5rem);
-    }
-  }
-  @media (min-width: 1650px) {
-    .zilla-topbar__search {
-      width: calc(16.25rem + 2.5rem);
-    }
-  }
-  /* Search row at the very top of the right panel rail. */
-  .zilla-panel-rail__search {
-    @apply w-full;
-  }
-
-  /* Inner Panel widget (Recently Updated + Trending Tags). Width and
-     visibility are owned by the rail wrapper, so this is content-only. */
-  .zilla-panel {
-    @apply block text-sm;
-  }
-
-  /* Subtle left rail for aside items (Recently Updated, TOC, etc.).
-     Each item gets a faint left border that turns primary on hover/active. */
-  .zilla-aside-list {
-    @apply flex flex-col;
-    border-left: 1px solid color-mix(in oklab, var(--color-base-content) 10%, transparent);
-  }
-  .zilla-aside-item {
-    @apply text-base-content/75 block py-1.5 pr-2 pl-3 text-sm transition;
-    margin-left: -1px;
-    border-left: 1px solid transparent;
-  }
-  .zilla-aside-item:hover {
-    @apply text-primary;
-    border-left-color: var(--color-primary);
-  }
-  .zilla-aside-item[data-active='true'] {
-    @apply text-primary font-semibold;
-    border-left-color: var(--color-primary);
-  }
-
-  /* Post card — horizontal Chirpy card */
-  .zilla-card {
-    @apply border-base-300 bg-base-100 mb-5 overflow-hidden rounded-md border transition hover:-translate-y-0.5 hover:shadow-[0_2px_4px_-1px_rgba(0,0,0,0.05),0_4px_12px_rgba(0,0,0,0.08)];
-  }
-  .zilla-card-link {
-    @apply grid grid-cols-1 gap-0 md:grid-cols-12;
-  }
-  /* Image cards can be fixed-size (default Chirpy behavior) or dynamic
-     based on `SITE.dynamicPostCardHeight`. */
-  .zilla-card-link.has-image {
-    @apply md:grid-cols-12;
-  }
-
-  .zilla-card-body {
-    @apply flex min-w-0 flex-col p-4 sm:p-5 md:col-span-7 md:p-6;
-  }
-  .zilla-card-body.full {
-    @apply md:col-span-12;
-  }
-  .zilla-card-link.no-image .zilla-card-body {
-    @apply md:p-5;
-  }
-  /* Title and description gain line-clamps so a very long title (or a
-     verbose description) cannot push the card past the fixed height. */
-  .zilla-card-title {
-    @apply text-base-content mt-0 text-2xl leading-snug font-bold tracking-tight sm:text-[1.55rem];
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .zilla-card-title.compact {
-    @apply md:text-[1.4rem];
-  }
-  @media (min-width: 768px) {
-    .zilla-card-link.has-image.dynamic-size .zilla-card-title {
-      display: block;
-      -webkit-line-clamp: unset;
-      line-clamp: unset;
-      -webkit-box-orient: unset;
-      overflow: visible;
-    }
-    .zilla-card-link.has-image.dynamic-size .zilla-card-body > p {
-      -webkit-line-clamp: unset;
-      line-clamp: unset;
-      overflow: visible;
-      display: block;
-    }
-  }
-  .zilla-card-image-wrap {
-    @apply order-first overflow-hidden md:order-last md:col-span-5 md:flex md:flex-col;
-  }
-  .zilla-card-image {
-    @apply h-44 w-full object-cover md:min-h-0 md:flex-1 md:rounded-r-md;
   }
 }
 
@@ -529,28 +303,13 @@
   .video-embed__frame {
     @apply relative overflow-hidden rounded-md;
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    background: var(--color-sidebar-to);
+    background: var(--color-base-200);
   }
   .video-embed__frame > iframe {
     @apply absolute inset-0 h-full w-full;
     border: 0;
   }
 
-  /* Hero image — contained within content width, using the sidebar's
-     subtle gradient as a placeholder background. */
-  .post-hero {
-    @apply mx-auto;
-    max-width: 100%;
-  }
-  .post-hero__frame {
-    @apply relative overflow-hidden rounded-md;
-    background: var(--color-sidebar-to);
-  }
-  .post-hero__img {
-    @apply block w-full;
-    height: auto;
-    object-fit: cover;
-  }
   .prose-zilla table {
     @apply border-base-300 my-6 w-full overflow-hidden rounded-2xl border text-left text-sm;
     border-collapse: separate;
@@ -683,13 +442,6 @@
       opacity: 1;
       transform: translateY(0);
     }
-  }
-}
-
-/* ---------- Trending tag pill (Chirpy outline-primary) ---------- */
-@layer components {
-  .post-tag {
-    @apply border-primary/60 bg-base-100 text-primary hover:bg-primary hover:text-primary-content inline-flex items-center rounded-full border px-3 py-1 text-xs font-medium transition;
   }
 }
 

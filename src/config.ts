@@ -30,7 +30,6 @@ const GITHUB_HANDLE = import.meta.env.PUBLIC_GITHUB_HANDLE ?? '';
 const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO ?? 'chirping-astro';
 const TWITTER_HANDLE = import.meta.env.PUBLIC_TWITTER_HANDLE ?? '';
 const CONTACT_EMAIL = import.meta.env.PUBLIC_CONTACT_EMAIL ?? '';
-const THEME_REPO_URL = 'https://github.com/kannansuresh/chirping-astro';
 
 /**
  * Public GitHub coordinates of the deployed source. Useful for custom links
@@ -71,33 +70,15 @@ export const SITE: SiteConfig = {
   /** Show the featured image at the top of each post too. false = listing cards only. */
   showHeroInPosts: true,
   /** Wrap the article body of posts and pages in a bordered, card-like container. */
-  boxedArticles: false,
   /** Allow listing cards to grow when title/description content is longer. */
-  dynamicPostCardHeight: false,
   /** Automatically generate Open Graph images for posts that don't have a `heroImage`. */
   autoOgImage: true,
   /** Show a link to the Privacy Policy page in the footer. */
   showPrivacyPolicy: true,
   /** Footer text/link controls. */
   footer: {
-    /**
-     * Optional full override for the left footer line. Supports {year} and {author}.
-     * Default when undefined: "© {year} {author}. All rights reserved." (+ Privacy Policy link if enabled).
-     */
-    leftText: undefined,
-    /**
-     * Optional custom text before the theme link on the right footer line.
-     * Default when undefined: "Powered by Astro · Theme <themeName>".
-     */
-    rightText: undefined,
     /** Whether to show the Privacy Policy link in the footer. */
     showPrivacyPolicy: true,
-    /** Whether to show theme credits in the footer right side. Theme <themeName> */
-    showThemeCredits: true,
-    /** Label for the theme repository link in the right footer line. */
-    themeName: 'Chirping Astro',
-    /** Default upstream theme repository. */
-    themeUrl: THEME_REPO_URL,
   },
 
   // ==========================================
