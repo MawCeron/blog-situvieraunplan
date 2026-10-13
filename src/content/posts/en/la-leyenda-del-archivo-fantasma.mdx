@@ -4,6 +4,7 @@ description: 'La curiosa historia real de un archivo PDF fantasma que se negaba 
 pubDate: 2014-12-30
 tags: [anécdotas, sysadmin, windows]
 categories: [Personal]
+heroImage: '../../../assets/images/posts/heroes/archivo-fantasma.jpg'
 ---
 
 import Callout from '../../../components/Callout.astro';
@@ -46,6 +47,6 @@ Acto seguido elimino el archivo en cuestión. Problema resuelto, ahora solo reno
 
 Actualizo el explorador de archivos y descubro que el archivo ha reaparecido. Vuelvo a eliminarlo, actualizo y reaparece tantas veces como lo elimino. Trato de abrirlo y tal como esperaba es un archivo corrupto. Sin muchas ganas de seguir batallando decido renombrarlo para que no me genere el conflicto y no afectar la organización que tiene N en esa carpeta, pero cuando lo intento me aparece otro mensaje **"No tiene los permisos suficientes para realizar esta acción u otro usuario tiene abierto el archivo"**. En ese momento decidí darme un tiro por ignorar esa posibilidad.
 
-Abro la consola de Windows y ejecuto **net files** para encontrar que usuarios de red están ejecutando el archivo. Y en el listado me aparece que se trata de **E**, la encargada de logística, lo cual no es posible debido a que se encuentra de incapacidad desde hace varias semanas y cuyo equipo mantengo en resguardo y por lo tanto apagado. Era simplemente imposible. Decidí "cerrar" el archivo, claramente fantasma, desde consola (**net files IDdelArchivo /close**) esperando que funcionara... **"No existe ningún archivo con esa ID ejecutandose"**, reviso la carpeta y el archivo desapareció sin dejar rastro. Simplemente dejo de existir. Con el problema aparentemente resuelto decidí no investigar más y continuar con mi trabajo.
+Abro la consola de Windows y ejecuto `net files` para encontrar que usuarios de red están ejecutando el archivo. Y en el listado me aparece que se trata de **E**, la encargada de logística, lo cual no es posible debido a que se encuentra de incapacidad desde hace varias semanas y cuyo equipo mantengo en resguardo y por lo tanto apagado. Era simplemente imposible. Decidí "cerrar" el archivo, claramente fantasma, desde consola `net files IDdelArchivo /close` esperando que funcionara... **"No existe ningún archivo con esa ID ejecutandose"**, reviso la carpeta y el archivo desapareció sin dejar rastro. Simplemente dejo de existir. Con el problema aparentemente resuelto decidí no investigar más y continuar con mi trabajo.
 
 **Fuck this shit!!**
