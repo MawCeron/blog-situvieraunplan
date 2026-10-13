@@ -702,3 +702,38 @@
     @apply text-inherit underline;
   }
 }
+
+/* ---------- Listas de recursos (<ResourceList>) y spoilers (<Spoiler>) ---------- */
+@layer components {
+  .prose-zilla .resource-list {
+    @apply my-6;
+  }
+  .prose-zilla .resource-list__label {
+    @apply font-display text-muted mt-0 mb-3 border-0 text-[13px] font-bold tracking-[0.16em] uppercase;
+  }
+  .prose-zilla .resource-list ul {
+    @apply border-base-300 bg-base-100 m-0 list-none overflow-hidden rounded-2xl border p-0;
+  }
+  .prose-zilla .resource-list li {
+    @apply border-base-300 m-0 border-b p-0;
+  }
+  .prose-zilla .resource-list li:last-child {
+    @apply border-b-0;
+  }
+  .prose-zilla .resource-list li a {
+    @apply text-base-content hover:bg-surface2 flex items-center justify-between gap-4 px-4 py-3 text-base no-underline transition-colors;
+  }
+  .prose-zilla .resource-list li a:hover {
+    @apply text-primary;
+  }
+  .prose-zilla .resource-list li a::after {
+    @apply text-muted shrink-0;
+    content: '\2197';
+  }
+  .spoiler > summary {
+    @apply w-fit;
+  }
+  .spoiler[open] > summary {
+    @apply mb-0;
+  }
+}

@@ -1,0 +1,23 @@
+---
+/**
+ * Lista de recursos (libros, descargas…) para MDX. El contenido es una lista
+ * de Markdown con enlaces; hay que dejar líneas en blanco alrededor:
+ *
+ *   <ResourceList label="En español">
+ *
+ *   - [Autor - Título](https://…)
+ *
+ *   </ResourceList>
+ */
+interface Props {
+  /** Título opcional de la lista (por ejemplo, el idioma). */
+  label?: string;
+}
+
+const { label } = Astro.props;
+---
+
+<section class="resource-list">
+  {label && <h3 class="resource-list__label">{label}</h3>}
+  <slot />
+</section>

@@ -1,0 +1,29 @@
+---
+/**
+ * Bloque de spoilers para MDX: cerrado por defecto, se abre con un clic.
+ *
+ *   <Spoiler>
+ *
+ *   Texto con spoilers…
+ *
+ *   </Spoiler>
+ */
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  /** Texto del botón. */
+  label?: string;
+}
+
+const { label = 'Contiene spoilers: haz clic para mostrarlos' } = Astro.props;
+---
+
+<details class="spoiler my-8">
+  <summary class="zilla-menu__summary gap-2.5">
+    <Icon name="lucide:eye-off" width={18} height={18} aria-hidden="true" />
+    <span>{label}</span>
+  </summary>
+  <div class="spoiler__body mt-6">
+    <slot />
+  </div>
+</details>

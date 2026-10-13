@@ -8,13 +8,15 @@ categories: [Linux]
 toc: false
 ---
 
-<!-- TODO: imagen original (20070605000437-internet-radio-2.jpg, pie "Radio Online") alojada en Photobucket, que ya no sirve imágenes hotlinkeadas de cuentas gratuitas. Reemplazar si se recupera una copia local. -->
+import Callout from '../../../components/Callout.astro';
+
+{/* TODO: imagen original (20070605000437-internet-radio-2.jpg, pie "Radio Online") alojada en Photobucket, que ya no sirve imágenes hotlinkeadas de cuentas gratuitas. Reemplazar si se recupera una copia local. */}
 
 Desde hace algún tiempo soy locutor de una radio por Internet ([Key Anime Radio](http://keyanimestyle.sitiosprodigy.com.mx/keyradio.html)), y desde entonces comencé a buscar la forma de hacer transmisiones cada vez con mejor calidad. Así me topé con un programa llamado [**SamBroadcaster**](http://www.spacialaudio.com/), un programa completo para transmitir tu propia radio por Internet, que solamente tiene un problema: cuesta **\$299.00 USD** (claro que siempre puede conseguirse la versión crackeada). Pero su otro *problema* es que se trata de un programa pensado para plataformas Window\$, y yo utilizo Linux Ubuntu, lo cual me había obligado a tener una versión de Windows instalada, ya que no encontraba ningún programa que me ofreciera las mismas características y trabajara sobre Linux. Hasta hoy, después de mucho tiempo buscando, me topé con *probablemente* el único programa 100% libre para transmitir radio por Internet: **Internet DJ Console**.
 
 ## Un poco de historia
 
-<!-- TODO: imagen original (idjc.png, pie "Internet DJ Console") alojada en Photobucket, que ya no sirve imágenes hotlinkeadas de cuentas gratuitas. Reemplazar si se recupera una copia local. -->
+{/* TODO: imagen original (idjc.png, pie "Internet DJ Console") alojada en Photobucket, que ya no sirve imágenes hotlinkeadas de cuentas gratuitas. Reemplazar si se recupera una copia local. */}
 
 **Internet DJ Console** fue creado en el 2005 por Stephen Fairchild después de ver la falta de programas para DJ en plataforma Linux, ya que, en sus palabras, «los programas que encontraba tenían escasas funciones, estaban llenos de bugs, o tristemente no podían compilarse. Me di cuenta de que había que hacer algo y que, teniendo algunas habilidades de programación, podría hacerlo yo mismo».
 
@@ -45,7 +47,9 @@ cd idjc-0.8.2
 ./configure CFLAGS="-O2"
 ```
 
-> **Nota**: se trata de una letra «O» y no un cero.
+<Callout type="info" title="Nota">
+  Se trata de una letra «O» y no un cero.
+</Callout>
 
 **5.** Escribimos `make`:
 

@@ -6,11 +6,15 @@ tags: [linux, bash, scripting, terminal]
 categories: [Linux]
 ---
 
+import Callout from '../../../components/Callout.astro';
+
 Existen muchos motivos por los que modificar las distintas fechas almacenadas en un archivo nos puede resultar útil, en mi caso lo hice para que mi SmartTV reconociera el orden correcto de los episodios de algunos animes, o para que el autoestéreo reprodujera las canciones en orden alfabético sin importar cual agregue primero a la usb.
 
 En fin, para modificar la fecha de un archivo existe el comando **touch** que nos es muy útil si lo que queremos es modificar un solo archivo, pero la cosa se complica cuando tenemos cerca de 99 archivos y obviamente no queremos que todos tengan la misma hora, así que para resolver este problemita decidí escribir un script en bash que podemos ejecutar y modificar fácilmente para adaptarlo a sus necesidades, solo copien el código a un editor de texto como gedit, guárdenlo con extensión **.sh** y denle permisos de ejecución. Listo!!
 
-**Nota: Este script solo funciona con hasta 99 archivos hasta el momento, tómenlo en cuenta... Si encuentro la solución a eso lo actualizaré**
+<Callout type="warning" title="Nota">
+  Este script solo funciona con hasta 99 archivos hasta el momento, tómenlo en cuenta... Si encuentro la solución a eso lo actualizaré
+</Callout>
 
 ```bash
 #!/bin/bash
