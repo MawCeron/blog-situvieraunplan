@@ -4,6 +4,7 @@ description: 'Un repaso del día a día de un SysAdmin, todo lo que das por sent
 pubDate: 2016-07-29
 tags: [sysadmin, ti, reflexión]
 categories: [Random, Opinión]
+heroImage: ../../../assets/images/posts/heroes/sysadmin.jpg
 ---
 
 El día de hoy, como cada último viernes de Julio se celebra el _[Día de Apreciación a los Administradores de Sistemas](https://es.wikipedia.org/wiki/D%C3%ADa_del_Administrador_de_Sistemas_Inform%C3%A1ticos)_, también conocido como el SysAdmin Day. Como ya saben profesionalmente me desempeño como _**SysAdmin**_ o en otras palabras, soy _"el de sistemas"_. Ese que está allí para ver porqué la impresora no funciona, porqué tu contraseña no funciona o porqué el programa no hace lo que quieres. También soy ese que según el resto _no hace nada,_ pero que cuando no está nada funciona o todo falla (que no es lo mismo).

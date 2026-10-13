@@ -4,6 +4,7 @@ description: 'Una recopilación personal de comandos de símbolo de sistema para
 pubDate: 2017-01-16
 tags: [windows, cmd, troubleshooting, sistemas]
 categories: [Windows]
+heroImage: ../../../assets/images/posts/heroes/comandos-utiles-w10.jpg
 ---
 
 Empecemos dejando las cosas en claro, esta entrada **NO es un tutorial** ni nada por el estilo, es más como un apunte personal, una simple compilación de los comandos que me he ido encontrando para resolver algunos de los tantos problemas que he encontrado en Windows 10 y ocasionalmente en Windows 8. Por lo que pueden o no solucionar tu problema. Creo que está de más decirlo, pero, deben ejecutarse en el símbolo de sistema como administrador.

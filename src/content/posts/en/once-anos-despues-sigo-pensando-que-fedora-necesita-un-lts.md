@@ -2,7 +2,6 @@
 title: "Sigo pensando que Fedora necesita un LTS (once años después)"
 description: "En 2015 escribí que Fedora necesitaba una versión de soporte largo y me fui a Mint. Hoy, de vuelta en Fedora Workstation, sigo pensando lo mismo. Esto es lo que ha cambiado, lo que no, y una derivada imaginaria que solo existe en mi cabeza."
 pubDate: 2026-10-13
-draft: true
 tags: [linux, fedora, distros, lts]
 categories: [Linux, Opinión]
 heroImage: '../../../assets/images/posts/heroes/fedora-lts-2.jpg'
