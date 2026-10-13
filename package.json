@@ -1,8 +1,8 @@
 {
-  "name": "",
+  "name": "zilla",
   "version": "1.2.0",
   "type": "module",
-  "description": "A Chirpy-inspired, single-template, multilingual Astro v7 theme with Tailwind v4, daisyUI, MDX, Pagefind, and Giscus.",
+  "description": "Zilla: tema de blog para Astro v7 con Tailwind v4, daisyUI, MDX, Pagefind y Giscus. Derivado de Chirping Astro.",
   "license": "MIT",
   "engines": {
     "bun": ">=1.1.0"

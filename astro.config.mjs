@@ -136,7 +136,7 @@ export default defineConfig({
   // `http://localhost:4321/` for a friction-free local experience. The
   // `BASE_PATH` env var (read from `.env`) lets each environment opt in:
   //   - `.env` (committed empty / unset)         → dev runs at `/`
-  //   - CI / Pages workflow sets BASE_PATH=/chirping-astro for the build
+  //   - CI / Pages workflow sets BASE_PATH=/<repo> for the build
   //
   // In source code, always build absolute paths through `withBase()` /
   // `localizedPath()` in `src/i18n/utils.ts` so they pick up this value

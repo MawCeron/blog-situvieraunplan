@@ -27,7 +27,7 @@ export type Locale = (typeof locales)[number];
  * URL is exposed.
  */
 const GITHUB_HANDLE = import.meta.env.PUBLIC_GITHUB_HANDLE ?? '';
-const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO ?? 'chirping-astro';
+const GITHUB_REPO = import.meta.env.PUBLIC_GITHUB_REPO ?? 'blog-situvieraunplan';
 const TWITTER_HANDLE = import.meta.env.PUBLIC_TWITTER_HANDLE ?? '';
 const CONTACT_EMAIL = import.meta.env.PUBLIC_CONTACT_EMAIL ?? '';
 

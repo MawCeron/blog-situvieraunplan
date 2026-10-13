@@ -2,7 +2,7 @@
 /**
  * OG Image generator using Satori + Resvg.
  *
- * Produces a 1200×630 PNG matching the Chirpy Astro theme style:
+ * Produces a 1200×630 PNG matching the Zilla theme style:
  * - Indigo-blue gradient background (primary color)
  * - White card with title, description, category, date, and site branding
  * - Clean typography with good contrast
