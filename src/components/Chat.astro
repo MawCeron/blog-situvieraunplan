@@ -1,0 +1,15 @@
+---
+/**
+ * Agrupa los mensajes de una conversación (margen y etiqueta de accesibilidad).
+ * Cada <ChatMessage> es un `.chat` de daisyUI y también funciona solo.
+ *
+ *   <Chat>
+ *     <ChatMessage from="Compañera">Hola</ChatMessage>
+ *     <ChatMessage from="Yo" me>Hola, ¿qué tal?</ChatMessage>
+ *   </Chat>
+ */
+---
+
+<div class="my-8" role="group" aria-label="Conversación">
+  <slot />
+</div>

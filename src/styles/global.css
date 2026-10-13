@@ -67,9 +67,9 @@
   --color-base-300: #24332e; /* line */
   --color-base-content: #e8f0ec; /* text */
 
-  --color-primary: #84A52D; /* accent */
+  --color-primary: #84a52d; /* accent */
   --color-primary-content: #1c2606; /* ink */
-  --color-secondary: #84A52D;
+  --color-secondary: #84a52d;
   --color-secondary-content: #1c2606;
   --color-accent: #f0a35e; /* warm */
   --color-accent-content: #2a1500;
@@ -678,5 +678,27 @@
     .zilla-watermark {
       display: none;
     }
+  }
+}
+
+/* ---------- Conversaciones tipo chat: daisyUI (.chat) con ajustes para el prose ---------- */
+@layer components {
+  .chat-bubble {
+    @apply text-base leading-relaxed;
+  }
+  .chat-bubble > :first-child {
+    margin-top: 0;
+  }
+  .chat-bubble > :last-child {
+    margin-bottom: 0;
+  }
+  /* El prose da margen, borde y esquinas a las imágenes; el avatar no los necesita. */
+  .chat-image img {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+  }
+  .chat-bubble-primary a {
+    @apply text-inherit underline;
   }
 }

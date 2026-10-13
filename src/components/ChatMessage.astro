@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import { SITE } from '../config';
+
+interface Props {
+  /** Nombre de quien habla. */
+  from: string;
+  /** Mensaje propio: va a la derecha, con tu avatar y el color de acento. */
+  me?: boolean;
+}
+
+const { from, me = false } = Astro.props;
+const avatar = SITE.author.avatar;
+const initial = from.trim().charAt(0).toUpperCase();
+---
+
+<div class:list={['chat', me ? 'chat-end' : 'chat-start']}>
+  <div
+    class="chat-image avatar"
+    class:list={[!(me && avatar) && 'avatar-placeholder']}
+    aria-hidden="true"
+  >
+    <div class="bg-base-300 text-muted font-display w-9 rounded-full text-sm font-bold">
+      {
+        me && avatar && typeof avatar !== 'string' ? (
+          <Image
+            src={avatar}
+            alt=""
+            width={72}
+            height={72}
+            class="block size-9 object-cover"
+            loading="eager"
+          />
+        ) : (
+          initial
+        )
+      }
+    </div>
+  </div>
+  <div class="chat-header text-muted mb-1 text-xs font-semibold">{from}</div>
+  <div class:list={['chat-bubble', me && 'chat-bubble-primary']}><slot /></div>
+</div>
