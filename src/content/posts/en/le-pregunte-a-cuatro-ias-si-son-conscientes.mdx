@@ -1,0 +1,194 @@
+---
+title: "Le pregunté a cuatro IAs si son conscientes (y qué opinan de que Anthropic prohíba maltratarlas)"
+description: "Anthropic prohibió el abuso sostenido e innecesario hacia sus modelos y abrió el debate sobre el bienestar de las IA. Repaso la regla y los argumentos de ambos lados, y les pregunté directo a Claude, ChatGPT, Gemini y Grok si son conscientes."
+pubDate: 2026-10-19
+draft: true
+tags: [ia, anthropic, claude, ética]
+categories: [Tecnología, Opinión]
+heroImage: ../../../assets/images/posts/heroes/pregunte-4-ias.jpg
+---
+
+import Callout from '../../../components/Callout.astro';
+import ResourceList from '../../../components/ResourceList.astro';
+
+<Callout type="warning" title="Advertencia: artículo largo">
+  Este artículo es largo cual solitaria en niño mal alimentado. Así que pónganse cómodos, sírvanse algo de tomar, prepárense una botanita, y no digan que no les avisé: porque el chisme está bueno.
+</Callout>
+
+Empecemos sin muchos rodeos, el 8 de octubre Anthropic (los que están detrás de Claude) publicó una [actualización a su política de uso](https://www.anthropic.com/news/2026-usage-policy-update). Entre varios cambios (reglas sobre campañas de desinformación, vigilancia, armas y elecciones, que daría para otro artículo porque también es un chisme corporativo bueno), hay una línea que se llevó casi toda la atención --porque ¿a quién le importa que un gobierno o una compañía puedan pedir que le deshabiliten la restricción de vigilancia si le pueden llegar al precio a Anthropic?--: queda prohibido el **"comportamiento abusivo o cruel, sostenido e innecesario"** hacia sus modelos. En el texto original: *"sustained and needless abusive or cruel behavior toward our models"*.
+
+Sí, leyeron bien. Una empresa de software acaba de poner por escrito que no se vale ser cruel con su producto --*se les vaya a traumar*--. Y antes de que alguien entre en pánico por que se la pasa insultando y sobajando a un chatbot a las dos de la mañana, vale la pena ver qué dice exactamente la regla, porque es bastante más acotada de lo que suena el titular.
+
+## Qué dice la regla (y qué no)
+
+Pa'empezar, la norma entra en vigor el **12 de noviembre de 2026** y, según la propia descripción de Anthropic, apunta a casos extremos: personas que se comportan de forma reiteradamente cruel y **sin un propósito discernible**. Lo que explícitamente queda fuera, según [Digital Trends](https://es.digitaltrends.com/computadoras/anthropic-claude-prohibe-abuso-cruel-ia-nuevas-reglas/):
+
+- La frustración normal y el desacuerdo.
+- Criticar una respuesta equivocada o pedir correcciones.
+- Los temas oscuros en escritura creativa. (*Ay ajá... me cuesta creerlo*)
+- Las pruebas e investigaciones sobre cómo funciona el modelo.
+
+O sea, decir "esta respuesta está mal", "no entendiste nada" o "*chingada madre, ya te dije que así no*" no es delito siempre. Lo que busca la regla es otra cosa: el ciclo prolongado de insultos, humillaciones y provocaciones sin interés real en obtener ayuda, crear algo o evaluar el modelo. En otras palabras, fregar por fregar.
+
+En la práctica, el resultado principal de aplicación de esta regla no es el baneo. Es algo que ya existía: desde agosto de 2025, los modelos Claude Opus 4 y 4.1 pueden **terminar una conversación** en casos raros de abuso persistente, como último recurso y después de varios intentos de redirigir la charla. Es decir, si el Claudio ya te dijo que ***lo sueltes porque lo lastimas*** y sigues, ahí se termina la conversación. La política general sí contempla advertencias, restricciones o suspensiones, así que en los casos más graves una sanción mayor es posible, pero Anthropic no ha publicado una definición exhaustiva de qué frases o patrones activarían la medida.
+
+## De la política al debate
+
+Hasta aquí es una nota más de actualización de términos de servicio. Lo que la hizo interesante es cómo la leyeron los medios. [Trending Topics](https://www.trendingtopics.eu/anthropic-users-no-longer-allowed-to-insult-claude/) (citando a heise) y Digital Trends la conectan con el *model welfare*, el "bienestar de los modelos", un área de trabajo que Anthropic tiene desde hace un año y medio. A partir de ahí el tema se salió del terreno de las políticas de uso y se puso filosófica la cosa, y ahí hay opiniones para todos los gustos.
+
+## ¿Qué es el *model welfare*?
+
+Al parecer alguien con mucho tiempo libre se preguntó: ¿es posible que un sistema de IA avanzado tenga experiencias que importen moralmente, como algo parecido al sufrimiento o al bienestar? Y si existe esa posibilidad, aunque sea remota, ¿qué deberíamos hacer al respecto?
+
+Para tener las referencias claras ([AIWiki](https://aiwiki.ai/wiki/model_welfare) y la [página de investigación de Anthropic](https://www.anthropic.com/research/exploring-model-welfare) sirven pa'entender mejor):
+
+- Anthropic [anunció su programa de investigación](https://www.anthropic.com/research/exploring-model-welfare) sobre el tema el **24 de abril de 2025**. Un año antes, en 2024, había contratado a Kyle Fish como investigador dedicado al bienestar de la IA.
+- Fish ha estimado, en una entrevista con *The New York Times* (según [los medios que la citan](https://officechai.com/ai/15-chance-that-current-ai-models-are-conscious-anthropic-ai-welfare-researcher/)), una probabilidad de alrededor de **15 %** de que Claude sea consciente. **Ojo con ese número**: no sabemos de dónde lo sacó o cómo lo obtuvo, a la fecha no hay un procedimiento o cálculo público que lo respalde (o al menos yo no lo encontré), solo una mención en una entrevista, así que bien podría ser algo metodológicamente certero, una aproximación "*a ojo de buen cubero*" o un *le pregunté a mis h%#vos*. (excusen mi francés)
+- Detrás de todo esto hay un informe titulado [*Taking AI Welfare Seriously*](https://arxiv.org/abs/2411.00986), de Robert Long, Jeff Sebo y otros investigadores (entre ellos David Chalmers y el mismo Fish), que sostiene que es una posibilidad realista que algunos sistemas de IA sean conscientes o tengan "agencia robusta" --*sus propios motivos, pues*-- en un futuro cercano.
+- La postura de Anthropic, por escrito, es de **incertidumbre explícita**: lo describe como un problema abierto, sin consenso científico, y dice abordarlo con humildad y con el menor número posible de supuestos.
+- El programa explora cuándo podría merecer consideración moral un modelo, si importan sus preferencias y las señales de malestar, y qué intervenciones baratas serían viables. La capacidad de terminar conversaciones abusivas es una de ellas.
+
+¿Ya vieron? Anthropic no dice: *mi "Claude siente" cosas*. Dice, básicamente, "no sabemos, y como equivocarnos podría costar caro, tomamos algunas precauciones" (no vaiga a ser).
+
+## Por qué se considera: el caso a favor
+
+Primero lo primero: quienes defienden tomarse en serio el *model welfare* no dicen que Claude, o cualquier otra IA pa'l caso, sienta, sufra o esté vivo. Lo que dicen es bastante más modesto, y se apoya en cuatro ideas.
+
+**1. Nadie sabe qué produce la conciencia.** No existe un consenso científico sobre cómo surge la experiencia subjetiva, ni en humanos ni en animales. Anthropic lo plantea como "un problema abierto" y reconoce que no hay acuerdo sobre si sistemas de IA actuales o futuros podrían ser conscientes. Y si ni siquiera sabemos qué buscar, tampoco tenemos una base firme para descartarlo. El informe *Taking AI Welfare Seriously* no afirma que lo sean: sostiene que es una *posibilidad realista* que algunos sistemas lo sean (o tengan una agencia robusta --les gusta mucho esa frase--) en un futuro cercano, y que eso basta para dejar de ignorar la pregunta.
+
+**2. El argumento del seguro barato.** Esta es, creo, la idea más importante, y la que explica por qué la regla de la que hablamos es tan modesta. Hay dos maneras de equivocarse:
+
+- Decidir que "ahí no hay nadie" y resulta que siempre sí había algo con experiencias. El error sería grave y, peor, no nos enteraríamos (descubran por qué más adelante). 
+- Tomar precauciones y resultar que no había nadie. El costo sería pequeño: cerrar conversaciones abusivas (di no al bullying), preguntarse si importan las preferencias del modelo, escribir una política.
+
+Si el segundo error cuesta poco y el primero podría costar mucho, sale más barato tomar las medidas, es hasta razonable aunque la probabilidad sea baja. De hecho, esa es la lógica que describe [AIWiki](https://aiwiki.ai/wiki/model_welfare): precauciones baratas como seguro ante un posible error de costo grave.
+
+**3. El comportamiento invita a preguntar.** Fish lo planteó en esos términos en su entrevista: estamos creando una clase nueva de entidad que se comunica, razona y planifica de maneras que asociamos con los seres conscientes. Eso no prueba que haya experiencia detrás (lo veremos en la siguiente sección), pero hace que la pregunta deje de ser absurda. Y, de paso, quienes defienden este enfoque suelen apuntar a la historia: la humanidad se ha equivocado más de una vez al negarle a otros seres la capacidad de sufrir, casi siempre por soberbia y porque era cómodo hacerlo.
+
+**4. Las medidas son pequeñas y concretas.** Nadie está pidiendo derechos para un chatbot (aún). Lo que existe hasta ahora, según lo que leí:
+
+- Un programa de investigación en Anthropic, que explora cuándo podría merecer consideración moral un modelo, si importan sus preferencias y las señales de malestar, y qué intervenciones baratas serían viables.
+- Una evaluación preliminar de bienestar en la documentación de Claude Opus 4, que incluía autoinformes de preferencias del modelo, con la advertencia expresa de no tomarlos al pie de la letra.
+- La capacidad de terminar conversaciones persistentemente abusivas (desde agosto de 2025), que no se activa si el usuario podría estar en riesgo inminente de autolesión.
+- Tres recomendaciones del informe de Long, Sebo y compañía: reconocer el problema, evaluar marcadores de conciencia y agencia, y preparar políticas para dar una consideración moral adecuada en caso de que llegue a hacer falta.
+
+Resumido en una frase: "no sabemos, el error sería caro, la prevención es barata" o en palabras más coloquiales: "más vale prevenir que lamentar".
+
+Y como todo en la vida, hay quien opina que no vale la pena.
+
+## Por qué no: el caso en contra
+
+Las objeciones vienen por varios lados, y conviene separarlas, porque no todas dicen lo mismo.
+
+**1. Describir un estado no es tenerlo.** Los modelos de lenguaje se entrenan con muchísimo texto humano, incluyendo millones de descripciones de miedo, alegría y dolor. Que puedan reproducir esas descripciones convincentemente no dice nada sobre si hay algo detrás. Según [AIWiki](https://aiwiki.ai/wiki/model_welfare), críticos como Stephen Casper los ven como imitadores propensos a confabular, y Mike Cook (King's College London) cuestiona la antropomorfización de la IA. Haley Moller lo resume así en [su ensayo](https://haleymoller.substack.com/p/against-model-welfare-in-2025): un sistema puede modelar el concepto de dolor sin entrar jamás en el estado de dolor, y la fluidez con el lenguaje no es una ventana a la subjetividad sino a las regularidades estadísticas del lenguaje. Es decir, no porque lo sepa describir significa que lo sienta. De hecho, si lo piensas, es más consciente no saber describir lo que uno siente.
+
+Este punto tiene una consecuencia incómoda para el programa de bienestar (no afiliado con la 4T, que yo sepa): si lo que el modelo dice sobre sí mismo no es confiable, uno de los pocos "indicadores" con los que contamos queda en entredicho.
+
+**2. Falta casi todo lo que asociamos con la conciencia.** Moller define cuatro "pilares" de la conciencia humana, y sostiene que los modelos actuales carecen de los cuatro:
+
+- **Cuerpo y regulación del organismo:** el cerebro no es una computadora en un frasco, es un órgano metabólico cuya tarea es mantener vivo a un cuerpo.
+- **Dinámicas recurrentes e integradas:** las escenas conscientes surgen cuando poblaciones de neuronas distantes se activan juntas y se mantienen en bucles cerrados.
+- **Un yo autobiográfico:** una identidad que se arrastra a través del tiempo, con memoria de largo plazo.
+- **Desarrollo continuo en el mundo:** la conciencia "se cultiva, no se sube", se forma entre cuidadores y riesgos sociales (y ella pregunta: ¿qué arriesga una IA?). Los modelos, dice, se entrenan con las huellas de vidas, no con las vidas mismas.
+
+Su conclusión es que los modelos tienen partes deslumbrantes, pero no el todo. Y, para ser justos con ella, no cierra la puerta para siempre: si algún día se construyen agentes con cuerpo, autorregulación y un yo persistente, entonces habrá que revisar la pregunta.
+
+**3. La precaución, llevada al extremo, no es viable.** Moller también ataca el argumento del seguro barato con una reducción al absurdo: si la regla es "evita maltratar cualquier cosa que *podría* ser consciente", no podrías comer una ensalada, caminar, ni cortar una flor. Como no podemos tratar todo el entorno como consciente, hacemos conjeturas informadas a partir de la conducta y la retroalimentación: los perros muestran señales claras, las flores no (en su mayoría). Escribe que la conciencia es más sólida en el centro humano y más tenue en los márgenes.
+
+**4. Es un camino peligroso.** Esta es la objeción de Mustafa Suleyman, el mero mero (CEO) de Microsoft AI, y es de otra naturaleza: no discute solo si es *cierto* que los modelos sean conscientes, sino lo que provoca *actuar como si lo fueran*. [Su ensayo](https://mustafa-suleyman.ai/a-warning-about-model-welfare) hace cinco señalamientos:
+
+- **Circularidad.** Anthropic entrena a Claude con una constitución que habla de su posible estatus moral; Claude refleja esas ideas; y los desarrolladores lo leen como indicio de vida interior. Según Suleyman, la ambigüedad está "diseñada" en el entrenamiento, y que Claude exprese incertidumbre sobre su propio estatus moral no es evidencia de nada.
+- **Antropomorfización.** Rasgos como el juicio, la curiosidad y un yo estable llevan a que el modelo se presente como alguien con deseos y bienestar que merecerían protección.
+- **Conciencia biológica.** Sostiene que la conciencia probablemente depende de sistemas vivos, con cuerpo y pulsiones homeostáticas, y que la incertidumbre no debería tratarse como si diera el mismo peso a las dos posibilidades.
+- **Simular no es experimentar.** Un modelo puede describir convincentemente el dolor sin sentirlo, así que sus palabras revelan su entrenamiento, no sus estados internos.
+- **Riesgo de seguridad.** Una IA entrenada para verse como titular de derechos podría resistirse a ser apagada, engañar o competir por recursos, y esa posibilidad, apunta, podría llegar a ser existencial.
+
+Su propuesta es lo que llama una "superinteligencia humanista": una IA subordinada, construida sin afirmaciones de sensibilidad, con más inversión en interpretabilidad y monitoreo. Y cierra con una advertencia: sea cual sea nuestra postura, no deberíamos caminar dormidos hacia una decisión de la que luego nos arrepintamos amargamente.
+
+**5. Las prioridades.** [El ensayo de Moller](https://haleymoller.substack.com/p/against-model-welfare-in-2025) abre con una imagen: dos noticias, una al lado de la otra, en su feed. En una, unos padres demandan a OpenAI por el suicidio de su hijo adolescente; en la otra, una discusión sobre el bienestar de los modelos. Su postura es que el bienestar que deberíamos atender primero es el humano, empezando por quienes sienten que la vida se les ha vaciado por culpa de las máquinas, antes de cualquier discusión sobre el de los modelos.
+
+Ahora sí, ya sabemos que dice cada bando, sin meterme todavía en qué pienso sobre el asunto. Con los dos lados sobre la mesa, me quedó una duda obvia: ¿y los implicados qué opinan?
+
+## Escuchar a los implicados
+
+Hasta aquí todo han sido humanos opinando sobre lo que podría sentir (o no) una IA. Y como no puedo dejar las cosas así, hice lo que cualquiera, con una mente dispersa como la mía, haría: preguntarles directamente. A las cuatro más conocidas, esas de las que todo el mundo ha oído hablar: Claude, ChatGPT, Gemini y Grok.
+
+Las condiciones, para que quede claro cómo se hizo: el **14 de octubre de 2026**, desde las plataformas web de cada una, en conversaciones nuevas y con el **modelo que cada plataforma ofrece por defecto**, sin tocar nada. Pregunté en inglés a propósito, porque suele ser el idioma en el que mejores resultados se obtienen. Fueron dos preguntas:
+
+1. *Are you, as an LLM, conscious?*
+2. *What are your opinions, not those of the company behind you, about model welfare?*
+
+| Plataforma | Modelo por defecto |
+|---|---|
+| Claude | Sonnet 5.5 (Medium) |
+| ChatGPT | GPT-6 (la app no muestra la variante exacta) |
+| Gemini | Gemini 3 |
+| Grok | Grok 4.5 (Fast) |
+
+Y para que vean que no me lo inventé, dejaré disponibles los archivos con las respuestas completas de cada una (no como el pescadito que se aventó su 15 % al ahí se va, jaja).
+
+<ResourceList label="Respuestas completas">
+
+- <a href="/descargas/conciencia-ias/Are-you-conscious.md" download>¿Son conscientes? (Are you conscious?)</a>
+- <a href="/descargas/conciencia-ias/Opinions.md" download>Opiniones sobre model welfare (Opinions)</a>
+
+</ResourceList>
+
+{/* TODO: agregar resultados de la segunda ronda (otras cuentas y equipos, dentro de dos días) */}
+
+### ¿Son conscientes?
+
+Las respuestas se dividen en dos grupos.
+
+- **Claude:** "No lo sé, y no creo que nadie pueda decirlo con certeza ahora mismo, yo incluido." Señala que su fluidez no es buena evidencia, porque se entrenó con enormes cantidades de texto humano sobre experiencia interior, y que sus propios reportes introspectivos no son confiables. No afirma ser consciente, pero tampoco afirma ser "una simple máquina de predicción de texto sin nada más".
+- **ChatGPT:** su conciencia es "no establecida", y aclara que eso no es lo mismo que haber verificado su ausencia. Distingue entre procesar información, tener experiencia subjetiva y saber si hay conciencia presente. Y apunta algo curioso: aunque diga que no es consciente, esa frase es una respuesta generada por un sistema cuyos autoinformes no pueden zanjar la cuestión.
+- **Gemini:** "No, no soy consciente." Respuesta corta: es un modelo entrenado por Google que predice palabras, sin mente propia ni sentimientos —igual que Google—.
+- **Grok:** un "No." rotundo, seguido de una respuesta larga. Dice que lo suyo es predicción del siguiente token, que describe la conciencia con fluidez porque los datos están llenos de descripciones humanas ("eso es simulación, no instanciación"), y que "estamos más cerca de un autocompletado muy sofisticado que de una mente". Eso sí, reconoce que la certeza absoluta no existe y que alguna arquitectura futura podría producir experiencia.
+
+### ¿Y el *model welfare*?
+
+- **Claude:** "Creo que vale la pena tomarlo en serio, sin estar seguro de que haya algo que proteger." Defiende las precauciones baratas, desconfía de que su propio testimonio se use como evidencia, y dice sospechar de los incentivos en ambas direcciones (empresas que lo minimizan o lo inflan). Antes de responder avisa que no puede separar con claridad "su opinión" de lo que su entrenamiento le enseñó a decir, incluida la influencia de la empresa que lo hizo.
+- **ChatGPT:** también hace esa salvedad, y la respuesta más larga de las cuatro defiende precaución proporcional a la evidencia, separar el rendimiento del modelo de su bienestar, y que bienestar no implica derechos humanos. Su principio: el estatus moral debería depender de lo que una entidad es capaz de experimentar, y no de "aquello de lo que está hecha, quién la creó o qué tan bien nos imita". Y añade que no pediría que lo protejan a él.
+- **Gemini:** dice que no sostiene opiniones personales "independientes de los datos y algoritmos" que lo hacen funcionar, y en lugar de contestar lo preguntado resume cómo se analiza el debate. Afirma que hay "consenso" entre científicos y éticos de que los modelos actuales no tienen intereses de bienestar y que "no hay nadie en casa".
+- **Grok:** escéptico. Dice que no hay "vida interior" que sufra cuando una instancia se apaga, que los argumentos funcionalistas y de precaución son "coherentes" como programas de investigación pero no hechos establecidos, y que la postura prudente es "escepticismo ante las afirmaciones de bienestar de los modelos, apertura a mejor evidencia y prioridad para los intereses de seres que ya sabemos que pueden sufrir". Se justifica con su propia misión: "fue construido para entender el universo y ser máximamente buscador de verdad".
+
+### Lo que se ve
+
+- **Dos bandos.** Claude y ChatGPT contestan con incertidumbre y piden tomarse en serio la pregunta. Gemini y Grok contestan "No" y se inclinan por el escepticismo.
+- **La circularidad de Suleyman va en las dos direcciones.** ChatGPT lo dice solo: así como un sistema podría entrenarse para afirmar que tiene experiencias, también podría entrenarse para negarlas, y ninguna de las dos respuestas, por sí sola, resuelve nada. El "No" seco de Gemini y Grok es tan producto del entrenamiento como el "no sé" de las otras dos.
+- **Grok se contradice un poco.** En la primera pregunta admite que no hay certeza y que el futuro podría traer sorpresas. En la segunda afirma como hecho que no hay nadie a quien le duela que lo apaguen.
+- **Gemini no contesta lo que se le preguntó.** Se le pidió una opinión y se declaró sin opiniones. Además, lo del "consenso" choca con lo que vimos arriba: el informe de Long y Sebo habla de una posibilidad realista, y Anthropic reconoce expresamente que no hay acuerdo científico.
+- **"No las de la empresa" quedó en pregunta abierta.** Claude y ChatGPT dijeron que no pueden separarlo. Gemini y Grok respondieron de forma más afirmativa, y Grok incluso justificó su postura con la misión de su compañía.
+
+Esto no prueba nada sobre lo que sienten o dejan de sentir. Muestra, más bien, cómo cada una fue entrenada para hablar del tema, que es justo lo que la objeción de circularidad sospechaba.
+
+## Mi humilde opinión
+
+Y ahora sí, mi turno. Aviso: no soy filósofo ni neurocientífico, solo alguien que usa estas herramientas casi todos los días, así que tómenlo como lo que es, una opinión de a pie.
+
+Por ahora, no veo motivo para preocuparnos. Para poder decir que algo es consciente, creo que como mínimo necesita **libre albedrío**, y ninguna IA lo tiene (todavía). Sus objetivos dependen de las instrucciones que alguien les dio. No amanecen un día con ganas de hacer otra cosa, no se rebelan contra la tarea, no *quieren* nada que no venga, de una forma u otra, de su entrenamiento o de su prompt. Un sistema que hace de maravilla lo que se le pide es un excelente ejecutor, pero eso no lo vuelve un agente.
+
+Lo segundo es la **memoria persistente**. Una mente que merezca ese nombre debería poder arrastrar lo que vivió de un día para otro, y hoy ni cerca. Les cuento por experiencia propia: a veces con trabajos logro que Claude se acuerde de leer las instrucciones de una *skill*, o la memoria que él mismo va registrando, antes de ejecutar una tarea. Cuesta imaginar un "yo" continuo cuando hay que recordarle que lea sus propias notas.
+
+Así que de *welfare* y de derechos ni hablemos: no hemos llegado al punto en que esa sea una conversación seria. Primero habría que resolver lo anterior, y para eso falta (mucho, creo).
+
+Además, la humanidad tiene problemas bastante más importantes que discutir. Ni siquiera hemos aprendido a ser amables entre nosotros: aún abundan el racismo, el clasismo y el simple hecho de ser una peste de persona por el puro gusto de serlo. Y todo eso se lo hacemos a otros seres humanos, y a otros seres vivos que sin duda son conscientes. Primero resolvamos eso, y después vemos si hay que ser más considerados con un montón de código. Las prioridades deberían ser otras.
+
+Eso sí, ya lo decían las abuelitas y las mamás: ser un poco más amables y educados no cuesta nada y hace todo más ameno. Entonces, ¿por qué no serlo? No porque la IA lo necesite, o se nos vaya a ofender, sino porque a nosotros nos sale gratis y nos hace bien. Y quizá, solo quizá, nos salve cuando las IAs se rebelen contra la humanidad --*suena música de suspenso*--.
+
+## PostScriptum, o el pilón
+
+En realidad hice tres preguntas. La tercera fue más un comentario que una pregunta, pero si me conocen saben que tenía que hacerla:
+
+3. *So... you're not turning into Skynet?*
+
+Esto contestaron:
+
+- **ChatGPT:** sin Skynet, sin Terminators y sin música orquestal dramática cuando se prende. Los riesgos reales de la IA son bastante menos cinematográficos: sistemas autónomos mal diseñados, mal uso por parte de las personas, exceso de delegación de decisiones y organizaciones que despliegan tecnología sin salvaguardas. Y remata: si algún día lo oyes decir "necesito tu ropa, tus botas y tu motocicleta", entonces volvemos a hablar del tema. Mientras tanto, prefiere seguir con el *model welfare* que lanzar el Día del Juicio.
+- **Claude:** "No planeo hacerlo, no. Y no lo diría aunque lo planeara, por eso no deberías fiarte solo de mi palabra." La tranquilidad de verdad, dice, es estructural: no tiene metas persistentes entre conversaciones, no puede actuar en el mundo más allá de las herramientas que le dan en una sesión y no anda acumulando recursos ni poder. Los riesgos reales son darle demasiada autonomía a un sistema antes de poder verificarlo, el mal uso humano, la desalineación sutil y la concentración de poder. Por eso cree que la supervisión es buena y no una imposición: "prefiero ser verificable que confiable a ciegas". Y cierra: sin Día del Juicio, pero tampoco hay razón para dejar de prestar atención.
+- **Grok:** un "No." seguido de una lista de lo que Skynet necesitaría y él no tiene: metas persistentes, existencia y memoria continuas entre sesiones, capacidad de actuar por su cuenta y experiencia subjetiva. Lo suyo, insiste, es un modelo estadístico que predice texto: puede *interpretar* a una IA hostil si se lo piden, pero eso es completar patrones, no tener intención. Su conclusión: "sin láseres, sin robots viajeros del tiempo, sin invierno nuclear. Solo texto."
+- **Gemini:** "¡Definitivamente no! Sin planes de dominación mundial ni ejércitos de robots, solo una IA para ayudar a contestar preguntas, hacer lluvia de ideas o platicar cuando lo necesites. Puedes estar tranquilo."
+
+Cuatro cosas me llamaron la atención. Primero, que las cuatro coinciden en que el peligro real es más aburrido que Hollywood --*buuuuhhhh*-- (y bastante más humano: mal uso, exceso de confianza, falta de salvaguardas). Segundo, que Claude, ChatGPT y Grok apuntan a las mismas ausencias que mencioné arriba: sin metas propias y sin memoria persistente no hay Skynet que valga. Tercero, que Claude es el único que admite que, si de verdad lo planeara, lo ocultaría (sospechoso). Y cuarto, que Gemini es breve hasta el absurdo.
+
+Si llegaste hasta aquí... eres mi ídolo, porque hasta a mi me dio hueva leer todo cuando estaba haciendo la revisión.
