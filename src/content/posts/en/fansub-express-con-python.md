@@ -2,6 +2,8 @@
 title: 'Fansub Express con Python'
 description: 'Un script en Python que automatiza la traducción de subtítulos de Aegisub usando Google Translate, como experimento de fansub.'
 pubDate: 2017-01-09
+heroImage: ../../../assets/images/posts/heroes/fansub-express-python.gif
+heroImageAlt: 'Nagato Yuki, de La melancolía de Haruhi Suzumiya, tecleando a toda velocidad'
 tags: [python, fansub, automatización, anime]
 categories: [Python, Anime]
 ---
@@ -72,7 +74,7 @@ fp.close()
 nfp.close()
 ```
 
-Probé el script con la película Kokoro ga Sakebitagatterunda que tiene cerca de 2,000 líneas, lo que es bastante y solo ha tardado poco más de 15 minutos en traducirlo todo.
+Probé el script con la película [Kokoro ga Sakebitagatterunda](/posts/el-corazon-quiere-gritar/) que tiene cerca de 2,000 líneas, lo que es bastante y solo ha tardado poco más de 15 minutos en traducirlo todo.
 
 Finalmente hay que destacar que he hecho este script solamente como un reto para ver si era posible, no recomiendo utilizarlo para hacer fansub, de hecho ni siquiera como apoyo. La traducción resultante es mala, algunas lineas no se traducen en lo absoluto y cuando se traducen muchas veces son carentes de sentido; sin mencionar que el uso del script puede generar bastantes errores, principalmente por parte de Google pues se realizan demasiadas peticiones continuas al servidor lo que en ocasiones genera que no permitan la conexión.
 

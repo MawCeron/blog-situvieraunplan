@@ -2,6 +2,8 @@
 title: 'Terminando el año con Bloqueo de Escritor'
 description: 'Reflexiones de fin de año sobre el bloqueo de escritor, la auto-edición excesiva y los textos que nunca ven la luz.'
 pubDate: 2016-12-29
+heroImage: ../../../assets/images/posts/heroes/bloqueo-de-escritor.jpg
+heroImageAlt: 'Un escritor con la mano en la cabeza y gesto de agobio frente a una máquina de escribir y hojas de papel, en blanco y negro'
 tags: [escritura, reflexión]
 categories: [Escritura, Personal]
 ---
@@ -20,6 +22,6 @@ En fin, aprovecho estas últimas líneas para desearles felices fiestas, prosper
 
 Y lo dejaré hasta aquí, en la tele está la película de _**«Wolverine Inmortal»**_ que aunque muchos la odian a mi me gusta bastante, porque… ¡¡Tao Okamoto!! &lt;3 Así que la utilizaré como pretexto para no revisar esto..
 
-tao-okamoto6_geraldinedenman-1024x682.jpg
+![Tao Okamoto sentada junto al mar con un juego de té y una canasta de picnic, en una escena de Wolverine Inmortal](../../../assets/images/posts/terminando-el-ano/tao-okamoto.jpg)
 
 _Maw fuera._
