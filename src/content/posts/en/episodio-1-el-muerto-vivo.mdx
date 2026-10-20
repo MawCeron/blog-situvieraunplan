@@ -5,6 +5,8 @@ pubDate: 2015-11-08
 tags: [podcast, día-de-muertos, aguascalientes]
 categories: [Podcast]
 ---
+import PodcastPlayer from '../../../components/PodcastPlayer.astro';
+
 
 En el episodio de esta semana les cuento un poco acerca de un interesante festival que se realiza en la ciudad de Aguascalientes, México. En la que radico actualmente.
 
@@ -14,7 +16,14 @@ Se trata del Festival de las Calaveras, el cual surge con el objetivo de rescat
 
 Sin más preambulos les dejo el episodio de esta semana:
 
-**[Descargar](http://www.ivoox.com/episodio-1-el-muerto-vivo_md_9308906_wp_1.mp3)** Escuchar en **[iVoox](http://www.ivoox.com/episodio-1-el-muerto-vivo-audios-mp3_rf_9308906_1.html)** Escuchar en **[iTunes](https://itunes.apple.com/mx/podcast/si-tuviera-un-plan.../id1054780502?l=es)**
+<PodcastPlayer
+  src="https://www.ivoox.com/episodio-1-el-muerto-vivo_md_9308906_wp_1.mp3"
+  title="Episodio 1. El Muerto Vivo"
+  links={[
+    { label: 'Escuchar en iVoox', href: 'https://www.ivoox.com/episodio-1-el-muerto-vivo-audios-mp3_rf_9308906_1.html' },
+    { label: 'Escuchar en iTunes', href: 'https://itunes.apple.com/mx/podcast/si-tuviera-un-plan.../id1054780502?l=es' },
+  ]}
+/>
 
 Música de fondo:
 
