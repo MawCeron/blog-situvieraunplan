@@ -2,19 +2,37 @@
 import { Image } from 'astro:assets';
 import { SITE } from '../config';
 
+type Tone = 'neutral' | 'primary' | 'accent' | 'info' | 'success' | 'warning' | 'error';
+
 interface Props {
   /** Nombre de quien habla. */
   from: string;
-  /** Mensaje propio: va a la derecha, con tu avatar y el color de acento. */
+  /** Mensaje tuyo: tu avatar, a la derecha y con el color primario (salvo que pases `side` o `tone`). */
   me?: boolean;
+  /** Lado de la burbuja. Por defecto, a la derecha si es `me` y a la izquierda si no. */
+  side?: 'start' | 'end';
+  /** Color de la burbuja, para distinguir a varios interlocutores. */
+  tone?: Tone;
 }
 
-const { from, me = false } = Astro.props;
+// Clases literales: Tailwind no ve las que se arman con plantillas.
+const toneClass: Record<Tone, string> = {
+  neutral: '',
+  primary: 'chat-bubble-primary',
+  accent: 'chat-bubble-accent',
+  info: 'chat-bubble-info',
+  success: 'chat-bubble-success',
+  warning: 'chat-bubble-warning',
+  error: 'chat-bubble-error',
+};
+
+const { from, me = false, side = me ? 'end' : 'start', tone = me ? 'primary' : 'neutral' } =
+  Astro.props;
 const avatar = SITE.author.avatar;
 const initial = from.trim().charAt(0).toUpperCase();
 ---
 
-<div class:list={['chat', me ? 'chat-end' : 'chat-start']}>
+<div class:list={['chat', side === 'end' ? 'chat-end' : 'chat-start']}>
   <div
     class="chat-image avatar"
     class:list={[!(me && avatar) && 'avatar-placeholder']}
@@ -38,5 +56,5 @@ const initial = from.trim().charAt(0).toUpperCase();
     </div>
   </div>
   <div class="chat-header text-muted mb-1 text-xs font-semibold">{from}</div>
-  <div class:list={['chat-bubble', me && 'chat-bubble-primary']}><slot /></div>
+  <div class:list={['chat-bubble', toneClass[tone]]}><slot /></div>
 </div>

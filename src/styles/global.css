@@ -698,7 +698,7 @@
     border: 0;
     border-radius: 0;
   }
-  .chat-bubble-primary a {
+  .chat-bubble[class*='chat-bubble-'] a {
     @apply text-inherit underline;
   }
 }
