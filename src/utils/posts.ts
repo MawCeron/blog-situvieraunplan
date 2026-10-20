@@ -2,7 +2,7 @@
  * Post helpers.
  *
  * Wraps the `astro:content` collection API to:
- *  - filter drafts in production
+ *  - filter drafts and future-dated posts in production
  *  - infer locale from filesystem path (posts/en/foo -> 'en')
  *  - sort by pubDate desc, with pinned posts first
  *  - group posts by tag / category / month
@@ -22,6 +22,10 @@ export type Post = CollectionEntry<'posts'> & {
 
 const isProd = import.meta.env.PROD;
 const skipPostCollections = import.meta.env.CI_SKIP_CONTENT_COLLECTIONS === 'true';
+
+/** Drafts and posts whose `pubDate` is still in the future are hidden in production (dev shows all). */
+const isHidden = (entry: CollectionEntry<'posts'>) =>
+  isProd && (entry.data.draft || entry.data.pubDate.valueOf() > Date.now());
 
 /** Derive the locale from `posts/<locale>/foo` slug-ish ID. */
 function localeFromId(id: string): Locale {
@@ -89,11 +93,11 @@ export function sortPostsByDate(posts: Post[]): Post[] {
   });
 }
 
-/** Get all posts for a locale (drafts + unlisted hidden in prod, sorted). */
+/** Get all posts for a locale (drafts, future-dated + unlisted hidden in prod, sorted). */
 export async function getPosts(locale: Locale): Promise<Post[]> {
   if (skipPostCollections) return [];
   const all = await getCollection('posts', (entry) => {
-    if (isProd && entry.data.draft) return false;
+    if (isHidden(entry)) return false;
     if (entry.data.unlisted) return false;
     const lang = entry.data.lang ?? localeFromId(entry.id);
     return lang === locale;
@@ -104,12 +108,12 @@ export async function getPosts(locale: Locale): Promise<Post[]> {
 /**
  * Get unlisted posts for a locale (used only in `getStaticPaths` so
  * their URLs are still generated and accessible by direct link).
- * Drafts are still excluded in production.
+ * Drafts and future-dated posts are still excluded in production.
  */
 export async function getUnlistedPosts(locale: Locale): Promise<Post[]> {
   if (skipPostCollections) return [];
   const all = await getCollection('posts', (entry) => {
-    if (isProd && entry.data.draft) return false;
+    if (isHidden(entry)) return false;
     if (!entry.data.unlisted) return false;
     const lang = entry.data.lang ?? localeFromId(entry.id);
     return lang === locale;
