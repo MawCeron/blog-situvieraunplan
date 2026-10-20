@@ -2,6 +2,8 @@
 title: 'Haciendo hablar a Windows'
 description: 'Cómo hacer que Windows lea texto en voz alta con solo cuatro líneas de VBScript, sin instalar nada adicional.'
 pubDate: 2017-06-06
+heroImage: ../../../assets/images/posts/heroes/haciendo-hablar-a-windows.jpg
+heroImageAlt: 'Hackerman, personaje de Kung Fury, con lentes y chamarra de cuero frente a una oficina con archiveros, con su nombre en letras cromadas'
 tags: [windows, scripting]
 categories: [Windows]
 ---
@@ -21,7 +23,7 @@ Habla.Speak Mensaje
 
 Lo guardamos con el nombre que queramos con la extensión **VBS**, por ejemplo **_"habla.vbs"_**. Ahora simplemente daremos doble clic en el archivo que creamos, nos debe aparecer un mensaje similar al siguiente:
 
-speak.png
+![Ventana de Windows titulada Habla con el mensaje Ingresa texto, un campo de texto y los botones Aceptar y Cancelar](../../../assets/images/posts/haciendo-hablar-a-windows/speak.png)
 
 El resto es bastante simple, escribimos el texto que queramos que diga y pulsamos aceptar. Ahora podrán hacer hablar a su computadora cuando quieran.
 
