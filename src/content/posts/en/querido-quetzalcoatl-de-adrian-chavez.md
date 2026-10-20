@@ -4,7 +4,7 @@ description: '¿Qué pasaría si Quetzalcóatl reemplazara a Santa Claus como s�
 pubDate: 2026-10-26
 heroImage: ../../../assets/images/posts/heroes/querido-quetzalcoatl.jpg
 heroImageAlt: 'El libro Querido Quetzalcóatl, de Adrián Chávez, sobre una superficie de piedra gris con luz y sombras'
-tags: [libros, reseña]
+tags: [libros, reseña, sátira]
 categories: [Libros]
 ---
 
