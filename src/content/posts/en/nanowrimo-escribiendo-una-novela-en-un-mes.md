@@ -2,6 +2,8 @@
 title: 'NaNoWriMo, escribiendo una novela en un mes'
 description: 'Qué es el NaNoWriMo y por qué decidió participar, escribiendo una novela de 50 mil palabras en 30 días.'
 pubDate: 2016-10-19
+heroImage: ../../../assets/images/posts/heroes/nanowrimo.png
+heroImageAlt: 'Logo del National Novel Writing Month: un escudo con un casco de vikingo, una taza, una laptop, plumas y hojas de papel'
 tags: [escritura, nanowrimo]
 categories: [Escritura]
 ---
