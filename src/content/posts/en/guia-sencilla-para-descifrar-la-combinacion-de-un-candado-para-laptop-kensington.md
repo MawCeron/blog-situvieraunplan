@@ -2,6 +2,8 @@
 title: 'Guía sencilla para descifrar la combinación de un candado para laptop Kensington'
 description: 'Cómo encontrar la combinación de un candado Kensington bloqueado, sin herramientas especiales, usando el sistema de ruedas.'
 pubDate: 2025-03-13
+heroImage: ../../../assets/images/posts/heroes/candado-kensington.jpg
+heroImageAlt: 'Candado Kensington de combinación de cuatro ruedas con su cable de acero enrollado sobre un escritorio negro'
 tags: [hardware, tutorial]
 categories: [Random]
 ---
