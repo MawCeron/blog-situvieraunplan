@@ -2,7 +2,7 @@
 title: 'Terminando el año con Bloqueo de Escritor'
 description: 'Reflexiones de fin de año sobre el bloqueo de escritor, la auto-edición excesiva y los textos que nunca ven la luz.'
 pubDate: 2016-12-29
-tags: [escritura, reflexión, bloqueo-de-escritor]
+tags: [escritura, reflexión]
 categories: [Escritura, Personal]
 ---
 

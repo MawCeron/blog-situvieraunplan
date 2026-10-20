@@ -2,7 +2,7 @@
 title: 'Instalación limpia de MacOS High Sierra no reconoce el SSD'
 description: 'Cómo resolver el problema de que el instalador de macOS High Sierra no reconoce un SSD nuevo, usando diskutil desde la Terminal.'
 pubDate: 2017-10-06
-tags: [macos, ssd, troubleshooting]
+tags: [tecnología, troubleshooting]
 categories: [macOS]
 ---
 

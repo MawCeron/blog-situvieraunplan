@@ -2,7 +2,7 @@
 title: "Codeberg, GitHub, y el patrón que se repite en todo el software libre"
 description: "Codeberg le cierra la puerta a los LLMs mientras GitHub apuesta todo por ellos. La diferencia no es filosófica: es quién paga las cuentas, y ese patrón se repite en todo el software libre."
 pubDate: 2026-09-01
-tags: [open-source, ia, github]
+tags: [open-source, ia]
 categories: [Opinión, Tecnología]
 heroImage: '../../../assets/images/posts/heroes/codeberg-github.jpg'
 ---

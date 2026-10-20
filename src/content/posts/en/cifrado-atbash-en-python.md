@@ -2,7 +2,7 @@
 title: 'Cifrado Atbash en Python'
 description: 'Cómo implementar el cifrado Atbash, un método clásico de sustitución de espejo, en Python.'
 pubDate: 2014-12-17
-tags: [python, criptografía, algoritmos]
+tags: [python, programación]
 categories: [Python]
 ---
 

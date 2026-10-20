@@ -2,7 +2,7 @@
 title: 'Semana 2. Paisaje Tradicional'
 description: 'Semana 2 del reto de las 52 semanas: un paisaje tradicional encontrado a una cuadra de casa, y la lección de nunca salir sin tarjeta SD.'
 pubDate: 2016-03-02
-tags: [fotografía, reto-fotográfico, paisaje]
+tags: [fotografía, reto-fotográfico]
 categories: [Fotografía]
 ---
 

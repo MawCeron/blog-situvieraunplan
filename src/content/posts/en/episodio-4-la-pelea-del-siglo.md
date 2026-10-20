@@ -2,7 +2,7 @@
 title: 'Episodio 4. La Pelea del Siglo'
 description: 'Episodio 4 del podcast, con Josh como invitado, sobre la primera batalla real de robots gigantes entre Estados Unidos y Japón.'
 pubDate: 2016-02-16
-tags: [podcast, robots, cultura-pop]
+tags: [podcast, cultura-pop]
 categories: [Podcast, Geek]
 ---
 

@@ -2,7 +2,7 @@
 title: 'SysAdmins: los Héroes No Reconocidos'
 description: 'Un repaso del día a día de un SysAdmin, todo lo que das por sentado gracias a su trabajo, y por qué merecen más reconocimiento.'
 pubDate: 2016-07-29
-tags: [sysadmin, ti, reflexión]
+tags: [sysadmin, reflexión]
 categories: [Random, Opinión]
 heroImage: ../../../assets/images/posts/heroes/sysadmin.jpg
 ---

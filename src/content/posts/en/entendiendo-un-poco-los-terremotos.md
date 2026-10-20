@@ -2,7 +2,7 @@
 title: 'Entendiendo un poco los terremotos'
 description: 'Por qué un sismo de la misma magnitud puede sentirse como un simple susto en Chile y resultar mortal en México, explicado con dibujitos.'
 pubDate: 2017-09-25
-tags: [terremotos, sismología, méxico]
+tags: [méxico, terremotos]
 categories: [Random]
 ---
 

@@ -2,7 +2,7 @@
 title: 'Instalando VirtualBox en Linux Mint 17'
 description: 'Cómo agregar el repositorio oficial de VirtualBox e instalarlo en Linux Mint 17.'
 pubDate: 2015-03-29
-tags: [linux, linux-mint, virtualbox, virtualización]
+tags: [linux, linux-mint]
 categories: [Linux]
 ---
 

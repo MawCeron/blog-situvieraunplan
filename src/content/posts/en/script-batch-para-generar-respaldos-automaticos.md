@@ -2,7 +2,7 @@
 title: 'Script Batch para generar respaldos automáticos'
 description: 'Un script Batch para Windows que automatiza respaldos comprimidos en 7z y los envía a un servidor.'
 pubDate: 2014-08-12
-tags: [windows, batch, backups, scripting]
+tags: [windows, scripting]
 categories: [Windows]
 ---
 

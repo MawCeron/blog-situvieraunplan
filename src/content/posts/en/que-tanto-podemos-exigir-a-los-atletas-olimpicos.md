@@ -2,7 +2,7 @@
 title: '¿Qué tanto podemos exigir a los atletas olímpicos?'
 description: 'Una reflexión sobre qué tanto derecho tenemos a exigir medallas a los atletas olímpicos mexicanos cuando no reciben el apoyo necesario.'
 pubDate: 2016-08-11
-tags: [deportes, juegos-olímpicos, méxico, opinión]
+tags: [deportes, méxico, opinión]
 categories: [Deportes, Opinión]
 ---
 

@@ -2,7 +2,7 @@
 title: "Documenta tu código, por el amor de dios, documenta tu código"
 description: "Por qué la documentación no es un lujo ni una pérdida de tiempo: el aceite de ricino de la programación, la Fuente Única de Verdad, y por qué hasta la documentación desactualizada sigue siendo mejor que no tener nada."
 pubDate: 2026-07-22
-tags: [documentación, desarrollo, buenas-practicas]
+tags: [desarrollo, programación]
 categories: [Programación, Opinión]
 heroImage: '../../../assets/images/posts/heroes/documenta.png'
 ---

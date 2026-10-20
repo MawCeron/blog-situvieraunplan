@@ -2,7 +2,7 @@
 title: 'Solución al Error 0-1036 al instalar Office'
 description: 'Cómo solucionar el Error 0-1036 al instalar o reparar Microsoft Office eliminando archivos y registros residuales.'
 pubDate: 2016-07-01
-tags: [windows, office, troubleshooting]
+tags: [windows, troubleshooting]
 categories: [Windows]
 heroImage: ../../../assets/images/posts/heroes/error-0-1036.png
 showHeroInPost: false

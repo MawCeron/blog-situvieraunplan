@@ -3,7 +3,7 @@ title: 'Instalar PlayOnLinux en Fedora 13'
 description: 'Tres formas de instalar PlayOnLinux en Fedora 13 para poder correr juegos y programas de Windows sobre Linux: RPM, repositorio YUM o el instalador genérico.'
 pubDate: 2010-09-03
 updatedDate: 2026-07-15
-tags: [linux, fedora-13, playonlinux, juegos, windows]
+tags: [linux, windows]
 categories: [Linux]
 toc: false
 ---

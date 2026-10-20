@@ -2,7 +2,7 @@
 title: 'Dead keys no funcionan en Ghostty (Niri, Hyprland y otros WMs)'
 description: 'Por qué las dead keys dejaron de funcionar en Ghostty bajo Wayland desde GTK 4.20, y cómo arreglarlo con GTK_IM_MODULE en Niri y Hyprland.'
 pubDate: 2026-06-19
-tags: [linux, ghostty, wayland, gtk, niri, hyprland]
+tags: [linux, wayland, terminal]
 categories: [Linux]
 toc: true
 heroImage: ../../../assets/images/posts/heroes/deadkeys-niri.png

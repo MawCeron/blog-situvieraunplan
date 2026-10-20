@@ -2,7 +2,7 @@
 title: 'Sobre las ilustraciones del blog'
 description: 'Por qué a partir de ahora las ilustraciones del blog serán generadas con inteligencia artificial, y cómo reconocerlas.'
 pubDate: 2026-04-20
-tags: [blog, ia, ilustraciones]
+tags: [blog, ia]
 categories: [Personal]
 ---
 

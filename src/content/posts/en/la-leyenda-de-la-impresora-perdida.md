@@ -3,7 +3,7 @@ title: "La leyenda de la impresora perdida"
 description: "Una anécdota sobre los inventarios de equipo de cómputo en el trabajo, los desastres que se pueden encontrar en el camino, y algunas de las ventajas ocultas del puesto."
 pubDate: 2009-10-12
 updatedDate: 2026-07-15
-tags: [anecdota, trabajo, tecnologia]
+tags: [anécdotas, tecnología]
 categories: [Personal]
 ---
 

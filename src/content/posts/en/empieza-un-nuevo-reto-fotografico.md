@@ -2,7 +2,7 @@
 title: 'Empieza un nuevo reto fotográfico'
 description: 'Presentando el reto fotográfico de las 52 semanas: una categoría de retrato, paisaje o arte que cumplir cada semana durante un año.'
 pubDate: 2016-02-15
-tags: [fotografía, reto-fotográfico, 52-semanas]
+tags: [fotografía, reto-fotográfico]
 categories: [Fotografía]
 ---
 

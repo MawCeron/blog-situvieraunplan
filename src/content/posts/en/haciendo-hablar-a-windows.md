@@ -2,7 +2,7 @@
 title: 'Haciendo hablar a Windows'
 description: 'Cómo hacer que Windows lea texto en voz alta con solo cuatro líneas de VBScript, sin instalar nada adicional.'
 pubDate: 2017-06-06
-tags: [windows, vbscript, scripting]
+tags: [windows, scripting]
 categories: [Windows]
 ---
 

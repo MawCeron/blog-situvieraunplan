@@ -2,7 +2,7 @@
 title: 'Comandos útiles para resolver problemas en Windows 10'
 description: 'Una recopilación personal de comandos de símbolo de sistema para diagnosticar y reparar problemas comunes de conexión y archivos de sistema en Windows 10.'
 pubDate: 2017-01-16
-tags: [windows, cmd, troubleshooting, sistemas]
+tags: [windows, troubleshooting]
 categories: [Windows]
 heroImage: ../../../assets/images/posts/heroes/comandos-utiles-w10.jpg
 ---

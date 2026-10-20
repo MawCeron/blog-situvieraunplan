@@ -2,7 +2,7 @@
 title: 'Compilador, grítame pero no me dejes: El regreso del tipado fuerte'
 description: 'Una reflexión sobre por qué lenguajes de tipado fuerte como Go, Kotlin, Swift y Rust están teniendo un resurgimiento, y qué nos dice eso sobre los ciclos del desarrollo de software.'
 pubDate: 2025-11-07
-tags: [programación, tipado, go, lenguajes]
+tags: [programación, go]
 categories: [Programación, Opinión]
 heroImage: '../../../assets/images/posts/heroes/compilador-pegame.jpg'
 heroImageAlt: "Así mero cuando mi programa no compila"

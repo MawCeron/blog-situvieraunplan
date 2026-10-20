@@ -2,7 +2,7 @@
 title: 'Google Spaces: ¿El próximo Google Wave?'
 description: 'Una explicación de qué es Google Spaces y por qué merece una oportunidad antes de compararlo con el fracaso de Google Wave.'
 pubDate: 2016-05-17
-tags: [google, redes-sociales, tecnología]
+tags: [redes-sociales, tecnología]
 categories: [Tecnología, Opinión]
 ---
 

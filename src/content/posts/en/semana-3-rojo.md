@@ -2,7 +2,7 @@
 title: 'Semana 3. Rojo'
 description: 'Semana 3 del reto de las 52 semanas: capturar el color rojo, resuelto con una señal de alto en la esquina de casa.'
 pubDate: 2016-03-08
-tags: [fotografía, reto-fotográfico, rojo]
+tags: [fotografía, reto-fotográfico]
 categories: [Fotografía]
 ---
 

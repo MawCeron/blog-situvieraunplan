@@ -2,7 +2,7 @@
 title: 'Korora, el Fedora que muchos quisieran'
 description: 'Un vistazo a Korora, el remix de Fedora que ofrece una experiencia lista para usar similar a Linux Mint.'
 pubDate: 2015-03-25
-tags: [linux, fedora, korora, distros]
+tags: [linux, fedora, distros]
 categories: [Linux]
 ---
 

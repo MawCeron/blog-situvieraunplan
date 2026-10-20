@@ -2,7 +2,7 @@
 title: 'XXI Festival de las Calaveras'
 description: 'Fotografías del XXI Festival de las Calaveras en Aguascalientes, un festival dedicado a la muerte al estilo mexicano.'
 pubDate: 2015-11-13
-tags: [fotografía, día-de-muertos, aguascalientes, festival]
+tags: [fotografía, día-de-muertos, aguascalientes]
 categories: [Fotografía]
 ---
 

@@ -3,7 +3,7 @@ title: 'Solución a un problema común de instalación de paquetes en Linux Ubun
 description: 'Cómo resolver el error "No se pudo bloquear /var/lib/dpkg/lock" en Ubuntu, causado por dejar una terminal de apt-get abierta a medias.'
 pubDate: 2010-07-04
 updatedDate: 2026-07-15
-tags: [linux, ubuntu, apt-get, dpkg]
+tags: [linux, ubuntu]
 categories: [Linux]
 heroImage: ../../../assets/images/posts/problemas-de-instalacion-de-paquetes/tuxterminal_icon.png
 heroImageAlt: 'Icono de Tux en una terminal'

@@ -2,7 +2,7 @@
 title: "Desensamblar y reinterpretar Circus Charlie, o morir en el intento"
 description: "Desensamblar un cartucho de NES y leer su memoria cuadro a cuadro para entender las reglas ocultas de Circus Charlie: colisiones, puntos, tiempos y las hipótesis que me desmintió el propio juego."
 pubDate: 2026-10-09
-tags: [go, ingeniería-inversa, nes, videojuegos, retro]
+tags: [go, programación]
 categories: [Programación, Personal]
 heroImage: '../../../assets/images/posts/circus-charlie/hero.jpg'
 ---

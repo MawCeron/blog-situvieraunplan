@@ -2,7 +2,7 @@
 title: '8 defensas legales para algunos de los más nefastos villanos de Disney'
 description: 'Ocho ingeniosas defensas legales de Reddit para algunos de los villanos más nefastos de Disney.'
 pubDate: 2015-09-18
-tags: [disney, humor, reddit]
+tags: [disney, humor]
 categories: [Geek]
 toc: true
 ---

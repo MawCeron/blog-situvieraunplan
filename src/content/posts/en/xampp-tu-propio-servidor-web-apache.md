@@ -3,7 +3,7 @@ title: 'XAMPP: tu propio servidor web Apache'
 description: 'Cómo instalar y ejecutar XAMPP en Fedora para tener un servidor local con Apache, PHP, MySQL y ProFTPD listo para desarrollar antes de subir nada a producción.'
 pubDate: 2012-02-11
 updatedDate: 2026-07-15
-tags: [linux, apache, php, perl, xampp, servidor]
+tags: [linux, tutorial]
 categories: [Linux]
 toc: true
 ---

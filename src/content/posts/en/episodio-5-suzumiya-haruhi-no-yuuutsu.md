@@ -2,7 +2,7 @@
 title: 'Episodio 5. Suzumiya Haruhi no Yuuutsu'
 description: 'Episodio 5 del podcast, un análisis de la franquicia Suzumiya Haruhi y sus temáticas poco comunes para el anime.'
 pubDate: 2016-02-21
-tags: [podcast, anime, suzumiya-haruhi]
+tags: [podcast, anime]
 categories: [Podcast, Anime]
 ---
 

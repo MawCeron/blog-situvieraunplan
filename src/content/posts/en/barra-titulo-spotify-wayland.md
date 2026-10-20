@@ -2,7 +2,7 @@
 title: "Cómo quitar la barra de título azul de Spotify (Flatpak) en Wayland"
 description: "Spotify instalado vía Flatpak muestra la barra de título en azul sólido bajo GNOME en Wayland. La causa real no es Wayland en sí, sino un permiso mal configurado del sandbox de Flatpak."
 pubDate: 2026-08-19
-tags: [linux, flatpak, spotify, wayland]
+tags: [linux, spotify, wayland]
 categories: [Linux]
 heroImage: '../../../assets/images/posts/heroes/spotify-barra-azul.jpg'
 ---

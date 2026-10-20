@@ -2,7 +2,7 @@
 title: 'Pero no me gusta... OMG!! ¿Cómo es que me perdía de esto?'
 description: 'Cómo terminó descubriendo tarde Star Wars, Back to the Future y Harry Potter, y lo que le enseñó sobre dejar de lado los prejuicios.'
 pubDate: 2015-12-18
-tags: [star-wars, harry-potter, back-to-the-future, personal]
+tags: [harry-potter, personal]
 categories: [Geek, Personal]
 toc: true
 ---

@@ -3,7 +3,7 @@ title: "Cómo compartir archivos e impresoras en red con SuricataOS"
 description: "Una guía sencilla para activar el uso compartido de carpetas, archivos e impresoras en red usando SuricataOS (Mangosta Edition), paso a paso desde el panel de Servicios."
 pubDate: 2009-10-19
 updatedDate: 2026-07-15
-tags: [tecnologia, redes, tutorial]
+tags: [tecnología, redes, tutorial]
 categories: [Tecnología, Windows]
 ---
 

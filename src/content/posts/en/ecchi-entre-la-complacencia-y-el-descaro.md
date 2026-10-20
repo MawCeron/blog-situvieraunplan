@@ -3,7 +3,7 @@ title: "Ecchi, entre la complacencia y el descaro"
 description: "Un repaso histórico al género ecchi del manga y anime, desde Go Nagai hasta el fanservice contemporáneo, y cómo ha evolucionado su relación con la censura y el público."
 pubDate: 2009-08-31
 updatedDate: 2026-07-15
-tags: [anime, manga, ecchi, cultura-otaku]
+tags: [anime, manga, ecchi]
 categories: [Anime, Opinión]
 ---
 

@@ -2,7 +2,7 @@
 title: "Cómo instalar Visual Studio Code desde el repositorio oficial de Microsoft en Fedora Silverblue"
 description: "Los pasos para agregar el repo oficial de Microsoft y dejar VS Code instalado a nivel de sistema con rpm-ostree en Fedora Silverblue, incluyendo por qué el típico rpm --import falla aquí y cómo evitarlo."
 pubDate: 2026-07-22
-tags: [linux, fedora, silverblue, vscode, programación]
+tags: [linux, fedora, programación]
 categories: [Linux]
 heroImage: '../../../assets/images/posts/heroes/vscode-silverblue.png'
 ---

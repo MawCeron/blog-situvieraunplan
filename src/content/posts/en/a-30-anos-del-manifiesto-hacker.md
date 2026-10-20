@@ -2,7 +2,7 @@
 title: 'A 30 años del Manifiesto Hacker'
 description: 'Una traducción fiel del Manifiesto Hacker de Loyd Blankenship, escrito en 1986 tras su arresto, y por qué sigue vigente.'
 pubDate: 2016-01-08
-tags: [hacking, historia, cultura-hacker]
+tags: [historia, tecnología]
 categories: [Random]
 ---
 

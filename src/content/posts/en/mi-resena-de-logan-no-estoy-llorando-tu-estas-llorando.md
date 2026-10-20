@@ -2,7 +2,7 @@
 title: 'Mi reseña de Logan: ¡No estoy llorando, TÚ ESTÁS LLORANDO!'
 description: 'Una reseña de Logan, la despedida de Wolverine y el Profesor X, y por qué es una de las mejores películas de superhéroes.'
 pubDate: 2017-06-05
-tags: [marvel, x-men, logan, reseña]
+tags: [marvel, cine, reseña]
 categories: [Cine]
 ---
 

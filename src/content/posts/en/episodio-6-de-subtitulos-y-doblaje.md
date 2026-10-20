@@ -2,7 +2,7 @@
 title: 'Episodio 6. De subtítulos y doblaje'
 description: 'Episodio 6 del podcast, con Josh, Gus y Alex, sobre las ventajas y desventajas del doblaje frente a los subtítulos.'
 pubDate: 2016-02-28
-tags: [podcast, doblaje, subtítulos, fansub]
+tags: [podcast, subtítulos, fansub]
 categories: [Podcast, Geek]
 ---
 

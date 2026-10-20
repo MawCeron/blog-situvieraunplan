@@ -2,7 +2,7 @@
 title: 'Semana 1. Auto Retrato'
 description: 'Semana 1 del reto de las 52 semanas: auto retrato, el tipo de fotografía que más trabajo le costó a pesar de tener siempre un modelo disponible.'
 pubDate: 2016-02-22
-tags: [fotografía, reto-fotográfico, auto-retrato]
+tags: [fotografía, reto-fotográfico]
 categories: [Fotografía]
 ---
 

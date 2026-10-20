@@ -2,7 +2,7 @@
 title: 'Kokoro ga Sakebitagatterunda (El corazón quiere gritar)'
 description: 'Reseña de Kokoro ga Sakebitagatterunda (El corazón quiere gritar), película sobre el poder de las palabras y el silencio.'
 pubDate: 2016-10-18
-tags: [anime, película, reseña]
+tags: [anime, reseña]
 categories: [Anime, Cine]
 ---
 

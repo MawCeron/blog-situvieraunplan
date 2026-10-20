@@ -2,7 +2,7 @@
 title: 'NaNoWriMo, escribiendo una novela en un mes'
 description: 'Qué es el NaNoWriMo y por qué decidió participar, escribiendo una novela de 50 mil palabras en 30 días.'
 pubDate: 2016-10-19
-tags: [escritura, nanowrimo, novela]
+tags: [escritura, nanowrimo]
 categories: [Escritura]
 ---
 

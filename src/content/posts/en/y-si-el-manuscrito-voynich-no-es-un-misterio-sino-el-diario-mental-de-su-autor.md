@@ -2,7 +2,7 @@
 title: '¿Y si el Manuscrito Voynich no es un misterio, sino el diario mental de su autor?'
 description: 'Una hipótesis alternativa sobre el Manuscrito Voynich: que nunca fue pensado para ser leído por nadie más que su propio autor.'
 pubDate: 2025-06-19
-tags: [manuscrito-voynich, misterios, historia]
+tags: [historia, opinión]
 categories: [Random, Opinión]
 toc: true
 heroImage: '../../../assets/images/posts/manuscrito-voinich/voinich.png'

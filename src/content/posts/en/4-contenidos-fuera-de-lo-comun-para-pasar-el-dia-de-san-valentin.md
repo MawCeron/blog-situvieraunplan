@@ -2,7 +2,7 @@
 title: '4 contenidos fuera de lo común para pasar el día de San Valentin'
 description: 'Cuatro recomendaciones fuera de lo común —película, dorama, libro y anime— para pasar el día de San Valentín.'
 pubDate: 2015-02-12
-tags: [san-valentín, recomendaciones, anime, cine]
+tags: [anime, cine]
 categories: [Geek]
 toc: true
 ---

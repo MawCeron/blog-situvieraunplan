@@ -2,7 +2,7 @@
 title: 'Definiendo mi 2014 en un anime...'
 description: 'Una reflexión de fin de año usando Spice and Wolf como metáfora del 2014: dejar la comodidad y empezar de nuevo en una ciudad distinta.'
 pubDate: 2014-12-31
-tags: [anime, reflexión, spice-and-wolf]
+tags: [anime, reflexión]
 categories: [Personal, Anime]
 ---
 

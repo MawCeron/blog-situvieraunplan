@@ -3,7 +3,7 @@ title: 'Yuri, el lado más femenino del anime'
 description: 'Un repaso al género yuri en el anime y manga: qué lo hace distinto del ecchi y el yaoi, y por qué series como Aoi Hana, Kanazuki no Miko e incluso Ikkitousen lo manejan tan bien.'
 pubDate: 2010-01-19
 updatedDate: 2026-07-15
-tags: [anime, yuri, shoujo-ai]
+tags: [anime, opinión]
 categories: [Anime, Opinión]
 heroImage: ../../../assets/images/posts/yuri-el-lado-mas-femenino-del-anime/aoi-hana.jpeg
 heroImageAlt: 'Escena de la serie de anime Aoi Hana'

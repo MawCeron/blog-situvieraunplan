@@ -2,7 +2,7 @@
 title: 'Waifuismo: Un manifiesto del amor bidimensional'
 description: 'Presentando Waifuismo: Un Manifiesto del Amor Bidimensional, un libro gratuito que defiende con toda seriedad filosófica el amor por personajes de anime.'
 pubDate: 2026-04-20
-tags: [escritura, libros, waifuismo, anime]
+tags: [escritura, libros, anime]
 categories: [Escritura]
 heroImage: '../../../assets/images/posts/waifuismo/hero.jpg'
 ---

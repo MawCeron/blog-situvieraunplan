@@ -3,7 +3,7 @@ title: 'Resucitando un cyber'
 description: 'La crónica de un trabajo freelance en Aguascalientes: restaurar un cyber café infestado de virus, lidiar con un cliente que insistía en Windows 7 y sobrevivir a Trinity Rescue Kit.'
 pubDate: 2010-07-15
 updatedDate: 2026-07-15
-tags: [windows, trinity-rescue-kit]
+tags: [windows, hardware]
 categories: [Windows, Personal]
 toc: true
 heroImage: ../../../assets/images/posts/resucitando-un-cyber/internet-cafe.jpg

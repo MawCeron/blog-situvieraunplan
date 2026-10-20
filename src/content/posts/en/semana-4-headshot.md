@@ -2,7 +2,7 @@
 title: 'Semana 4. Headshot'
 description: 'Semana 4 del reto de las 52 semanas: un headshot, con Loki el perro como único modelo disponible.'
 pubDate: 2016-03-16
-tags: [fotografía, reto-fotográfico, retrato]
+tags: [fotografía, reto-fotográfico]
 categories: [Fotografía]
 ---
 

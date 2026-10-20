@@ -2,7 +2,7 @@
 title: 'Libro de texto gratuito sobre Bitcoins'
 description: 'Bitcoin and Cryptocurrency Technologies, un libro gratuito de Princeton sobre el funcionamiento técnico de Bitcoin, disponible en PDF.'
 pubDate: 2016-02-18
-tags: [bitcoin, criptomonedas, libros]
+tags: [libros, recursos]
 categories: [Random, Recursos]
 ---
 

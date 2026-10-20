@@ -2,7 +2,7 @@
 title: 'Git y el precio de la fidelidad: por qué tu historial nunca es tan limpio como quisieras'
 description: 'Por qué el historial de Git en main siempre termina siendo un desastre, cómo funcionan las estrategias de merge, y una propuesta (symbolic-parent) para resolver la tensión entre fidelidad histórica y legibilidad.'
 pubDate: 2026-03-25
-tags: [git, control-de-versiones, desarrollo]
+tags: [desarrollo, programación]
 categories: [Git, Programación]
 toc: true
 heroImage: '../../../assets/images/posts/heroes/git-precio.png'

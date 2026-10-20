@@ -2,7 +2,7 @@
 title: 'Hibike! Euphonium, todo lo que K-On! no pudo ser'
 description: 'Por qué Hibike! Euphonium logra lo que K-On! no consiguió: contar una historia real sobre música y crecimiento.'
 pubDate: 2016-11-30
-tags: [anime, hibike-euphonium, reseña]
+tags: [anime, reseña]
 categories: [Anime]
 ---
 

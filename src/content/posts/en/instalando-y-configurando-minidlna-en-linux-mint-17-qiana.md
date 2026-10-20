@@ -2,7 +2,7 @@
 title: 'Instalando y configurando MiniDLNA en Linux Mint 17 "Qiana"'
 description: 'Guía para instalar y configurar MiniDLNA en Linux Mint 17 y así transmitir fotos, música y video a dispositivos compatibles con DLNA.'
 pubDate: 2014-07-04
-tags: [linux, linux-mint, minidlna, dlna, tutorial]
+tags: [linux, linux-mint, tutorial]
 categories: [Linux]
 ---
 

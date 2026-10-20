@@ -2,7 +2,7 @@
 title: 'Mis razones para dejar Facebook'
 description: 'Las razones personales, más allá de la privacidad, por las que decidió dejar de usar Facebook.'
 pubDate: 2016-06-12
-tags: [facebook, redes-sociales, reflexión]
+tags: [redes-sociales, reflexión]
 categories: [Opinión, Personal]
 toc: true
 ---

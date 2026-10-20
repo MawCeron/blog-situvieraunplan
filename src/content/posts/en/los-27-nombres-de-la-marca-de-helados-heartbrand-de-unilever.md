@@ -2,7 +2,7 @@
 title: 'Los 27 nombres de la marca de helados "Heartbrand" de Unilever'
 description: 'La lista completa de los 27 nombres distintos que usa Unilever para su marca de helados Heartbrand según el país.'
 pubDate: 2014-07-03
-tags: [curiosidades, marcas, unilever]
+tags: [curiosidades, marcas]
 categories: [Random]
 ---
 

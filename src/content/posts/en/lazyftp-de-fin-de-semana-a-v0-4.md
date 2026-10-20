@@ -2,7 +2,7 @@
 title: "lazyftp seis meses después: de experimento de fin de semana a v0.4"
 description: "Qué le ha pasado a lazyftp desde que lo presenté: de un cliente que solo transfería archivos a uno que renombra, borra, guarda conexiones, usa llaves SSH, verifica servidores y hasta acepta temas de color."
 pubDate: 2026-10-12
-tags: [go, tui, ftp, sftp, open-source]
+tags: [go, tui, ftp, open-source]
 categories: [Herramientas, Programación]
 heroImage: https://raw.githubusercontent.com/MawCeron/lazyftp/develop/assets/demo.gif
 showHeroInPost: false

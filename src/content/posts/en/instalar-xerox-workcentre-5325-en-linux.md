@@ -2,7 +2,7 @@
 title: 'Instalar Xerox WorkCentre 5325 en Linux'
 description: 'Cómo instalar una impresora Xerox WorkCentre 5325 sin drivers oficiales en Linux usando CUPS y el driver genérico PCL 5e.'
 pubDate: 2026-06-05
-tags: [linux, cups, impresoras, cachyos]
+tags: [linux, hardware]
 categories: [Linux]
 toc: true
 heroImage: ../../../assets/images/posts/instalar-xerox-workcentre-5325-en-linux/gemini_generated_image_tafot8tafot8tafo.png

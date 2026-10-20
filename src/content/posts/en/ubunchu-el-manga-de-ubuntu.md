@@ -3,7 +3,7 @@ title: 'Ubunchu!: El manga de Ubuntu'
 description: 'Reseña de Ubunchu!, el manga japonés de Hiroshi Seo sobre un club escolar que descubre Ubuntu, publicado bajo licencia Creative Commons.'
 pubDate: 2010-07-06
 updatedDate: 2026-07-15
-tags: [linux, ubuntu, manga, ubunchu]
+tags: [linux, ubuntu, manga]
 categories: [Linux, Manga]
 heroImage: ../../../assets/images/posts/ubunchu-el-manga-de-ubuntu/header1.png
 heroImageAlt: 'Cabecera de Ubunchu!, el manga de Ubuntu'

@@ -2,7 +2,7 @@
 title: 'Archer, la serie animada que deberías estar viendo'
 description: 'Por qué Archer, la comedia animada de espionaje sobre Sterling Archer y la agencia ISIS, merece más reconocimiento.'
 pubDate: 2016-07-15
-tags: [series, animación, archer, reseña]
+tags: [series, animación, reseña]
 categories: [Series]
 ---
 

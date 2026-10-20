@@ -2,7 +2,7 @@
 title: 'Compartiendo la conexión a Internet con Linux'
 description: 'Cómo compartir la conexión a Internet de una laptop con otros equipos usando NetworkManager en Linux.'
 pubDate: 2015-03-13
-tags: [linux, redes, networkmanager]
+tags: [linux, redes]
 categories: [Linux]
 ---
 

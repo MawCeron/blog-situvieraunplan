@@ -4,7 +4,7 @@ description: "Hay isekais hasta debajo de las piedras. Por qué hay tantos, por 
 pubDate: 2026-10-22
 draft: true
 heroImage: ../../../assets/images/posts/heroes/clichekai.jpg
-tags: [anime, isekai, opinión]
+tags: [anime, opinión]
 categories: [Anime, Opinión]
 ---
 

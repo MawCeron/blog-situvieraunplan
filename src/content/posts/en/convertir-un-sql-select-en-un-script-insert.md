@@ -2,7 +2,7 @@
 title: 'Convertir un SQL SELECT en un script INSERT'
 description: 'Un script de T-SQL que convierte automáticamente los resultados de un SELECT en un script INSERT listo para usar.'
 pubDate: 2023-09-12
-tags: [sql, sql-server, scripting]
+tags: [sql, scripting]
 categories: [SQL]
 heroImage: ../../../assets/images/posts/heroes/convertirSQl.png
 ---

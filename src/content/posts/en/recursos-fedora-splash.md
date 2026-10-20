@@ -3,7 +3,7 @@ title: 'Recursos: Fedora Splash'
 description: 'Un wallpaper que diseñé con GIMP e Inkscape para Fedora, a juego con el tema azul de Emerald, ante la falta de fondos de pantalla decentes para la distro.'
 pubDate: 2010-08-04
 updatedDate: 2026-07-15
-tags: [linux, fedora, wallpaper, gimp, inkscape]
+tags: [linux, fedora]
 categories: [Linux, Diseño]
 toc: false
 heroImage: ../../../assets/images/posts/recursos-fedora-splash/fedora-splash.png

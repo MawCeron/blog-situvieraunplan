@@ -2,7 +2,7 @@
 title: 'Restablecer la contraseña de usuario en el Subsistema Linux de Windows (WSL)'
 description: 'Cómo recuperar el acceso y restablecer la contraseña de un usuario en WSL cuando la olvidas.'
 pubDate: 2025-04-08
-tags: [wsl, windows, linux, contraseñas]
+tags: [windows, linux, contraseñas]
 categories: [Windows, Linux]
 toc: true
 heroImage: '../../../assets/images/posts/heroes/pass-wls.png'

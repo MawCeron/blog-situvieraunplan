@@ -3,7 +3,7 @@ title: 'Instalar Gmail Notifier en Fedora 13'
 description: 'Cómo instalar y configurar Gmail Notifier en Fedora 13 para recibir notificaciones de Gmail sin tener el navegador abierto.'
 pubDate: 2010-08-10
 updatedDate: 2026-07-15
-tags: [linux, fedora, gmail]
+tags: [linux, fedora]
 categories: [Linux]
 toc: true
 heroImage: ../../../assets/images/posts/instalar-gmail-notifier-en-fedora-13/menu_007.png

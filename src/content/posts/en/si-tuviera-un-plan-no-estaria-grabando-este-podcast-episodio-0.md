@@ -2,7 +2,7 @@
 title: 'Episodio 0. Si tuviera un plan'
 description: 'Episodio 0 del podcast: la presentación de Si tuviera un plan..., el podcast que nace sin ningún plan.'
 pubDate: 2015-11-01
-tags: [podcast, presentación]
+tags: [podcast, personal]
 categories: [Podcast]
 ---
 
