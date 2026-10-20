@@ -2,6 +2,8 @@
 title: 'Por qué Vance Joseph no seguirá como HC de los Broncos al finalizar la temporada...'
 description: 'Especulación sobre por qué Vance Joseph no continuaría como head coach de los Denver Broncos al terminar la temporada.'
 pubDate: 2017-11-23
+heroImage: ../../../assets/images/posts/heroes/vance-joseph-broncos.jpg
+heroImageAlt: 'Vance Joseph, head coach de los Denver Broncos, con gesto serio frente a un fondo con el logo del equipo'
 tags: [nfl, denver-broncos, deportes, opinión]
 categories: [Deportes, Opinión]
 toc: true
@@ -21,16 +23,16 @@ Pero John Elway y los Broncos decidieron jugársela con Joseph, y aquí estamos 
 
 A John Elway no le gusta perder. Especialmente desde que se convirtió en el mandamás de los Broncos. Tiene un legado a través del estado de Colorado (junto con Wyoming, Montana, Nuevo México y parte de Kansas) que le llevará mucho tiempo empañarlo. Pero en este momento, con tantas incertidumbres en el equipo, Elway querrá mostrar que sabe como corregir el rumbo y hacer las cosas mejores. No saldrá y se echará la culpa, eso es seguro, así que ¿quién es el siguiente en linea? Ese sería Joseph.
 
-john-elway-041516-getty-ftrjpg_13seutqzdleh71g2a8xx5boxsj.jpg
+![John Elway, gerente general de los Denver Broncos, mirando hacia arriba con gesto serio](../../../assets/images/posts/vance-joseph-broncos/elway.jpg)
 
 ## 2\. ¿Por qué esperó tanto para hacer cambio de QB?
 
 Mientras podemos culpar a Elway de no reforzar la posición de QB durante la pretemporada (¿en serio alguien CREE que Siemian era el futuro?), es culpa de Vance Joseph esperar tanto en hacer el cambio. Trevor Siemian comenzó bien la temporada, pero hay que aceptar que solo por momentos. En cuanto su progreso comenzó a detenerse y el equipo comenzó a sufrir por ello, debió realizarse un cambio de inmediato. Lo mismo sucedió con Osweiler, aunque aceptemos que al menos sabe como jugar en el Mile High. Si el equipo luce mejor ahora con Lynch como QB, y aún así no se llega a playoffs, la culpa se irá directo a Vance Joseph por no hacer los cambios antes.
 
-paxton-lynch-070617-getty-ftr_avyitdn0cinr1nb8a3jier26b.jpg
+![Paxton Lynch, quarterback de los Broncos con el número 12, a punto de lanzar el balón](../../../assets/images/posts/vance-joseph-broncos/paxton-lynch.jpg)
 
 ## 3\. Los fans se están haciendo oír y están molestos
 
 Esto también tiene que ver con Elway. Sin embarho, como ya lo mencioné, Elway no se va a despedir a si mismo. Existe una enorme cantidad de tweets, publicaciones en facebook e instagram con gente expresando su molestia con las decisiones que Elway ha tomado, incluido contratar a Joseph. A menos que se de una gigantesca voltereta a la situación, las quejas seguirán llegando.
 
-tweets.png
+![Tres tuits del 30 de octubre de 2017 pidiendo la salida de Vance Joseph](../../../assets/images/posts/vance-joseph-broncos/tweets.png)

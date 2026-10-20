@@ -2,6 +2,8 @@
 title: 'Descargar todos los archivos vinculados en una página con Python'
 description: 'Un script en Python con BeautifulSoup para descargar automáticamente todos los archivos enlazados en una página web, recursivamente.'
 pubDate: 2018-07-25
+heroImage: ../../../assets/images/posts/heroes/descargar-archivos-python.png
+heroImageAlt: 'Visual Studio Code con el script de Python abierto y la terminal mostrando la lista de archivos PDF descargados'
 tags: [python, automatización]
 categories: [Python]
 ---
