@@ -1,7 +1,7 @@
 ---
 title: 'La economía de un estadio: quién lo paga y quién gana'
 description: 'Borrador: La economía de un estadio: quién lo paga y quién gana'
-pubDate: 2027-08-30
+pubDate: 2027-04-26
 draft: true
 tags: [deportes, nfl, opinión]
 categories: [Deportes, Opinión]
