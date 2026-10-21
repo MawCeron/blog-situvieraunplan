@@ -1,0 +1,50 @@
+---
+title: 'MIT vs. GPL'
+description: 'Las dos licencias de software libre más populares y sus filosofías opuestas: una te deja hacer casi lo que quieras con el código, la otra se asegura de que nadie lo cierre. Qué dice cada una, por qué el kernel de Linux eligió la suya y cómo decidir.'
+pubDate: 2027-09-20
+draft: true
+tags: [open-source, linux, opinión]
+categories: [Linux, Opinión]
+---
+
+Cuando publiqué [justwrite](/posts/justwrite-editor-de-texto-sin-distracciones-que-pesa-3-4-mb/), al final del post puse el enlace al repositorio y una sola palabra, casi de pasada: *MIT*. Tres letras para una decisión que, en teoría, importa muchísimo, porque define qué puede hacer cualquiera que se tope con tu código. Y, sin embargo, la mayoría de la gente (yo incluido) elige una licencia como quien elige el color de unas calcetas: la que ya usa todo el mundo, sin leerla del todo.
+
+Así que, ya que llevo varios posts hablando de [software libre](/posts/que-es-el-software-libre-y-por-que-deberia-importarle-a-alguien-que-no-usa-linux/) y de [quién controla el código](/posts/codeberg-github-patrones/), toca ponerle cara a la pregunta que quedó pendiente: ¿qué diferencia hay entre MIT y GPL, y cuál conviene?
+
+## La licencia que cabe en un tuit: MIT
+
+La licencia MIT es la reina de las licencias permisivas, y su filosofía se resume en una frase: *haz lo que quieras con esto, nomás no te quedes con mi nombre*. A quien recibe el código solo le pide dos cosas: [conservar el aviso de derechos de autor y el texto de la licencia](https://ospo-alliance.org/faq/licences/gpl-vs-mit/). Todo lo demás está permitido, incluso meter ese código en un producto propietario y vender el resultado sin compartir una sola línea. Es, por mucho, la más corta de todas las licencias populares, y por eso es tan cómoda: nadie necesita un abogado para entenderla.
+
+La contracara es que no incluye una concesión explícita de patentes. En la práctica los tribunales suelen interpretarla como que sí permite usarlas, pero esa falta de garantías hace que algunas empresas prefieran licencias que sean más claras con eso. Y de ahí sale una anécdota que me gusta: en 2017 Facebook tenía React bajo una licencia tipo BSD con una cláusula de patentes que podía revocarse en ciertas circunstancias, y la comunidad se enojó tanto que Matt Mullenweg (el fundador de WordPress) anunció que dejaría de usar React en uno de sus proyectos. Unos días después, Facebook [cedió y relicenció React bajo MIT, sin la cláusula](https://ma.tt/2017/09/facebook-dropping-patent-clause/). Una licencia puede ser una razón para que una empresa pierda o gane a la comunidad.
+
+## La licencia que se contagia: GPL
+
+La GNU General Public License parte de la filosofía opuesta, que se conoce como *copyleft*: si distribuyes una versión modificada de un programa GPL, **tienes que distribuirla también bajo la GPL**. Es decir, la libertad se hereda. Nadie puede tomar el trabajo de la comunidad, agregarle algo y cerrarlo. Es como prestar un libro con una condición: "si lo subrayas, el tuyo también lo tienes que prestar".
+
+Dos detalles importantes que casi todos ignoran. Primero, lo que activa la obligación es **distribuir**: si usas software GPL dentro de tu empresa o en un servidor tuyo, sin entregárselo a nadie más, no estás obligado a compartir tus cambios. Segundo, existen varias versiones. La GPLv3 se publicó el 29 de junio de 2007, después de unos dieciocho meses de consulta, y agregó, entre otras cosas, una [concesión explícita de patentes](https://www.noze.it/en/insights/gplv3-open-source/) de cada contribuidor y compatibilidad con la licencia Apache 2.0. Y la GPLv2 y la v3 no son compatibles entre sí: no puedes mezclar en un mismo binario código bajo "GPLv2 solamente" con código bajo GPLv3.
+
+## El drama del kernel
+
+Aquí entra la mejor historia de este tema. El kernel de Linux está, y ha estado siempre, bajo la GPLv2. Cuando salió la GPLv3, Linus Torvalds la rechazó, principalmente por una cláusula que prohíbe la llamada *tivoización*. El término viene de TiVo, la empresa que usaba Linux en sus grabadoras, publicaba el código fuente tal como exige la GPL, pero firmaba criptográficamente el firmware para que **nadie pudiera instalar versiones modificadas** en el aparato. Técnicamente cumplía la letra de la GPLv2, y la GPLv3 se escribió justamente para cerrar ese hueco: exige que en productos de consumo se entregue la información necesaria para instalar versiones modificadas.
+
+Torvalds consideraba que esa cláusula era una carga excesiva para quienes usan la licencia, y que la GPLv2 bastaba para proteger al kernel. Cambiar de licencia, además, era impráctico: el kernel tiene miles de contribuidores, y cada uno tendría que dar su consentimiento. Desde entonces, el kernel sigue en GPLv2. Es uno de esos casos en que la elección de licencia es, en sí, una postura política.
+
+\{image - captura de la licencia MIT (que cabe en pantalla) junto a la de la GPL, o un meme de "MIT: 20 líneas / GPL: 700"\}
+
+## Entonces, ¿cuál escoger?
+
+Un resumen de lo que hemos visto:
+
+| | MIT | GPL |
+| --- | --- | --- |
+| Filosofía | Permisiva: casi todo está permitido | *Copyleft*: la libertad se hereda |
+| Qué te exige | Conservar el aviso de copyright y la licencia | Si distribuyes una versión modificada, hacerlo bajo la misma licencia |
+| ¿Se puede cerrar el código derivado? | Sí | No (si se distribuye) |
+| Patentes | Sin concesión explícita | La v3 incluye una concesión explícita |
+| Compatibilidad | Muy alta, se mezcla con casi todo | GPLv2 y v3 no son compatibles entre sí |
+
+No hay una respuesta correcta. La MIT maximiza que tu código se use, incluso por empresas que jamás te devolverán nada. La GPL maximiza que lo que construyas se quede libre, a costa de que algunos proyectos, empresas o integraciones decidan no tocarlo. Todo depende de una pregunta que cualquier autor debería hacerse antes de escoger: **¿me importa que alguien tome mi código y lo cierre?** Si la respuesta es "para nada, que lo use quien quiera", MIT. Si es "me incomoda mucho", GPL.
+
+Lo que sí me parece que debería estar claro es que la licencia es la parte del proyecto que más cuesta cambiar después, y la que menos tiempo le dedicamos al principio. Cambiarla a mitad de camino requiere el permiso de todos los que han contribuido (y no digo nada si uno de ellos ya no contesta correos). La historia de Terraform, que HashiCorp pasó de una licencia abierta a una "con restricciones" y terminó bifurcado en OpenTofu, es una advertencia clara: lo que está escrito en el `LICENSE` de tu repositorio es, literalmente, lo que otros pueden o no pueden hacer con tu trabajo.
+
+Yo, por mi parte, voy a seguir pensándolo antes de poner la siguiente. La tercera es la vencida.
