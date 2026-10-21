@@ -2,7 +2,6 @@
 title: "Clichekai: ¿cuándo llegará el fin de la era de los isekais?"
 description: "Hay isekais hasta debajo de las piedras. Por qué hay tantos, por qué casi todos se olvidan y qué hace que unos pocos valgan la pena."
 pubDate: 2026-10-22
-draft: true
 heroImage: ../../../assets/images/posts/heroes/clichekai.jpg
 tags: [anime, opinión]
 categories: [Anime, Opinión]
