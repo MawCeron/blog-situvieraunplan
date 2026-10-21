@@ -47,7 +47,7 @@ Hay ideas especulativas (algunas de la teoría de cuerdas, por ejemplo) que imag
 
 ### ¿Por qué soñamos con lugares en los que nunca hemos estado?
 
-Esta es de las preguntas donde la ciencia contesta, con mucha honestidad, que **no estamos seguros** de por qué soñamos. Hay varias teorías: una de las más conocidas, de Hobson y McCarley (1977), propone que durante el sueño se activan áreas del cerebro ligadas a emoción, sensaciones y memoria, y el cerebro intenta darles sentido armando una historia. Otras hablan de limpieza de memoria o de dreams como una especie de terapia. Y sobre el contenido, la idea popular es que esos lugares desconocidos son **collages** de sitios reales, con pedazos de aquí y de allá, aunque eso lo encontré más en testimonios que en estudios sólidos, así que la dejo como hipótesis plausible y no como hecho.
+Esta es de las preguntas donde la ciencia contesta, con mucha honestidad, que **no estamos seguros** de por qué soñamos. Hay varias teorías: una de las más conocidas, de Hobson y McCarley (1977), propone que durante el sueño se activan áreas del cerebro ligadas a emoción, sensaciones y memoria, y el cerebro intenta darles sentido armando una historia. Otras hablan de limpieza de memoria o de los sueños como una especie de terapia. Y sobre el contenido, la idea popular es que esos lugares desconocidos son **collages** de sitios reales, con pedazos de aquí y de allá, aunque eso lo encontré más en testimonios que en estudios sólidos, así que la dejo como hipótesis plausible y no como hecho.
 
 Lo que sí puedo decir es que no hay ningún misterio especial en el hecho de que el cerebro invente: es lo que hace despierto también, solo que sin el filtro de la realidad que le dice que tal cosa no tiene sentido.
 
