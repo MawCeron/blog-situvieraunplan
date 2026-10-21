@@ -1,9 +1,42 @@
 ---
 title: '¿Por qué necesitamos tanta RAM para abrir un editor de texto?'
-description: 'Borrador: por qué necesitamos tanta RAM para abrir un editor de texto.'
+description: 'Un editor de texto moderno puede pesar cientos de megas y ocupar otros tantos de RAM. Qué hay dentro de una app Electron, por qué se hace así, qué alternativas existen y cuánto cuesta realmente.'
 pubDate: 2027-08-09
 draft: true
 tags: [tecnología, hardware, opinión]
 categories: [Tecnología, Opinión]
 ---
 
+Hace unos meses hice un editor de texto que pesa 3.4 MB. Lo conté en [su propia entrada](/posts/justwrite-editor-de-texto-sin-distracciones-que-pesa-3-4-mb/), y en el post donde desarmé *Circus Charlie* se me escapó un comentario en cursivas: *"eso es lo que me gustaba de la programación de antes, tenías que hacer rendir las cosas, no que ahora tienes editores de texto que pesan cientos de megas... y ocupan otros tantos de RAM."* Lo escribí con la ligereza de quien se queja del clima, pero la pregunta se quedó dando vueltas: **¿por qué?** ¿Qué hay dentro de un editor para que una herramienta que sirve para escribir letras necesite más memoria que una computadora completa de hace treinta años?
+
+## Un navegador entero por cada app
+
+La respuesta corta tiene nombre: **Electron**. Es el framework con el que se construyen cientos de aplicaciones de escritorio (VS Code, Slack, Discord y el cliente de escritorio de Figma, por mencionar algunas), y su truco es tan simple como brutal: cada aplicación [trae su propia copia de Chromium y de Node.js](https://www.digitalcitizen.life/what-is-electron-and-why-so-many-desktop-apps-feel-slow-and-heavy/). Es decir, un navegador completo (con su motor de renderizado, su motor de JavaScript y todo) metido dentro de tu "editor de texto", solo que sin barra de direcciones, para que no se note.
+
+Y como cada app trae el suyo, tres aplicaciones Electron abiertas significan tres navegadores corriendo en paralelo, sin compartir nada. Las cifras varían bastante según quién las mida y qué app se pruebe, pero lo común es encontrar instaladores de [entre 100 y 300 MB incluso para aplicaciones sencillas](https://betterstack.com/community/guides/scaling-nodejs/tauri-vs-electron-vs-deno-vs-electrobun/), y consumos de RAM en reposo que van desde unos cientos de megas hacia arriba. Es el equivalente a mudarte con tu propia casa en un tráiler cada vez que cambias de oficina.
+
+\{image - meme de "una app de notas / editor con 5 procesos de Chromium en el administrador de tareas" o captura del administrador de procesos\}
+
+## ¿Y entonces por qué lo hacemos?
+
+Antes de ponerme dramático hay que reconocer que no es capricho ni maldad, y que tiene razones muy de peso:
+
+- **Un solo código para todo.** Escribes la aplicación una vez, con tecnologías web, y corre en Windows, macOS y Linux sin reescribir nada. Para un equipo pequeño, o para una empresa que no quiere mantener tres aplicaciones distintas, eso es una diferencia enorme.
+- **Hay muchísimos desarrolladores web.** HTML, CSS y JavaScript es probablemente el conjunto de habilidades más extendido del mundo. Contratar gente para eso es más fácil que contratar especialistas en toolkits nativos.
+- **Un editor moderno no es solo un editor.** VS Code, por ejemplo, tiene resaltado de sintaxis, terminal integrada, depurador, un ecosistema de extensiones y servidores de lenguaje que corren como procesos aparte. Parte de esa RAM no es desperdicio: es trabajo que otros editores hacen en otro lado, o que simplemente no hacen.
+
+El problema no es que alguien eligiera Electron para construir una herramienta compleja. El problema es que se volvió el **default**, hasta para cosas que no lo necesitan: una app de notas, un reproductor, un cliente de chat que a fin de cuentas es un campo de texto y una lista de mensajes. Con mi editor de 3.4 MB no digo que sea mejor que VS Code (ni de chiste, VS Code hace mil cosas que el mío no), sino que se puede hacer **lo suficiente** con mucho menos, y que casi nadie se lo plantea.
+
+## ¿Hay otras opciones?
+
+Sí, varias, y ninguna es perfecta:
+
+- **Tauri.** Usa el navegador que ya trae tu sistema operativo (el *webview*) en lugar de empacar uno propio, y la parte nativa se escribe en Rust. Los instaladores bajan de cientos de MB a unos [cuantos MB](https://dolthub.com/blog/2025-11-13-electron-vs-tauri). El precio: como cada sistema operativo tiene su propio motor, la app puede verse o comportarse distinto según la plataforma, y la reducción de memoria en uso es menos clara de lo que se pregona (porque el webview del sistema también consume).
+- **Toolkits nativos (GTK, Qt y compañía).** Más ligeros, mejor integrados con el escritorio, pero requieren conocer esas herramientas y mantener versiones por plataforma si quieres llegar a todas.
+- **La terminal.** Un editor en terminal como `nano`, `vim` o uno hecho con una librería TUI (mi caso, con Go) pesa unos pocos MB y arranca en un parpadeo. La contrapartida es obvia: no es para todo el mundo, y menos para quien quiere un menú de ratón.
+
+## RAM barata, pero no gratis
+
+Hay una frase conocida en el mundo de la computación que se atribuye a Niklaus Wirth: *el software se vuelve más lento más rápido de lo que el hardware se vuelve más rápido*. A veces la pienso cuando veo mi administrador de tareas con tres aplicaciones "ligeras" ocupando varios gigas entre las tres. La memoria sí es barata, sí sobra, y sí, tengo más RAM de la que la Commodore 64 hubiera podido soñar. Pero cada MB que desperdiciamos porque "total, hay de sobra" es un MB que no tiene el siguiente programa, y la suma de muchos programas descuidados es tu computadora pidiendo una actualización que tal vez no necesitaba.
+
+No pido que dejemos Electron (sería injusto, y yo mismo no estoy libre de pecado en otras cosas). Pido algo más modesto: que cuando alguien vaya a empezar una herramienta que, en el fondo, es un campo de texto, se pregunte **si de verdad necesita un navegador para eso**. A veces la respuesta será sí. Y a veces serán 3.4 MB.

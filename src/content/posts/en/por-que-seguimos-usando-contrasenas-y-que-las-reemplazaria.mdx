@@ -1,9 +1,40 @@
 ---
 title: 'Por qué seguimos usando contraseñas y qué las reemplazaría'
-description: 'Borrador: por qué seguimos usando contraseñas y qué las reemplazaría.'
+description: 'Las contraseñas tienen más de sesenta años y siguen siendo el peor candado que usamos todos los días. De dónde salieron, qué dice NIST, cómo funcionan las passkeys y por qué todavía no las reemplazan.'
 pubDate: 2027-05-10
 draft: true
 tags: [contraseñas, tecnología, opinión]
 categories: [Tecnología, Opinión]
 ---
 
+Cada vez que una página me dice que mi contraseña debe tener "al menos ocho caracteres, una mayúscula, un número y un símbolo", siento una mezcla rara entre fastidio y compasión por el sistema que cree que eso lo protege. Las contraseñas llevan más de sesenta años con nosotros y siguen siendo, con mucha ventaja, lo que más odiamos de la tecnología cotidiana. Y aun así seguimos escribiéndolas todos los días, como quien se come el mismo platillo de la fonda aunque sepa que le cae mal.
+
+## De dónde salió esto
+
+La historia más aceptada dice que la primera contraseña de computadora nació en el MIT, en el sistema de tiempo compartido CTSS, a mediados de los sesenta. El problema que tenían era muy simple: [varias personas usaban las mismas terminales, pero cada una quería tener sus archivos privados](https://gizmodo.com/the-world-s-first-computer-password-it-was-useless-too-5879856), y poner una contraseña por usuario parecía la solución más sencilla. Fernando Corbató, uno de los creadores del sistema, lo contó así décadas después. (Hay historiadores que dudan de que haya sido la primera, así que "la más aceptada" no es lo mismo que "la comprobada".)
+
+Lo mejor de la anécdota: en 1966, un estudiante de doctorado del propio equipo, Allan Scherr, logró conseguir la lista completa de contraseñas del sistema. Nadie sospechó de él hasta que lo confesó en el aniversario veinticinco de CTSS. Antes de eso, el equipo había atribuido el incidente a un error de software. O sea que el primer robo de contraseñas de la historia se archivó como "bug", que, si lo piensan, es una tradición que sigue vigente en muchas empresas hoy. Corbató terminó llamando a las contraseñas, en una entrevista en 2014, "una especie de pesadilla".
+
+## Lo que creíamos saber, y ya no
+
+Durante años, nos dijeron cómo debía ser una contraseña "buena": mezclar mayúsculas, minúsculas, números y símbolos, cambiarla cada tres meses, y nunca repetirla. El resultado fue `Contraseña2024!`, luego `Contraseña2025!`, luego `Contraseña2026!`, y así hasta que nos retiremos.
+
+Las guías de NIST (el organismo de estándares de Estados Unidos) [dijeron basta](https://jumpcloud.com/blog/review-of-nist-sp-800-63-memorized-secrets-guidelines) en su documento SP 800-63B: ya no recomiendan obligar a los usuarios a cambiar la contraseña periódicamente (porque lo que produce es contraseñas peores, no mejores), ni imponer reglas de composición, y en cambio piden permitir contraseñas largas (hasta 64 caracteres o más), comparar contra listas de contraseñas filtradas o muy comunes, y no usar preguntas de seguridad ni pistas. Las sugerencias se sostienen en algo que ya sabíamos pero nadie quería aceptar: **la longitud importa más que la complejidad**, y las reglas que obligan a inventar `P@ssw0rd!` solo hacen que la gente escriba contraseñas predecibles. (Ojo: la numeración de la revisión varía según la fuente, así que si vas a citar el estándar, revisa la versión actual en el sitio de NIST.)
+
+\{image - meme de "Contraseña2026!" o de las reglas absurdas de las páginas web\}
+
+## El reemplazo: passkeys
+
+El candidato a reemplazar a las contraseñas se llama *passkey*, y se basa en dos estándares abiertos desarrollados por la FIDO Alliance y el W3C: FIDO2 y WebAuthn. La idea es de criptografía de llave pública, de la que ya se usa en SSH (que quizá hayas usado si trabajas con servidores):
+
+1. **Registro.** Tu dispositivo crea un par de llaves: una privada, que **nunca sale** de tu dispositivo o de tu gestor de passkeys, y una pública, que se la entrega al sitio.
+2. **Inicio de sesión.** El sitio te manda un desafío, un número aleatorio único. Tu dispositivo lo firma con la llave privada, previa verificación local con tu huella, tu cara o tu PIN, y devuelve la firma.
+3. **Verificación.** El sitio comprueba la firma con la llave pública que tiene guardada. Si coincide, entras.
+
+Lo elegante de esto es lo que **no** pasa: no viaja ningún secreto compartido, así que no hay nada que se pueda [robar con una página falsa de phishing](https://developer.signicat.com/docs/passkeys/how-it-works/), y si hackean la base de datos del sitio, lo único que se llevan son llaves públicas, que no sirven para entrar a ningún lado. El mismo mecanismo que hacía imposible que te "engañaran" para dar tu contraseña ahora es imposible que te engañen para entregar algo que ni siquiera tú conoces.
+
+## Entonces, ¿por qué seguimos con contraseñas?
+
+Por la misma razón por la que seguimos escribiendo en el teclado QWERTY, de la que ya hablé en [otro post](/posts/por-que-el-teclado-qwerty-tiene-ese-orden/): inercia. Todo el mundo sabe usar una contraseña, todos los sitios las aceptan y cambiar algo que está instalado en miles de millones de cuentas cuesta más que el beneficio individual de cada sitio. Además, las passkeys traen sus propios dolores de cabeza: ¿qué pasa si pierdes el dispositivo?, ¿cómo las recupero si cambio de ecosistema?, ¿qué hago con mi cuenta de un servicio que todavía no las soporta? Es probable que, durante muchos años, convivamos con las dos formas de entrar, lo cual, ya saben, es lo más cómodo y lo menos seguro.
+
+Mientras llega el día en que podamos olvidarlas, lo más sensato es lo de siempre, aunque suene a regaño de maestra: un gestor de contraseñas, contraseñas largas y únicas por sitio, verificación en dos pasos donde se pueda, y activar las passkeys en los servicios que ya las ofrecen. No es emocionante, pero evita que tu cuenta termine en esa lista de contraseñas filtradas contra las que, irónicamente, ahora se comparan las nuevas.
