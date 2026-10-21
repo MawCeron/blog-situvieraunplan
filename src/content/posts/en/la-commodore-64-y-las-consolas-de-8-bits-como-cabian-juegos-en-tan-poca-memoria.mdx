@@ -1,6 +1,6 @@
 ---
 title: 'La Commodore 64 y las consolas de 8 bits: cómo cabían juegos en tan poca memoria'
-description: 'Una Commodore 64 tenía 64 KB de RAM y una NES, apenas 2 KB. Los trucos con los que cabían juegos enteros en eso: tiles reutilizados, sprites por hardware, niveles como recetas, bank switching y universos generados con una semilla.'
+description: 'Una Commodore 64 tenía 64 KB de RAM y una NES, apenas 2 KB. Un recorrido técnico por los trucos con los que cabían juegos enteros ahí: mapas de memoria, zero page, tiles, sprites por hardware, bank switching, música por registros y universos generados con una semilla.'
 pubDate: 2026-12-07
 draft: true
 tags: [historia, hardware, videojuegos]
@@ -11,15 +11,44 @@ import Callout from '../../../components/Callout.astro';
 
 Una sola foto de tu celular pesa más que toda la memoria de una Commodore 64. Y aun así esa computadora corría juegos con scroll, música de tres voces y niveles que todavía se recuerdan con cariño, mientras que hoy mi laptop necesita unos cuantos gigas nomás para abrir un chat de la oficina. Siempre me ha dado vueltas en la cabeza cómo diablos lo lograban, y como ya me tocó meterle el diente a un cartucho de NES (spoiler: mi CPU terminó a 87 °C), creo que ya puedo contarlo sin hacer demasiado el ridículo.
 
+Esto no va a ser una entrada nostálgica de "los juegos de antes eran mejores" (aunque algunos sí lo eran, no voy a mentir). Quiero hablar de **cómo** se hacía: qué había dentro de esas máquinas, cómo estaba repartida la poca memoria que tenían y los trucos concretos con los que los programadores la estiraron más allá de lo razonable. Prepárense, porque va a haber hexadecimal.
+
 ## ¿De cuánta memoria estamos hablando?
 
-Para ponerlo en contexto: la Commodore 64 salió en 1982 con 64 KB de RAM, un procesador MOS 6510 que andaba alrededor de 1 MHz, un chip de video (el VIC-II) capaz de mostrar 16 colores, y un chip de sonido, el SID, con tres voces programables. Según las [estimaciones más conservadoras](https://en.wikipedia.org/wiki/Commodore_64) vendió entre 12.5 y 17 millones de unidades, que para una computadora de 1982 es una barbaridad. Sí, **conservadoras**.
+La Commodore 64 salió en 1982 con 64 KB de RAM, un procesador MOS 6510 que andaba alrededor de 1 MHz, un chip de video (el VIC-II) capaz de mostrar 16 colores, y un chip de sonido, el SID, con tres voces programables. Según las [estimaciones más conservadoras](https://en.wikipedia.org/wiki/Commodore_64) vendió entre 12.5 y 17 millones de unidades, que para una computadora de 1982 es una barbaridad. Sí, **conservadoras**.
 
-La NES era más modesta todavía: 2 KB de RAM de trabajo en la placa (sí, **dos**, no es un error de dedo) y un poco de memoria de video aparte. Y de ahí salieron Mario, Zelda y Metroid. ¿Cómo? No había un solo truco, sino un montón de pequeñas trampas bien pensadas, todas con la misma filosofía: nunca guardes algo que puedas calcular, repetir o reciclar. Marie Kondo, pero con ensamblador.
+Y ojo con ese "64 KB", porque no eran 64 KB para tu juego. Al encender una C64 aparecía el famoso mensaje `38911 BASIC BYTES FREE`: el sistema te dejaba menos de 39 KB libres para programar en BASIC. Los poco más de 26 KB restantes no estaban perdidos, estaban **ocupados**: ahí vivían el intérprete de BASIC y el sistema operativo (el KERNAL), las ROM de caracteres, y los registros de los chips de video, sonido y entrada/salida. Todo compartiendo las mismas 65,536 direcciones que el procesador era capaz de ver.
+
+<Callout type="info" title="Dato nerdo: el mapa de memoria de la C64">
+
+| Dirección | Qué hay ahí |
+| --- | --- |
+| `$0000`–`$00FF` | *Zero page*: 256 bytes de acceso rápido (ya hablamos de ella) |
+| `$0100`–`$01FF` | La pila del procesador |
+| `$A000`–`$BFFF` | ROM del intérprete BASIC (o 8 KB de RAM si lo apagas) |
+| `$D000`–`$DFFF` | Chips de E/S (video, sonido) o ROM de caracteres |
+| `$E000`–`$FFFF` | ROM del KERNAL (o RAM, si lo apagas) |
+
+</Callout>
+
+La NES era más modesta todavía, y con mapa más claro: 2 KB de RAM de trabajo en `$0000`–`$07FF` (sí, **dos**, no es un error de dedo), repetidos o "espejados" hasta `$1FFF` para que el procesador no se enterara de que le estaban tomando el pelo; los registros del chip de video en `$2000`–`$2007`; los del audio y los controles en `$4000`–`$4017`; y el cartucho, con el programa del juego, desde `$8000` hasta `$FFFF`. Y de ahí salieron Mario, Zelda y Metroid. ¿Cómo? No había un solo truco, sino un montón de pequeñas trampas bien pensadas, todas con la misma filosofía: nunca guardes algo que puedas calcular, repetir o reciclar. Marie Kondo, pero con ensamblador.
+
+## Un procesador con un solo registro de verdad
+
+Ambas máquinas tenían un procesador de la familia 6502 (la C64 con una variante, el 6510; la NES con otra, el 2A03), y para apreciar las acrobacias hay que entender lo limitado que era: bus de direcciones de 16 bits (de ahí los 64 KB), datos de 8 bits y **un solo registro de propósito general**, el acumulador, más dos registros de índice, X e Y. Con eso había que hacer todo: contadores, posiciones, puntuación, física. Sin variables locales, sin objetos, sin nada de lo que hoy damos por hecho.
+
+La salida fue la *zero page*, los primeros 256 bytes de la memoria. Como sus direcciones caben en un solo byte, las instrucciones que las usan son [más cortas y más rápidas](https://en.wikipedia.org/wiki/Zero_page), así que los programadores las usaban como si fueran registros extra, un chorro de variables "gratis" siempre a la mano. Comparen:
+
+```asm
+LDA $10     ; zero page: 2 bytes de código, 3 ciclos
+LDA $0310   ; dirección completa: 3 bytes de código, 4 ciclos
+```
+
+Parece una diferencia ridícula (un byte, un ciclo), pero multiplícala por miles de instrucciones, sesenta veces por segundo, en un procesador que apenas llegaba a 1 MHz. Cada ciclo contaba, y cada byte de programa también. Es la clase de optimización que hoy suena absurda, y que entonces era la diferencia entre que el juego corriera o no.
 
 ## Nunca dibujes lo mismo dos veces
 
-La más famosa es la reutilización de gráficos. En esa época las pantallas no se guardaban como imágenes completas sino como cuadrículas de *tiles*, mosaicos pequeños que se combinaban para formar el fondo. En la NES, el fondo es una cuadrícula de 32 × 30 tiles de 8 × 8 píxeles, y en la C64 el modo de texto era de 40 × 25 caracteres, con la particularidad de que el color se guardaba aparte, en una memoria propia. Un tile de pasto es el mismo en toda la pantalla, y con eso ya ahorraste cientos de bytes.
+La reutilización de gráficos es la más famosa. En esa época las pantallas no se guardaban como imágenes completas sino como cuadrículas de *tiles*, mosaicos pequeños que se combinaban para formar el fondo. En la NES, el fondo es una cuadrícula de 32 × 30 tiles de 8 × 8 píxeles, y en la C64 el modo de texto era de 40 × 25 caracteres, con la particularidad de que el color se guardaba aparte, en una memoria propia. Un tile de pasto es el mismo en toda la pantalla, y con eso ya ahorraste cientos de bytes.
 
 Hay un ejemplo clásico en *Super Mario Bros.*: las nubes y los arbustos usan [los mismos sprites con distinta paleta de color](https://www.metmuseum.org/perspectives/making-super-mario-clouds). Nube blanca en el cielo, arbusto verde en el suelo, un solo dibujo. La memoria era tan escasa que los artistas tenían que ser tacaños con cada píxel, y eso moldeó el estilo visual de toda una generación. Cada vez que veas un arbusto en Mario, recuerda que estás viendo una nube con crisis de identidad.
 
@@ -29,9 +58,30 @@ Las paletas también ayudaban: la NES manejaba ocho paletas de cuatro colores (c
 
 ## Que el hardware haga la chamba
 
-Otra parte del truco es que no todo lo hacía el procesador. Los chips de video traían sprites integrados: la NES manejaba hasta [64 sprites en pantalla](https://nesdev.org/wiki/OAM) (con un tope de ocho por línea, de ahí el parpadeo de los enemigos cuando se juntaban muchos, ya saben, ese flickering que juraban que era "estilo"), y la C64 tenía ocho sprites de 24 × 21 píxeles.
+Otra parte del truco es que no todo lo hacía el procesador. Los chips de video traían sprites integrados: la NES manejaba hasta [64 sprites en pantalla](https://nesdev.org/wiki/OAM) (con un tope de ocho por línea, de ahí el parpadeo de los enemigos cuando se juntaban muchos, ya saben, ese *flickering* que juraban que era "estilo"), y la C64 tenía ocho sprites de 24 × 21 píxeles.
 
-Ocho suena a poco, y aquí viene lo bonito: los programadores se dieron cuenta de que podían reprogramar el chip a media pantalla, con una interrupción que se disparaba cuando el haz de electrones llegaba a cierta línea, y [reutilizar los mismos ocho sprites en la parte de abajo](https://en.wikipedia.org/wiki/MOS_Technology_VIC-II). A esa técnica se le llama *sprite multiplexing*, y es básicamente hacer trampa con el reloj para duplicar tus recursos. Como pedirle prestado al banco para pagarle a la tarjeta, pero legal y con mucho mejor resultado.
+Ocho suena a poco, y aquí viene lo bonito: los programadores se dieron cuenta de que podían reprogramar el chip a media pantalla, con una interrupción que se disparaba cuando el haz de electrones llegaba a cierta línea, y [reutilizar los mismos ocho sprites en la parte de abajo](https://en.wikipedia.org/wiki/MOS_Technology_VIC-II). A esa técnica se le llama *sprite multiplexing*, y es básicamente hacer trampa con el reloj para duplicar tus recursos. Como pedirle prestado al banco para pagarle a la tarjeta, pero legal y con mucho mejor resultado. Algunos hasta hacían parpadear sprites a propósito, alternándolos tan rápido que el ojo creía ver más de los que había.
+
+Esto exigía una precisión rarísima: el programa tenía que saber **en qué línea de la pantalla estaba el haz de electrones** y actuar justo a tiempo. Y como el procesador y el chip de video compartían el bus de memoria, a veces el segundo le quitaba ciclos al primero y había que contarlos a mano. Programar así era un poco como tocar el violín mientras alguien te mueve el brazo.
+
+## Un truco de la C64: RAM escondida debajo de la ROM
+
+Aquí viene una de mis partes favoritas, porque es un truco que solo se podía hacer en la Commodore. Ya vimos que en `$A000`–`$BFFF` vivía el BASIC, y en `$E000`–`$FFFF` el KERNAL. Pero debajo de esas ROM **también había RAM**, tapada. Si tu juego no usaba BASIC (y casi ninguno lo hacía), podías apagarlo y recuperar esos 8 KB para tus propios datos.
+
+El truco era un registro en la dirección `$01`, el puerto del procesador, que tenía tres bits importantes: [LORAM, HIRAM y CHAREN](https://www.c64-wiki.com/wiki/Bankswitching). Apagar el primero quitaba el BASIC y dejaba ver la RAM de `$A000`–`$BFFF`; el segundo hacía lo mismo con el KERNAL; el tercero escogía entre los chips de E/S y la ROM de caracteres en `$D000`–`$DFFF`. El patrón típico en ensamblador era más o menos así:
+
+```asm
+sei             ; sin interrupciones mientras cambiamos el mapa
+lda $01
+and #%11111000  ; borra los tres bits de banqueo
+ora #%00000XXX  ; pon la combinación que quieras
+sta $01
+cli             ; las interrupciones vuelven
+```
+
+(Reemplacen las `XXX` por la combinación que necesiten, que el chiste de esta entrada no es dar un tutorial completo.) Ese `sei` y ese `cli` no son decoración: si llegaba una interrupción en medio del cambio, el procesador podía intentar ejecutar una rutina del KERNAL que acababas de esconder, y ahí sí te quedabas viendo la pantalla con cara de "¿y ahora qué?".
+
+\{image - diagrama o meme de "mi RAM escondida debajo de la ROM"\}
 
 ## Niveles, puntos y música: todo eran recetas
 
@@ -39,11 +89,11 @@ En vez de guardar cada bloque de un escenario, muchos juegos almacenaban instruc
 
 El ejemplo que mejor conozco, porque me pasé meses desarmándolo, es *Circus Charlie*. La versión de Famicom de 1986 viene en un cartucho tipo NROM, el más sencillo que existe, sin ningún chip extra: **16 KB** de programa, 8 KB de gráficos y 2 KB de RAM. Con eso hay un payaso, un león, aros de fuego, changos, física, colisiones, vidas y puntuación. Toda la lógica corre en una sola rutina que se dispara sesenta veces por segundo, y hasta los puntos se guardan en BCD, un truco viejísimo que reserva medio byte por cada dígito decimal para no tener que convertir el número cada vez que hay que dibujarlo en pantalla. Cuento cómo lo desarmé, byte por byte, en [este post](/posts/como-se-descifra-un-juego-de-nes-sin-codigo-fuente/). Y la conclusión a la que llegué es la misma que ahora: un cartucho de 16 KB puede ser mucho más complejo que muchos programas modernos de cientos de megas.
 
-Con el sonido pasaba algo parecido. La música no era audio grabado (eso hubiera ocupado toda la memoria disponible varias veces) sino una lista de notas, duraciones y pequeñas instrucciones que los chips de sonido sintetizaban en tiempo real. Una melodía entera ocupaba una fracción minúscula de la memoria. Por eso esos temas de ocho bits suenan como suenan: no son la grabación de un instrumento, son una partitura ejecutada por una máquina con muchas ganas y poco presupuesto.
+Con el sonido pasaba algo parecido: nada de audio grabado, que hubiera ocupado toda la memoria disponible varias veces. La NES tenía [cinco canales de sonido](https://www.nesdev.org/wiki/APU_basics): dos de onda de pulso, uno triangular, uno de ruido y uno de muestras (el DMC, que casi nadie usaba porque las muestras se comen la ROM). El triángulo solía ser el bajo y el ruido, la percusión y las explosiones. La música no era una grabación sino una partitura: una tabla de notas y duraciones que una rutina leía en cada cuadro para escribir en los registros del chip (en `$4000`–`$4013`) el tono, el volumen y el timbre. La C64, por su lado, tenía su SID: tres voces, cada una con [varias formas de onda](https://en.wikipedia.org/wiki/MOS_Technology_6581) (cuadrada con ancho variable, triangular, diente de sierra y ruido), envolvente de volumen y un filtro compartido, pero **sin secuenciador**. O sea que el procesador tenía que escribir los registros a mano en cada cuadro, y aun así la mayoría de las melodías para SID siguen pesando apenas [de 4 a 8 KB](https://jahtari.org/archive/magazine/sid/sid-history.htm). Por eso esos temas de ocho bits suenan como suenan: no son la grabación de un instrumento, son una partitura ejecutada por una máquina con muchas ganas y poco presupuesto.
 
 ## Cuando ni así alcanzaba
 
-Cuando incluso eso no alcanzaba, entraba el *bank switching*. El procesador de la NES, igual que el de la C64, solo podía "ver" 64 KB de direcciones a la vez, pero los cartuchos podían traer mucha más memoria y [chips llamados *mappers*](https://en.wikipedia.org/wiki/Memory_management_controller) que intercambiaban bloques ("bancos") dentro de ese rango, como si cambiaran páginas de un libro bajo una lupa fija. Así crecieron los juegos de la NES a medida que pasaron los años, aunque el cartucho siguiera pareciendo del mismo tamaño. (Un poco como tu clóset después de una buena sesión de Marie Kondo.)
+Cuando incluso eso no alcanzaba, entraba el *bank switching* en su versión de cartucho. El procesador de la NES solo podía "ver" 64 KB de direcciones a la vez, pero los cartuchos podían traer mucha más memoria y [chips llamados *mappers*](https://en.wikipedia.org/wiki/Memory_management_controller) que intercambiaban bloques ("bancos") dentro de ese rango, como si cambiaran páginas de un libro bajo una lupa fija. Así crecieron los juegos de la NES a medida que pasaron los años, aunque el cartucho siguiera pareciendo del mismo tamaño. (Un poco como tu clóset después de una buena sesión de Marie Kondo.)
 
 <Callout type="info" title="Dato nerdo">
 
