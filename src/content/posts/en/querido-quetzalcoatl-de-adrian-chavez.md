@@ -1,7 +1,7 @@
 ---
 title: 'Querido Quetzalcóatl, de Adrián Chávez'
 description: '¿Qué pasaría si Quetzalcóatl reemplazara a Santa Claus como símbolo navideño en México? Reseña de una comedia fantástica basada en un hecho histórico.'
-pubDate: 2026-10-26
+pubDate: 2026-11-02
 heroImage: ../../../assets/images/posts/heroes/querido-quetzalcoatl.jpg
 heroImageAlt: 'El libro Querido Quetzalcóatl, de Adrián Chávez, sobre una superficie de piedra gris con luz y sombras'
 tags: [libros, reseña, sátira]
