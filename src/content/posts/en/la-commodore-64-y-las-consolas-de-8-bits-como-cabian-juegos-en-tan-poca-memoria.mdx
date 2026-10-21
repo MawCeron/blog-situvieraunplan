@@ -7,8 +7,6 @@ tags: [historia, hardware, videojuegos]
 categories: [Geek, Tecnología]
 ---
 
-import Callout from '../../../components/Callout.astro';
-
 Una sola foto de tu celular pesa más que toda la memoria de una Commodore 64. Y aun así esa computadora corría juegos con scroll, música de tres voces y niveles que todavía se recuerdan con cariño, mientras que hoy mi laptop necesita unos cuantos gigas nomás para abrir un chat de la oficina. Siempre me ha dado vueltas en la cabeza cómo diablos lo lograban, y como ya me tocó meterle el diente a un cartucho de NES (spoiler: mi CPU terminó a 87 °C), creo que ya puedo contarlo sin hacer demasiado el ridículo.
 
 Esto no va a ser una entrada nostálgica de "los juegos de antes eran mejores" (aunque algunos sí lo eran, no voy a mentir). Quiero hablar de **cómo** se hacía: qué había dentro de esas máquinas, cómo estaba repartida la poca memoria que tenían y los trucos concretos con los que los programadores la estiraron más allá de lo razonable. Prepárense, porque va a haber hexadecimal.
@@ -19,7 +17,7 @@ La Commodore 64 salió en 1982 con 64 KB de RAM, un procesador MOS 6510 que anda
 
 Y ojo con ese "64 KB", porque no eran 64 KB para tu juego. Al encender una C64 aparecía el famoso mensaje `38911 BASIC BYTES FREE`: el sistema te dejaba menos de 39 KB libres para programar en BASIC. Los poco más de 26 KB restantes no estaban perdidos, estaban **ocupados**: ahí vivían el intérprete de BASIC y el sistema operativo (el KERNAL), las ROM de caracteres, y los registros de los chips de video, sonido y entrada/salida. Todo compartiendo las mismas 65,536 direcciones que el procesador era capaz de ver.
 
-<Callout type="info" title="Dato nerdo: el mapa de memoria de la C64">
+Para que se haga una idea, así quedaba repartido el mapa de memoria de la C64:
 
 | Dirección | Qué hay ahí |
 | --- | --- |
@@ -28,8 +26,6 @@ Y ojo con ese "64 KB", porque no eran 64 KB para tu juego. Al encender una C64 a
 | `$A000`–`$BFFF` | ROM del intérprete BASIC (o 8 KB de RAM si lo apagas) |
 | `$D000`–`$DFFF` | Chips de E/S (video, sonido) o ROM de caracteres |
 | `$E000`–`$FFFF` | ROM del KERNAL (o RAM, si lo apagas) |
-
-</Callout>
 
 La NES era más modesta todavía, y con mapa más claro: 2 KB de RAM de trabajo en `$0000`–`$07FF` (sí, **dos**, no es un error de dedo), repetidos o "espejados" hasta `$1FFF` para que el procesador no se enterara de que le estaban tomando el pelo; los registros del chip de video en `$2000`–`$2007`; los del audio y los controles en `$4000`–`$4017`; y el cartucho, con el programa del juego, desde `$8000` hasta `$FFFF`. Y de ahí salieron Mario, Zelda y Metroid. ¿Cómo? No había un solo truco, sino un montón de pequeñas trampas bien pensadas, todas con la misma filosofía: nunca guardes algo que puedas calcular, repetir o reciclar. Marie Kondo, pero con ensamblador.
 
@@ -94,12 +90,6 @@ Con el sonido pasaba algo parecido: nada de audio grabado, que hubiera ocupado t
 ## Cuando ni así alcanzaba
 
 Cuando incluso eso no alcanzaba, entraba el *bank switching* en su versión de cartucho. El procesador de la NES solo podía "ver" 64 KB de direcciones a la vez, pero los cartuchos podían traer mucha más memoria y [chips llamados *mappers*](https://en.wikipedia.org/wiki/Memory_management_controller) que intercambiaban bloques ("bancos") dentro de ese rango, como si cambiaran páginas de un libro bajo una lupa fija. Así crecieron los juegos de la NES a medida que pasaron los años, aunque el cartucho siguiera pareciendo del mismo tamaño. (Un poco como tu clóset después de una buena sesión de Marie Kondo.)
-
-<Callout type="info" title="Dato nerdo">
-
-Un *mapper* es, en el fondo, un chip dentro del cartucho que le dice al procesador "ahora, cuando preguntes por esta dirección, te voy a mostrar otro pedazo de la memoria". La consola nunca se entera de que la están engañando, y los juegos grandes de finales de los ochenta dependían de ello.
-
-</Callout>
 
 Y luego está mi truco favorito de todos: no guardar el universo, guardar la semilla. *Elite* (1984), que corría en una BBC Micro con 32 KB de RAM, tenía [ocho galaxias de 256 planetas cada una](https://www.gamedeveloper.com/game-platforms/feature-the-history-of-i-elite-i-), o sea 2,048 mundos, cada uno con su nombre, su economía y su tipo de gobierno. Nada de eso estaba almacenado. Todo se generaba a partir de [un puñado de números semilla](https://elite.bbcelite.com/deep_dives/galaxy_and_system_seeds.html), con una fórmula que siempre devolvía el mismo resultado para el mismo planeta. David Braben contó que, de hecho, tuvieron que "elegir las galaxias a ojo" y descartar las que no se veían bien, o sea que hasta el universo tuvo curaduría humana. Más o menos lo que hoy llamaríamos generación procedural, solo que hecha a mano, en ensamblador y con la calculadora de la época.
 
