@@ -87,3 +87,13 @@ jobs:
         id: deployment
         if: steps.pages.outputs.enabled == 'true'
         uses: actions/deploy-pages@v5
+
+  cloudflare:
+    name: Rebuild Cloudflare
+    if: github.event_name == 'schedule'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger deploy hook
+        env:
+          HOOK: ${{ secrets.CLOUDFLARE_DEPLOY_HOOK }}
+        run: curl -fsS -X POST "$HOOK"
