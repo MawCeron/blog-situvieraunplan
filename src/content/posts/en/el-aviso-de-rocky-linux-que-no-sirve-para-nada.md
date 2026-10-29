@@ -1,10 +1,9 @@
 ---
 title: 'El aviso de Rocky Linux que no sirve para nada (salvo para callar a los evil overlords)'
 description: 'El aviso de exportación de Rocky Linux prohíbe lo que él mismo declara exento y cita una sección que habla de otra cosa.'
-pubDate: 2026-11-16
+pubDate: 2026-10-29
 heroImage: '../../../assets/images/posts/heroes/rocky-linux-legalese.jpg'
 heroImageAlt: 'Un letrero de "prohibido pisar el pasto" clavado en un terreno pelón, sin una sola brizna de pasto'
-draft: true
 tags: [linux, rocky, opinión]
 categories: [Linux, Opinión]
 ---
