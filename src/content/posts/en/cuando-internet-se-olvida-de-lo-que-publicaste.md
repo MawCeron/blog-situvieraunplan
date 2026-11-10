@@ -4,7 +4,6 @@ description: 'Dicen que lo que subes a internet es para siempre. Mi experiencia 
 pubDate: 2026-11-09
 heroImage: ../../../assets/images/posts/heroes/cuando-internet-se-olvida.jpg
 heroImageAlt: 'Un dinosaurio verde con sudadera frente a un arco de bloques digitales que se desmorona, rodeado de páginas de blog rotas, candados y cables'
-draft: true
 tags: [blog, reflexión, tecnología]
 categories: [Tecnología, Personal]
 ---
